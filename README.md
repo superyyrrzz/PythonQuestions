@@ -2,8 +2,8 @@ This is a doc on difference between Azure python SDK YAML format and DocFX's YAM
 
 # Split YAML
 ## Now
-namespace/class/method are in the same YAML’s `items`. This will generate a super long page like http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.operations.html
-DocFX’s existing template generates a page for each class.
+Namespace/class/method are in the same YAML’s `items`. This will generate a super long page like http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.operations.html.
+DocFX's existing template generates a page for each class.
 ## Expected
 Split to per class per YAML. Namespace YAML only has a item of type namespace, with classes in its `children`. Class YAML has items:
 * First item: of type class
