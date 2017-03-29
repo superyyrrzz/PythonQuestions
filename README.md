@@ -28,7 +28,9 @@ syntax:
 -	description: @"msrest.pipeline.ClientRawResponse?text=ClientRawResponse" if raw=true
 ```
 Note that the `content` need to be added.
+
 For return type, Multiple return type is allowed. Sphinx will create a link for return type if possible. It's like a uid with string as fallback in DocFX. The initial design in this snippet is to store it in a string `description`. This is different from .NET's YAML, which has both `type` and `description`. DocFX will try to resolve it as a uid first.
+
 Note that part of the name can work in Sphinx, like `:vartype features: .operations.FeaturesOperations`. When filled into YAML's type, it should be a full uid like `type: azure.mgmt.resource.features.operations.FeaturesOperations`.
 
 # Cross Reference
@@ -36,6 +38,7 @@ Note that part of the name can work in Sphinx, like `:vartype features: .operati
 In rst, the cross reference is like `` :mytype:`myname<myuid>` ``.
 ## Expected
 When converted to DFM, the syntax should be like `@"myuid?text=myname"`. As DocFX's cross reference is not aware of type, this can be omitted. See: http://www.sphinx-doc.org/en/stable/domains.html#python-roles
+
 Question: seems Sphinx supports other tags like `:any:`, `:ref:`, and so on. Need they also be converted to markdown? see: http://www.sphinx-doc.org/en/stable/markup/inline.html#role-ref
 
 # Toc.yml
@@ -51,6 +54,25 @@ When generating metadata, DocFX will also generate a toc.yml reference to other 
     name: ApplicationsOperations
   - uid: azure.graphrbac.operations.GroupsOperations
     name: GroupsOperations
+```
+
+# Matching between documentation and code
+## Now
+Yaml lack of the information to track with original source code.
+## Expected
+Add source information to yaml files as following:
+``` yaml
+### YamlMime:Python
+items:
+- uid: azure.mgmt.devtestlabs.DevTestLabsClient
+  source:
+    remote:
+      path: src/azure/DevTestLabsClient.cs
+      branch: master
+      repo: https://github.com/Microsoft/sdk
+    id: DevTestLabsClient
+    path: src/azure/DevTestLabsClient.cs
+    startLine: 12
 ```
 
 # Other missing fields
