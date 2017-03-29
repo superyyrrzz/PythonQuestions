@@ -38,8 +38,20 @@ In rst, the cross reference is like `` :mytype:`myname<myuid>` ``.
 When converted to DFM, the syntax should be like `@"myuid?text=myname"`. As DocFX's cross reference is not aware of type, this can be omitted. See: http://www.sphinx-doc.org/en/stable/domains.html#python-roles
 Question: seems Sphinx supports other tags like `:any:`, `:ref:`, and so on. Need they also be converted to markdown? see: http://www.sphinx-doc.org/en/stable/markup/inline.html#role-ref
 
-# toc.yml
+# Toc.yml
 When generating metadata, DocFX will also generate a toc.yml reference to other YAMLs. This is also needed for sphinx-docfx-yaml.
+``` yaml
+### YamlMime:TableOfContent
+- uid: azure.graphrbac.operations
+  name: azure.graphrbac.operations
+  items:
+  - uid: azure.graphrbac.operations.ObjectsOperations
+    name: ObjectsOperations
+  - uid: azure.graphrbac.operations.ApplicationsOperations
+    name: ApplicationsOperations
+  - uid: azure.graphrbac.operations.GroupsOperations
+    name: GroupsOperations
+```
 
 # Other missing fields
 ## inheritance
@@ -49,7 +61,7 @@ inheritance:
 - System.Object
 - VBTestClass1.BaseClass1
 ```
-In python, considering multiple Inheritance, it's also a lise of all it's base class:
+In python, considering multiple inheritance, it's also a list of all it's base classes:
 ``` yaml
 inheritance:
 - base1
