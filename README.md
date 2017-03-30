@@ -35,11 +35,21 @@ For return type, Multiple return type is allowed. Sphinx will create a link for 
 Note that part of the name can work in Sphinx, like `:vartype features: .operations.FeaturesOperations`. When filled into YAML's type, it should be a full uid like `type: azure.mgmt.resource.features.operations.FeaturesOperations`.
 
 # Cross Reference
-To do
 ## Now
 In rst, the cross reference is like `` :mytype:`myname<myuid>` ``.
 ## Expected
-When converted to DFM, the syntax should be like `@"myuid?text=myname"`. As DocFX's cross reference is not aware of type, this can be omitted. See: http://www.sphinx-doc.org/en/stable/domains.html#python-roles
+- For internal reference, for example referencing with `azure.graphrbac.operations.ObjectsOperations`, DocFX syntax may like @"azure.graphrbac.operations.ObjectsOperations".  As DocFX's cross reference is not aware of type, this can be omitted. See: http://www.sphinx-doc.org/en/stable/domains.html#python-roles
+- For external rererence, besides updating syntax with @"azure.graphrbac.operations.ObjectsOperations", should also provide the `xrefmap` as following:
+``` yaml
+### YamlMime:XRefMap
+sorted: true
+hrefUpdated: true
+references:
+- uid: external.ref.str
+  href: https://docs.python.org/3.5/library/stdtypes.html#str
+  name: str
+  fullName: str
+```
 
 Question: seems Sphinx supports other tags like `:any:`, `:ref:`, and so on. Need they also be converted to markdown? see: http://www.sphinx-doc.org/en/stable/markup/inline.html#role-ref
 
