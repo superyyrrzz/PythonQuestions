@@ -1,5 +1,6 @@
 This is a doc on difference between Azure python SDK YAML format and DocFX's YAML format.
-
+To do: Add YML Sample here.
+To do: Convert RST to HTML.
 # Split YAML
 ## Now
 Namespace/class/method are in the same YAML’s `items`. This will generate a super long page like http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.operations.html.
@@ -34,6 +35,7 @@ For return type, Multiple return type is allowed. Sphinx will create a link for 
 Note that part of the name can work in Sphinx, like `:vartype features: .operations.FeaturesOperations`. When filled into YAML's type, it should be a full uid like `type: azure.mgmt.resource.features.operations.FeaturesOperations`.
 
 # Cross Reference
+To do
 ## Now
 In rst, the cross reference is like `` :mytype:`myname<myuid>` ``.
 ## Expected
