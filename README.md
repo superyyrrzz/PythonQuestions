@@ -38,8 +38,8 @@ Note that part of the name can work in Sphinx, like `:vartype features: .operati
 ## Now
 In rst, the cross reference is like `` :mytype:`myname<myuid>` ``.
 ## Expected
-- For internal reference, for example referencing with `azure.graphrbac.operations.ObjectsOperations`, DocFX syntax may like @"azure.graphrbac.operations.ObjectsOperations".  As DocFX's cross reference is not aware of type, this can be omitted. See: http://www.sphinx-doc.org/en/stable/domains.html#python-roles
-- For external rererence, besides updating syntax with @"azure.graphrbac.operations.ObjectsOperations", should also provide the `xrefmap` as following:
+- For internal reference, for example referencing `azure.graphrbac.operations.ObjectsOperations`, DocFX syntax is @"azure.graphrbac.operations.ObjectsOperations". DocFX's cross referencing is not depends on type, but unique id, the following roles defined in http://www.sphinx-doc.org/en/stable/domains.html#python-roles could be omitted.
+- For external reference, besides updating syntax with @"azure.graphrbac.operations.ObjectsOperations", should also provide the `xrefmap` as following, for the pupose of redirection.
 ``` yaml
 ### YamlMime:XRefMap
 sorted: true
