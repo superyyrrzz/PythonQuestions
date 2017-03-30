@@ -38,8 +38,8 @@ Note that part of the name can work in Sphinx, like `:vartype features: .operati
 ## Now
 In rst, the cross reference is like `` :mytype:`myname<myuid>` ``.
 ## Expected
-- For internal reference, for example referencing `azure.graphrbac.operations.ObjectsOperations`, DocFX syntax is @"azure.graphrbac.operations.ObjectsOperations". DocFX's cross referencing is not depends on type, but unique id, the following roles defined in http://www.sphinx-doc.org/en/stable/domains.html#python-roles could be omitted.
-- For external reference, besides updating syntax with @"azure.graphrbac.operations.ObjectsOperations", should also provide the `xrefmap` as following, for the pupose of redirection.
+- For internal reference, for example referencing `azure.graphrbac.operations.ObjectsOperations`, DocFX syntax is `@azure.graphrbac.operations.ObjectsOperations`. Another syntax is `@"azure.graphrbac.operations.ObjectsOperations?text=myname"` if display name is to be specified. DocFX's cross referencing is not dependent on type, but unique id, the following roles defined in http://www.sphinx-doc.org/en/stable/domains.html#python-roles could be omitted.
+- For external reference, besides updating syntax with `@azure.graphrbac.operations.ObjectsOperations`, should also provide the `xrefmap` as follows, for the purpose of redirection.
 ``` yaml
 ### YamlMime:XRefMap
 sorted: true
@@ -50,6 +50,7 @@ references:
   name: str
   fullName: str
 ```
+Here's more info about DocFX's cross reference：http://dotnet.github.io/docfx/tutorial/links_and_cross_references.html
 
 Question: seems Sphinx supports other tags like `:any:`, `:ref:`, and so on. Need they also be converted to markdown? see: http://www.sphinx-doc.org/en/stable/markup/inline.html#role-ref
 
