@@ -23,18 +23,17 @@ Split to per class per YAML. Namespace YAML only has a item of type namespace, w
 Summary contains a lot of structural information like param, type, overrides, rtype. See: https://github.com/bradygaster/python-sdk-dev/blob/eric-full-yaml-test/python-sdk-dev/docfx_yaml/azure.batch.operations.yml#L345
 ## Expected 
 Map these info to YAML. Take this summary as an example, the ideal model is like:
-```YAML
+``` YAML
 summary: Upgrades the operating system of the specified pool.
 syntax:
   content: upgrade_os(pool_id, target_os_version, pool_upgrade_os_options=None, custom_headers=None, raw=False, **operation_config)
-  Parameters:
--	id: pool_id
-  type: str
-  description: “The id of the pool to upgrade.”
-  …
+  parameters:
+  - id: pool_id
+    type: str
+    description: "The id of the pool to upgrade."
   return:
--	description: null
--	description: @"msrest.pipeline.ClientRawResponse?text=ClientRawResponse" if raw=true
+  - description: null
+  - description: @"msrest.pipeline.ClientRawResponse?text=ClientRawResponse" if raw=true
 ```
 Note that the `content` need to be added.
 
