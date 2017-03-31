@@ -46,7 +46,7 @@ Note that part of the name can work in Sphinx, like `:vartype features: .operati
 In rst, the cross reference is like `` :mytype:`myname<myuid>` ``.
 ## Expected
 - For internal reference, for example referencing `azure.graphrbac.operations.ObjectsOperations`, DocFX syntax is `@azure.graphrbac.operations.ObjectsOperations`. Another syntax is `@"azure.graphrbac.operations.ObjectsOperations?text=myname"` if display name is to be specified. DocFX's cross referencing is not dependent on type, but unique id, the following roles defined in http://www.sphinx-doc.org/en/stable/domains.html#python-roles could be omitted.
-- For external reference, besides updating syntax with `@azure.graphrbac.operations.ObjectsOperations`, should also provide the `xrefmap` as follows, for the purpose of redirection.
+- For external reference, besides updating syntax with `@azure.graphrbac.operations.ObjectsOperations`, should also provide the `xrefmap` as follows, for the purpose of redirection. Refer to [Sample docfx.json](https://github.com/dotnet/docfx/blob/master/Documentation/docfx.json#L36) to download the xref map zip sample and how to specify the xref location in docfx.json. 
 ``` yaml
 ### YamlMime:XRefMap
 sorted: true
@@ -62,7 +62,7 @@ Here's more info about DocFX's cross reference：http://dotnet.github.io/docfx/t
 Question: seems Sphinx supports other tags like `:any:`, `:ref:`, and so on. Need they also be converted to markdown? see: http://www.sphinx-doc.org/en/stable/markup/inline.html#role-ref
 
 # Toc.yml
-When generating metadata, DocFX will also generate a toc.yml reference to other YAMLs. This is also needed for sphinx-docfx-yaml.
+When generating metadata, DocFX will also generate a toc.yml reference to other YAMLs. This is also needed for sphinx-docfx-yaml. Take following syntax as an example, more info please refer to [DocFx Table-Of-Content Tutorial](http://dotnet.github.io/docfx/tutorial/intro_toc.html)
 ``` yaml
 ### YamlMime:TableOfContent
 - uid: azure.graphrbac.operations
