@@ -1,0 +1,246 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.core.NDArrayView
+  - cntk.core.Value
+  module: cntk.core
+  name: cntk.core
+  summary: ''
+  type: Namespace
+  uid: cntk.core
+- _type: class
+  children:
+  - cntk.core.asarray
+  - cntk.core.asvalue
+  - cntk.core.user_function
+  module: cntk.core
+  name: cntk.core.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.core.Global
+- _type: class
+  children:
+  - cntk.core.NDArrayView.from_csr
+  - cntk.core.NDArrayView.from_data
+  - cntk.core.NDArrayView.from_dense
+  - cntk.core.NDArrayView.shape
+  - cntk.core.NDArrayView.slice_view
+  module: cntk.core
+  name: cntk.core.NDArrayView
+  summary: "Creates an empty dense internal data representation of a\n:class:`~cntk.core.Value`\
+    \ object.\nTo create an NDArrayView from a NumPy array, use :meth:`from_dense`.\n\
+    To create an NDArrayView from a sparse array, use :meth:`from_csr`.\n\nArgs:\n\
+    \    shape (tuple): shape of the data\n    data_type (np.float32, np.float64):\
+    \ data type of the data\n    device (:class:`~cntk.device.DeviceDescriptor`):\
+    \ device this value\n     should be put on\n"
+  type: Class
+  uid: cntk.core.NDArrayView
+- _type: method
+  class: cntk.core.NDArrayView
+  module: cntk.core
+  name: cntk.core.NDArrayView.from_csr
+  summary: "Create a :class:`NDArrayView` instance from a SciPy sparse array in CSR\n\
+    format.\n\nArgs:\n    csr_array (scipy.sparse.csr_matrix): SciPy sparse matrix\
+    \ in CSR\n     format\n    device (:class:`~cntk.device.DeviceDescriptor`): device\
+    \ this value\n     should be put on\n    read_only (bool, optional): whether the\
+    \ data can be modified or\n     not (default False)\n    borrow (bool, default\
+    \ False): whether nd_arrary memory can be\n     borrowed internally to speed up\
+    \ the data creation\n\nReturns:\n    :class:`NDArrayView` instance\n"
+  type: Method
+  uid: cntk.core.NDArrayView.from_csr
+- _type: method
+  class: cntk.core.NDArrayView
+  module: cntk.core
+  name: cntk.core.NDArrayView.from_data
+  summary: "Create a :class:`NDArrayView` instance from a NumPy or SciPy sparse\n\
+    array in CSR format.\n\nArgs:\n    data (numpy.ndarray or scipy.sparse.csr_matrix):\
+    \ data\n    device (:class:`~cntk.device.DeviceDescriptor`): device this value\n\
+    \     should be put on\n    read_only (bool, optional): whether the data can be\
+    \ modified or\n     not (default False)\n    borrow (bool, default False): whether\
+    \ nd_arrary memory can be\n     borrowed internally to speed up the data creation\n\
+    \nReturns:\n    :class:`NDArrayView` instance\n"
+  type: Method
+  uid: cntk.core.NDArrayView.from_data
+- _type: method
+  class: cntk.core.NDArrayView
+  module: cntk.core
+  name: cntk.core.NDArrayView.from_dense
+  summary: "Create a :class:`NDArrayView` instance from a NumPy array.\n\nArgs:\n\
+    \    np_array (numpy.ndarray): NumPy array\n    device (:class:`~cntk.device.DeviceDescriptor`):\
+    \ device this value\n     should be put on\n    borrow (bool, default False):\
+    \ whether nd_arrary memory can be\n     borrowed internally to speed up the data\
+    \ creation\n    read_only (bool, optional): whether the data can be modified or\n\
+    \     not (default False)\n\nReturns:\n    :class:`NDArrayView` instance\n"
+  type: Method
+  uid: cntk.core.NDArrayView.from_dense
+- _type: attribute
+  class: cntk.core.NDArrayView
+  module: cntk.core
+  name: cntk.core.NDArrayView.shape
+  summary: 'The shape of this instance.
+
+    '
+  type: Property
+  uid: cntk.core.NDArrayView.shape
+- _type: method
+  class: cntk.core.NDArrayView
+  module: cntk.core
+  name: cntk.core.NDArrayView.slice_view
+  summary: "Returns a sliced view of the instance.\n\nExample:\n    >>> # Creating\
+    \ an array of shape (1, 1, 2, 3)\n    >>> np_array = np.asarray([[[[10, 20, 30],\
+    \ [40, 50, 60]]]],                                       dtype=np.float32)\n \
+    \   >>> nd = NDArrayView.from_dense(np_array)\n    >>> sliced = nd.slice_view([0,\
+    \ 0, 0, 0], [2, 3])\n    >>> np_sliced = sliced.asarray()\n    >>> # Result is\
+    \ an array of shape (2, 3)\n    >>> print(np_sliced)\n    [[ 10.  20.  30.]\n\
+    \     [ 40.  50.  60.]]\n\nArgs:\n  start_offset (tuple or list): shape of the\
+    \ same rank as this Value\n   instance that denotes the start of the slicing\n\
+    \  extent (tuple or list): shape of the right-aligned extent to keep\n  read_only\
+    \ (bool): whether the returned slice is read only or not\n"
+  type: Method
+  uid: cntk.core.NDArrayView.slice_view
+- _type: class
+  children:
+  - cntk.core.Value.as_sequences
+  - cntk.core.Value.create
+  - cntk.core.Value.data
+  - cntk.core.Value.mask
+  - cntk.core.Value.one_hot
+  - cntk.core.Value.shape
+  module: cntk.core
+  name: cntk.core.Value
+  summary: "Internal representation of minibatch data.\n\nArgs:\n    shape (tuple):\
+    \ shape of the value\n    value (None or value that can be cast to NumPy array):\
+    \ the value to\n     be converted\n    dtype: data type (np.float32 or np.float64)\n\
+    \    batch: batch input for `var`.\n     It can be:\n\n      * a pure Python structure\
+    \ (list of lists, ...),\n      * a list of NumPy arrays or SciPy sparse CSR matrices\n\
+    \      * a :class:`~cntk.core.Value` object (e.g. returned by :func:`one_hot`)\n\
+    \    seq_starts (list of `bool`\\ s or None): if None, every sequence is\n   \
+    \  treated as a new sequence. Otherwise, it is interpreted as a list of\n    \
+    \ Booleans that tell whether a sequence is a new sequence (`True`) or a\n    \
+    \ continuation of the sequence in the same slot of the previous\n     minibatch\
+    \ (`False`)\n    device (:class:`~cntk.device.DeviceDescriptor`): device this\
+    \ value\n     should be put on\n"
+  type: Class
+  uid: cntk.core.Value
+- _type: method
+  class: cntk.core.Value
+  module: cntk.core
+  name: cntk.core.Value.as_sequences
+  summary: "Convert a Value to a sequence of NumPy arrays that have their masked\n\
+    entries removed.\n\nReturns:\n    If variable contains more dynamic axes than\
+    \ the batch axis, a list\n    of NumPy arrays (if dense) or a SciPy CSR array\
+    \ (if sparse) will be\n    returned. Otherwise, the arrays will be returned directly.\n"
+  type: Method
+  uid: cntk.core.Value.as_sequences
+- _type: method
+  class: cntk.core.Value
+  module: cntk.core
+  name: cntk.core.Value.create
+  summary: "Creates a :class:`~cntk.core.Value` object.\n\nArgs:\n    var (:class:`~cntk.variables.Variable`):\
+    \ variable into which\n     ``data`` is passed\n    data: data for `var`.\n  \
+    \   It can be:\n\n      * a single NumPy array denoting the full minibatch\n \
+    \     * a list of NumPy arrays or SciPy sparse CSR matrices\n      * a single\
+    \ NumPy array denoting one parameter or constant\n    seq_starts (list of `bool`\\\
+    \ s or None): if None, every sequence is\n     treated as a new sequence. Otherwise,\
+    \ it is interpreted as a list of\n     Booleans that tell whether a sequence is\
+    \ a new sequence (`True`) or a\n     continuation of the sequence in the same\
+    \ slot of the previous\n     minibatch (`False`)\n    device (:class:`~cntk.device.DeviceDescriptor`,\
+    \ default None): device\n     this value should be put on\n    read_only (bool,\
+    \ default False): whether the data is read only\n\nReturns:\n    :class:`~cntk.core.Value`\
+    \ object.\n"
+  type: Method
+  uid: cntk.core.Value.create
+- _type: attribute
+  class: cntk.core.Value
+  module: cntk.core
+  name: cntk.core.Value.data
+  summary: 'Retrieves the underlying :class:`NDArrayView` instance.
+
+    '
+  type: Property
+  uid: cntk.core.Value.data
+- _type: attribute
+  class: cntk.core.Value
+  module: cntk.core
+  name: cntk.core.Value.mask
+  summary: "The mask matrix of this value. Each row denotes a sequence with its\n\
+    elements describing the mask of the element:\n\n * 2: beginning of sequence (e.g.\
+    \ an LSTM would be reset)\n * 1: valid element\n * 0: invalid element\n\nExample:\n\
+    \  A mask of ``[[2, 1, 1], [1, 1, 0]]`` describes a batch of two\n  sequences.\
+    \ The first has three elements, of which the first element\n  (2) signals the\
+    \ beginning of a sequence. The second sequence has two\n  elements (last element\
+    \ marked 'invalid' by '0'). As it starts with\n  (1), it is a continuation of\
+    \ the 2nd sequence in the previous\n  minibatch.\n"
+  type: Property
+  uid: cntk.core.Value.mask
+- _type: method
+  class: cntk.core.Value
+  module: cntk.core
+  name: cntk.core.Value.one_hot
+  summary: "Converts ``batch`` into a :class:`~cntk.core.Value` object of ``dtype``\n\
+    such that the integer data in ``batch`` is interpreted as the indices\nrepresenting\
+    \ one-hot vectors. Use Value.ONE_HOT_SKIP for a zero vector\n\nExample:\n    >>>\
+    \ num_classes = 6\n    >>> sparse_indices = [[1,C.Value.ONE_HOT_SKIP,5],[4]]\n\
+    \    >>> i0 = C.sequence.input(shape=num_classes, is_sparse=True)\n    >>> z =\
+    \ C.times(i0, np.eye(num_classes))\n    >>> value = C.Value.one_hot(sparse_indices,\
+    \ num_classes)\n    >>> z.eval({i0: value})\n    [array([[ 0.,  1.,  0.,  0.,\
+    \  0.,  0.],\n            [ 0.,  0.,  0.,  0.,  0.,  0.],\n            [ 0., \
+    \ 0.,  0.,  0.,  0.,  1.]], dtype=float32), \n     array([[ 0.,  0.,  0.,  0.,\
+    \  1.,  0.]], dtype=float32)]\n    <BLANKLINE>\n    >>> num_classes = 6\n    >>>\
+    \ sample_shape = (2, num_classes)\n    >>> sparse_indices = [[1,5,3,2],[4,1]]\n\
+    \    >>> i0 = C.sequence.input(shape=sample_shape, is_sparse=True)\n    >>> z\
+    \ = C.times(i0, np.eye(num_classes))\n    >>> value = C.Value.one_hot(sparse_indices,\
+    \ sample_shape)\n    >>> z.eval({i0: value})\n    [array([[[ 0.,  1.,  0.,  0.,\
+    \  0.,  0.],\n             [ 0.,  0.,  0.,  0.,  0.,  1.]],\n            [[ 0.,\
+    \  0.,  0.,  1.,  0.,  0.],\n             [ 0.,  0.,  1.,  0.,  0.,  0.]]], dtype=float32),\
+    \ \n     array([[[ 0.,  0.,  0.,  0.,  1.,  0.],\n             [ 0.,  1.,  0.,\
+    \  0.,  0.,  0.]]], dtype=float32)]\n\nArgs:\n    batch (list of lists of integers):\
+    \ batch input data of indices\n    sample_shape (int or tuple): number of classes\
+    \ or shape of each sample whose trailing axis is one_hot\n    dtype (`np.float32`,\
+    \ `np.float64`, default None): data type\n    device (:class:`~cntk.device.DeviceDescriptor`,\
+    \ default None): device\n     this value should be put on\n\nReturns:\n    ``batch``\
+    \ converted into a :class:`~Value` object that can be passed to\n    the forward\
+    \ or eval function.\n"
+  type: Method
+  uid: cntk.core.Value.one_hot
+- _type: attribute
+  class: cntk.core.Value
+  module: cntk.core
+  name: cntk.core.Value.shape
+  summary: 'The rectangular shape of this value. I.e., if this value has sequences
+
+    of varying lengths, the shape will have the max sequence length in the
+
+    sequence dimension.
+
+    '
+  type: Property
+  uid: cntk.core.Value.shape
+- _type: function
+  module: cntk.core
+  name: cntk.core.asarray
+  summary: 'Converts a Value object to a sequence of NumPy arrays (if dense) or CSR
+    arrays (if sparse).
+
+    '
+  type: Method
+  uid: cntk.core.asarray
+- _type: function
+  module: cntk.core
+  name: cntk.core.asvalue
+  summary: 'Converts a sequence of NumPy arrays or CSR arrays to a Value object.
+
+    '
+  type: Method
+  uid: cntk.core.asvalue
+- _type: function
+  module: cntk.core
+  name: cntk.core.user_function
+  summary: 'Wraps the passed Function to create a composite representing the
+
+    composite Function graph rooted at the passed root Function.
+
+    '
+  type: Method
+  uid: cntk.core.user_function

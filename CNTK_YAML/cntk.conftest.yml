@@ -1,0 +1,37 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.conftest
+  name: cntk.conftest
+  summary: ''
+  type: Namespace
+  uid: cntk.conftest
+- _type: class
+  children:
+  - cntk.conftest.add_namespace
+  - cntk.conftest.pytest_addoption
+  - cntk.conftest.pytest_generate_tests
+  module: cntk.conftest
+  name: cntk.conftest.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.conftest.Global
+- _type: function
+  module: cntk.conftest
+  name: cntk.conftest.add_namespace
+  summary: ''
+  type: Method
+  uid: cntk.conftest.add_namespace
+- _type: function
+  module: cntk.conftest
+  name: cntk.conftest.pytest_addoption
+  summary: ''
+  type: Method
+  uid: cntk.conftest.pytest_addoption
+- _type: function
+  module: cntk.conftest
+  name: cntk.conftest.pytest_generate_tests
+  summary: ''
+  type: Method
+  uid: cntk.conftest.pytest_generate_tests

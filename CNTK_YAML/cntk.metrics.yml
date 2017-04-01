@@ -1,0 +1,96 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.metrics
+  name: cntk.metrics
+  summary: ''
+  type: Namespace
+  uid: cntk.metrics
+- _type: class
+  children:
+  - cntk.metrics.classification_error
+  - cntk.metrics.edit_distance_error
+  - cntk.metrics.ndcg_at_1
+  module: cntk.metrics
+  name: cntk.metrics.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.metrics.Global
+- _type: function
+  module: cntk.metrics
+  name: cntk.metrics.classification_error
+  summary: "This operation computes the classification error. It finds the index of\
+    \ the highest\nvalue in the output_vector and compares it to the actual ground\
+    \ truth label\n(the index of the hot bit in the target vector). The result is\
+    \ a scalar\n(i.e., one by one matrix). This is often used as an evaluation criterion.\n\
+    It cannot be used as a training criterion though since the gradient is not\ndefined\
+    \ for it.\n\nExample:\n    >>> C.classification_error([[1., 2., 3., 4.]], [[0.,\
+    \ 0., 0., 1.]]).eval()\n    array([[ 0.]], dtype=float32)\n\n    >>> C.classification_error([[1.,\
+    \ 2., 3., 4.]], [[0., 0., 1., 0.]]).eval()\n    array([[ 1.]], dtype=float32)\n\
+    \n    >>> # Note that non-1 values are treated as 0\n    >>> C.classification_error([[1.,\
+    \ 2., 3., 4.]], [[5., 0., 1., 0.]]).eval()\n    array([[ 1.]], dtype=float32)\n\
+    \nArgs:\n    output_vector: the output values from the network\n    target_vector:\
+    \ it is one-hot vector where the hot bit corresponds to\n     the label index.\n\
+    \    axis (int or :class:`~cntk.axis.Axis`): axis along which the\n     classification\
+    \ error will be computed.\n    name (str, optional): the name of the Function\
+    \ instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.metrics.classification_error
+- _type: function
+  module: cntk.metrics
+  name: cntk.metrics.edit_distance_error
+  summary: "Edit distance error evaluation node with the option of specifying penalty\
+    \ of substitution, deletion and insertion, as well as squashing the input sequences\
+    \ and ignoring certain samples.\nUsing the classic DP algorithm as described in\
+    \ https://en.wikipedia.org/wiki/Edit_distance, adjusted to take into account the\
+    \ penalties.\n\nEach sequence in the inputs is expected to be a matrix. Prior\
+    \ to computation of the edit distance, the operation extracts the indices of maximum\
+    \ element in each column.\nFor example, a sequence matrix\n1 2 9 1\n3 0 3 2\n\
+    will be represented as the vector of labels (indices) as [1, 0, 0, 1], on which\
+    \ edit distance will be actually evaluated.\n\nThe node allows to squash sequences\
+    \ of repeating labels and ignore certain labels. For example, if squashInputs\
+    \ is true and tokensToIgnore contains label '-' then\ngiven first input sequence\
+    \ as s1=\"1-12-\" and second as s2=\"-11--122\" the edit distance will be computed\
+    \ against s1' = \"112\" and s2' = \"112\".\n\nThe returned error is computed as:\
+    \ EditDistance(s1,s2) * length(s1') / length(s1)\n\nJust like ClassificationError\
+    \ and other evaluation nodes, when used as an evaluation criterion, the SGD process\
+    \ will aggregate all values over an epoch and report the average, i.e. the error\
+    \ rate.\nPrimary objective of this node is for error evaluation of CTC training,\
+    \ see formula (1) in \"Connectionist Temporal Classification: Labelling Unsegmented\n\
+    Sequence Data with Recurrent Neural Networks\", http://machinelearning.wustl.edu/mlpapers/paper_files/icml2006_GravesFGS06.pdf\n\
+    \nExample:\n    i1 = cntk.input(shape=(2,))\n    i2 = cntk.input(shape=(2,))\n\
+    \    arguments = {i1 : [[1, 3], [2, 0]], i2 : [[2, 0], [2, 0]]}\n    a = edit_distance_error(i1,\
+    \ i2, 0, 1, 1, True, [1])\n    print(a.eval(arguments))\n\nArgs:\n    input_a:\
+    \ first input sequence\n    input_b: second input sequence\n    subPen: substitution\
+    \ penalty\n    delPen: deletion penalty\n    insPen: insertion penalty\n    squashInputs:\
+    \ whether to merge sequences of identical samples (in both input sequences). If\
+    \ true and tokensToIgnore contains label '-' then\n            given first input\
+    \ sequence as s1=\"a-ab-\" and second as s2=\"-aa--abb\" the edit distance will\
+    \ be computed against s1' = \"aab\" and s2' = \"aab\".\n    tokensToIgnore: list\
+    \ of samples to ignore during edit distance evaluation (in both sequences)\n \
+    \   name (str, optional): the name of the Function instance in the network\nReturns:\n\
+    \    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.metrics.edit_distance_error
+- _type: function
+  module: cntk.metrics
+  name: cntk.metrics.ndcg_at_1
+  summary: "Groups samples according to ``group``, sorts\nthem within each group based\
+    \ on ``output`` and\ncomputes the Normalized Discounted Cumulative Gain\n(NDCG)\
+    \ at 1 for each group. Concretely,\nthe NDCG at 1 is:\n\n:math:`\\mathrm{NDCG_1}\
+    \ = \\frac{gain_{(1)}}{\\max_i gain_i}`\n\nwhere :math:`gain_{(1)}` means the\
+    \ gain of the first ranked sample.\n\nSamples in the same group must appear in\
+    \ order of decreasing gain.\n\nIt returns the average NDCG at 1 across all the\
+    \ groups in the minibatch\nmultiplied by 100 times the number of samples in the\
+    \ minibatch.\n\nThis is a forward-only operation, there is no gradient for it.\n\
+    \nExample:\n    >>> group = C.input((1,))\n    >>> score = C.input((1,))\n   \
+    \ >>> gain  = C.input((1,))\n    >>> g = np.array([1, 1, 2, 2], dtype=np.float32).reshape(4,1,1)\n\
+    \    >>> s = np.array([2, 1, 3, 1], dtype=np.float32).reshape(4,1,1)\n    >>>\
+    \ n = np.array([7, 1, 3, 1], dtype=np.float32).reshape(4,1,1)\n    >>> C.ndcg_at_1(score,\
+    \ gain, group).eval({score:s, gain:n, group: g})\n    array(400.0, dtype=float32)\n\
+    \nArgs:\n    output: score of each sample\n    gain: gain of each sample\n   \
+    \ group: group of each sample\n    name (str, optional): the name of the Function\
+    \ instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.metrics.ndcg_at_1

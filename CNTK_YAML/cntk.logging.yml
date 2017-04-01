@@ -1,0 +1,16 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.logging
+  name: cntk.logging
+  summary: ''
+  type: Namespace
+  uid: cntk.logging
+- _type: class
+  children: []
+  module: cntk.logging
+  name: cntk.logging.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.logging.Global

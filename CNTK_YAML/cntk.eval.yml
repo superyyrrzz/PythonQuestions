@@ -1,0 +1,16 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.eval
+  name: cntk.eval
+  summary: ''
+  type: Namespace
+  uid: cntk.eval
+- _type: class
+  children: []
+  module: cntk.eval
+  name: cntk.eval.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.eval.Global

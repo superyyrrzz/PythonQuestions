@@ -1,0 +1,226 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer
+  summary: 'A trainer encapsulates the overall training process and employs one or
+    more
+
+    :mod:`~cntk.learners` to tune the parameters of a specified model
+
+    using gradients of parameters w.r.t. a training objective.
+
+    '
+  type: Namespace
+  uid: cntk.train.trainer
+- _type: class
+  children: []
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.train.trainer.Global
+- _type: class
+  children:
+  - cntk.train.trainer.Trainer.evaluation_function
+  - cntk.train.trainer.Trainer.loss_function
+  - cntk.train.trainer.Trainer.model
+  - cntk.train.trainer.Trainer.parameter_learners
+  - cntk.train.trainer.Trainer.previous_minibatch_evaluation_average
+  - cntk.train.trainer.Trainer.previous_minibatch_loss_average
+  - cntk.train.trainer.Trainer.previous_minibatch_sample_count
+  - cntk.train.trainer.Trainer.restore_from_checkpoint
+  - cntk.train.trainer.Trainer.save_checkpoint
+  - cntk.train.trainer.Trainer.summarize_test_progress
+  - cntk.train.trainer.Trainer.summarize_training_progress
+  - cntk.train.trainer.Trainer.test_minibatch
+  - cntk.train.trainer.Trainer.total_number_of_samples_seen
+  - cntk.train.trainer.Trainer.train_minibatch
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer
+  summary: "Class for training the model parameters of a models' specified loss function,\
+    \ using the\nspecified set of ``parameter_learners`` for updating the model's\
+    \ parameters\nusing computed gradients.\nAn optional specified metric function,\
+    \ which can be non-differentiable,\ncan be used for tracking the trained model's\
+    \ quality.\n\nArgs:\n   model (:class:`~cntk.ops.functions.Function`): root node\
+    \ of the function to train\n   criterion (Python tuple of :class:`~cntk.ops.functions.Function`,\
+    \ or :class:`~cntk.ops.functions.Function` or ):\n    Function with one or two\
+    \ outputs,\n    representing loss and, if given, evaluation metric (in this order).\n\
+    \    Alternatively, a tuple(loss Function, evaluation Function) is also accepted.\n\
+    \   parameter_learners (list): list of learners from :mod:`cntk.learner`\n   progress_writers\
+    \ (list): optionally, list of progress writers from :mod:`cntk.utils` to automatically\
+    \ track\n     training progress.\n\n    TODO: Would be great to allow to skip\
+    \ some parameters that should not be updated.\n"
+  type: Class
+  uid: cntk.train.trainer.Trainer
+- _type: attribute
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.evaluation_function
+  summary: 'The evaluation function that the trainer is using.
+
+    '
+  type: Property
+  uid: cntk.train.trainer.Trainer.evaluation_function
+- _type: attribute
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.loss_function
+  summary: 'The loss function that the trainer is using.
+
+    '
+  type: Property
+  uid: cntk.train.trainer.Trainer.loss_function
+- _type: attribute
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.model
+  summary: 'The model that the trainer is training.
+
+    '
+  type: Property
+  uid: cntk.train.trainer.Trainer.model
+- _type: attribute
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.parameter_learners
+  summary: 'The parameter learners that the trainer is using.
+
+    '
+  type: Property
+  uid: cntk.train.trainer.Trainer.parameter_learners
+- _type: attribute
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.previous_minibatch_evaluation_average
+  summary: 'The average evaluation criterion value per sample for the last minibatch
+    trained
+
+    '
+  type: Property
+  uid: cntk.train.trainer.Trainer.previous_minibatch_evaluation_average
+- _type: attribute
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.previous_minibatch_loss_average
+  summary: 'The average training loss per sample for the last minibatch trained
+
+    '
+  type: Property
+  uid: cntk.train.trainer.Trainer.previous_minibatch_loss_average
+- _type: attribute
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.previous_minibatch_sample_count
+  summary: 'The number of samples in the last minibatch trained with
+
+    '
+  type: Property
+  uid: cntk.train.trainer.Trainer.previous_minibatch_sample_count
+- _type: method
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.restore_from_checkpoint
+  summary: "Restores a checkpoint of the model and Trainer state from the\nspecified\
+    \ file location.\n\nArgs:\n    filename (str): filename to restore the checkpoint\
+    \ from\n"
+  type: Method
+  uid: cntk.train.trainer.Trainer.restore_from_checkpoint
+- _type: method
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.save_checkpoint
+  summary: "Saves a checkpoint of the model and other Trainer state at the\nspecified\
+    \ file location.\n\nIn distributed environment the checkpointing is done by \n\
+    the main worker.\n\nArgs:\n    filename (str): filename to store the checkpoint.\n"
+  type: Method
+  uid: cntk.train.trainer.Trainer.save_checkpoint
+- _type: method
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.summarize_test_progress
+  summary: 'Updates the progress writers with the summary of test progress since start
+    and resets the internal
+
+    accumulators.
+
+    '
+  type: Method
+  uid: cntk.train.trainer.Trainer.summarize_test_progress
+- _type: method
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.summarize_training_progress
+  summary: 'Updates the progress writers with the summary of training progress since
+    start and resets the internal
+
+    accumulators.
+
+    '
+  type: Method
+  uid: cntk.train.trainer.Trainer.summarize_training_progress
+- _type: method
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.test_minibatch
+  summary: "Test the model on the specified batch of samples using the evaluation\n\
+    Function specified during construction of the Trainer.\n\nArgs:\n    arguments:\
+    \ maps variables to their\n     input data. The interpretation depends on the\
+    \ input type:\n\n       * `dict`: keys are input variable or names, and values\
+    \ are the input data.\n         See :meth:`~cntk.ops.functions.Function.forward`\
+    \ for details on passing input data.\n\n       * any other type: if node has an\
+    \ unique input, ``arguments`` is mapped to this input.\n         For nodes with\
+    \ more than one input, only `dict` is allowed.\n\n     In both cases, every sample\
+    \ in the data will be interpreted\n     as a new sequence. To mark samples as\
+    \ continuations of the\n     previous sequence, specify ``arguments`` as `tuple`:\
+    \ the\n     first element will be used as ``arguments``, and the second one will\n\
+    \     be used as a list of bools, denoting whether a sequence is a new\n     one\
+    \ (`True`) or a continuation of the previous one (`False`).\n     Data should\
+    \ be either NumPy arrays or a\n     :class:`~cntk.io.MinibatchData` instance.\n\
+    \    device (:class:`~cntk.device.DeviceDescriptor`): the device descriptor that\n\
+    \     contains the type and id of the device on which the computation is\n   \
+    \  to be performed.\n\nNote:\n     See :meth:`~cntk.ops.functions.Function.forward`\
+    \ for examples on\n     passing input data.\n\nReturns:\n    `float`: the average\
+    \ evaluation criterion value per sample for the\n      tested minibatch.\n"
+  type: Method
+  uid: cntk.train.trainer.Trainer.test_minibatch
+- _type: attribute
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.total_number_of_samples_seen
+  summary: 'The number of samples seen globally between all workers from the beginning
+    of training.
+
+    '
+  type: Property
+  uid: cntk.train.trainer.Trainer.total_number_of_samples_seen
+- _type: method
+  class: cntk.train.trainer.Trainer
+  module: cntk.train.trainer
+  name: cntk.train.trainer.Trainer.train_minibatch
+  summary: "Optimize model parameters using the specified 'arguments' minibatch of\
+    \ training samples.\n\nArgs:\n    arguments: maps variables to their input data.\
+    \ Empty map signifies\n     end of local training data.\n     The interpretation\
+    \ depends on the input type:\n\n       * `dict`: keys are input variable or names,\
+    \ and values are the input data.\n\n       * any other type: if node has an unique\
+    \ input, ``arguments`` is mapped to this input.\n         For nodes with more\
+    \ than one input, only `dict` is allowed.\n\n     In both cases, every sample\
+    \ in the data will be interpreted\n     as a new sequence. To mark samples as\
+    \ continuations of the\n     previous sequence, specify ``arguments`` as `tuple`:\
+    \ the\n     first element will be used as ``arguments``, and the second one will\n\
+    \     be used as a list of bools, denoting whether a sequence is a new\n     one\
+    \ (`True`) or a continuation of the previous one (`False`).\n     Data should\
+    \ be either NumPy arrays or a\n     :class:`~cntk.io.MinibatchData` instance.\n\
+    \    outputs (iterable): outputs to fetch values for.\n    device (:class:`~cntk.device.DeviceDescriptor`):\
+    \ the device descriptor that\n     contains the type and id of the device on which\
+    \ the computation is\n     to be performed.\n\nNote:\n     See :meth:`~cntk.ops.functions.Function.forward`\
+    \ for examples on\n     passing input data.\n\nReturns:\n    `bool` or `tuple`:\n\
+    \    If ``outputs`` have not been provided, the returned value is `True`\n   \
+    \ if updates have been performed, `False` if all parameter learners\n    indicate\
+    \ end of learning (through their update). Otherwise, the\n    return value is\
+    \ a tuple of the that `bool` and a dictionary that\n    maps the variables in\
+    \ `outputs` to their respective NumPy arrays.\n"
+  type: Method
+  uid: cntk.train.trainer.Trainer.train_minibatch

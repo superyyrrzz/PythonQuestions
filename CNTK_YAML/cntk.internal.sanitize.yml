@@ -1,0 +1,221 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize
+  summary: ''
+  type: Namespace
+  uid: cntk.internal.sanitize
+- _type: class
+  children:
+  - cntk.internal.sanitize.is_string
+  - cntk.internal.sanitize.memoize
+  - cntk.internal.sanitize.sanitize_Function_attributes
+  - cntk.internal.sanitize.sanitize_axis
+  - cntk.internal.sanitize.sanitize_axis_list
+  - cntk.internal.sanitize.sanitize_batch
+  - cntk.internal.sanitize.sanitize_convolution_args
+  - cntk.internal.sanitize.sanitize_dtype_cntk
+  - cntk.internal.sanitize.sanitize_dtype_numpy
+  - cntk.internal.sanitize.sanitize_dynamic_axes
+  - cntk.internal.sanitize.sanitize_function
+  - cntk.internal.sanitize.sanitize_input
+  - cntk.internal.sanitize.sanitize_pooling_args
+  - cntk.internal.sanitize.sanitize_precision
+  - cntk.internal.sanitize.sanitize_shape
+  - cntk.internal.sanitize.sanitize_value
+  - cntk.internal.sanitize.sanitize_var_map
+  - cntk.internal.sanitize.sanitize_variable_value_dict
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.internal.sanitize.Global
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.is_string
+  summary: 'Tests whether ``s`` is a string in a way that works on Python 2 and 3.
+
+    '
+  type: Method
+  uid: cntk.internal.sanitize.is_string
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.memoize
+  summary: ''
+  type: Method
+  uid: cntk.internal.sanitize.memoize
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_Function_attributes
+  summary: ''
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_Function_attributes
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_axis
+  summary: "Sanitizes the axis.\n\nArgs:\n    axis (:class:`~cntk.axis.Axis` or int\
+    \ or None): the axis to be used.\n\n      * :class:`~cntk.axis.Axis`: use axis\
+    \ instance directly (will convert\n        row- to col-major in case of static\
+    \ axis).\n      * int: if positive, use it as static axis. If negative, count\
+    \ from\n        last to first axis\n      * None: denote all available axes\n"
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_axis
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_axis_list
+  summary: "Sanitizes a list of axes.\n\nArgs:\n    axes (list of :class:`~cntk.axis.Axis`\
+    \ or int or None): the axes to be used.\n\n      * :class:`~cntk.axis.Axis`: use\
+    \ axis instance directly (will convert\n        row- to col-major in case of static\
+    \ axis).\n      * int: if positive, use it as static axis. If negative, count\
+    \ from\n        last to first axis\n      * None: denote all available axes\n"
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_axis_list
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_batch
+  summary: "Convert to :class:`~cntk.core.Value`.\n\nArgs:\n    var (:class:`~cntk.variables.Variable`):\
+    \ input variable into which\n     ``batch`` is passed\n    batch: batch input\
+    \ for `var`. It can be\n\n       * a single NumPy array denoting the full minibatch\n\
+    \       * a list of NumPy arrays or SciPy sparse CSR matrices each representing\
+    \ a sequence\n       * a :class:`~cntk.core.Value` object (e.g. returned by :func:`cntk.core.Value.one_hot`)\n\
+    \    seq_starts (list of bools or None): if None, every sequence is\n     treated\
+    \ as a new sequence. Otherwise, it is interpreted as a list of\n     Booleans\
+    \ one for each sequence in the batch that tell whether a\n     sequence is a new\
+    \ sequence (`True`) or a continuation of the sequence\n     in the same slot of\
+    \ the previous minibatch (`False`)\n    device (:class:`~cntk.device.DeviceDescriptor`,\
+    \ default None): device\n     this value should be put on\n\nReturns:\n    batch\
+    \ converted to a :class:`~cntk.core.Value` instance that can be\n    passed to\
+    \ the core API\n"
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_batch
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_convolution_args
+  summary: ''
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_convolution_args
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_dtype_cntk
+  summary: ''
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_dtype_cntk
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_dtype_numpy
+  summary: ''
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_dtype_numpy
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_dynamic_axes
+  summary: ''
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_dynamic_axes
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_function
+  summary: 'Tries to retrieve a Function from the argument or throws an exception
+    if
+
+    that''s not possible.
+
+    '
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_function
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_input
+  summary: "Convert to :class:`~cntk.variables.Variable` so that it can be passed\n\
+    as Variable to the CNTK operators. \n\n  * If ``arg`` is a NumPy array and its\
+    \ type is neither `np.float32` nor\n    `np.float64`, it sets it to `np.float32`.\n\
+    \  * If ``arg`` is an op, it is assumed that it has only one output, which\n \
+    \   will be returned. \n\nArgs:\n    arg (number, NumPy array, :class:`~cntk.variables.Variable`,\
+    \ or :class:`~cntk.ops.functions.Function`): input\n    fallback_dtype (NumPy\
+    \ dtype): fallback dtype in case ``arg`` is a list\n\nReturns:\n  Leaves Constant,\
+    \ Parameter, and Variable as is. Returns Constant, if\n  ``arg`` is a number or\
+    \ NumPy array. Variable otherwise.\n"
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_input
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_pooling_args
+  summary: ''
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_pooling_args
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_precision
+  summary: "Converts precision to NumPy precision\n\nArgs:\n    precision (str or\
+    \ `np.float32` or `np.float64`): precision, if string\n     it can be one of 'float'\
+    \ 'float32, 'double', or 'float64'\n\nReturns:\n    NumPy precision\n"
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_precision
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_shape
+  summary: 'If shape is scalar, it creates a tuple out of it.
+
+    '
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_shape
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_value
+  summary: "Converts a given ``value`` to an :class:`~cntk.core.NDArrayView` object\n\
+    that can be passed to the CNTK core.\n\nArgs:\n    shape (tuple): shape of the\
+    \ value\n    value (None or value that can be cast to NumPy array): the value\
+    \ to\n     be converted\n    dtype: data type (np.float32 or np.float64)\n   \
+    \ device (:class:`~cntk.device.DeviceDescriptor`): device this value should be\
+    \ put\n     on\n\nReturns:\n    :class:`~cntk.core.NDArrayView` object representing\
+    \ ``value``\n"
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_value
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_var_map
+  summary: "Sanitizes a dictionary of `Variable` s to input data such that it can\
+    \ be\nhanded off to the evaluation methods\n(:meth:`~cntk.ops.functions.Function.forward`,\n\
+    :meth:`~cntk.ops.functions.Function.backward`,\n:meth:`~cntk.train.trainer.Trainer.train_minibatch`\
+    \ and\n:meth:`~cntk.train.trainer.Trainer.test_minibatch`).\n\nArgs:\n    op_arguments\
+    \ (:class:`~cntk.ops.functions.Function`): arguments of the\n     root function.\
+    \ In :meth:`~cntk.ops.functions.Function.forward` pass it\n     is typically `op.arguments`,\
+    \ in\n     :meth:`~cntk.ops.functions.Function.backward` pass it is `op.outputs`\n\
+    \    arguments: maps variables to their input data. The interpretation\n     depends\
+    \ on the input type:\n\n      * dict: keys are input variable or names, and values\
+    \ are the input\n        data.\n      * any other type: if node has a unique input,\
+    \ arguments is\n        mapped to this input.\n\n     For nodes with more than\
+    \ one input, only dict is allowed.\n\n     In both cases, every sample in the\
+    \ data will be interpreted\n     as a new sequence.\n\n     Sequences can be marked\
+    \ as continuations of the same sequence in\n     the previous minibatch (that\
+    \ is the sequence in the same slot).\n     There are two possibilities for this:\n\
+    \n      * specifying arguments as a `tuple` where the first element is\n     \
+    \   used as arguments and the second one will be used as a list\n        of bools,\
+    \ denoting whether a sequence is a new one (`True`) or a\n        continuation\
+    \ of the sequence in the same slot of the previous\n        minibatch (`False`).\
+    \ This will be applied to all batches.\n      * specifying arguments as a dictionary\
+    \ of variables to tuples\n        where the first element is used as arguments\
+    \ and the second\n        one will be used as a list of bools, denoting whether\
+    \ a sequence\n        is a new one (`True`) or a continuation of the sequence\
+    \ in the\n        same slot of the previous minibatch (`False`). This will be\n\
+    \        applied to all batches.\n\n     Data should be either NumPy arrays or\
+    \ a\n     :class:`~cntk.io.MinibatchData` instance.\n    precision (str or `np.float32`\
+    \ or `np.float64`): if string it can be\n     one of 'float' 'float32, 'double',\
+    \ 'float64', or None\n    device (:class:`~cntk.device.DeviceDescriptor`, default\
+    \ None): device\n     this value should be put on\n    extract_values_from_minibatch_data\
+    \ (`bool`, defaults to `True`):\n     specifies if :class:`~cntk.io.MinibatchData`\
+    \ instances in the arguments\n     map are converted to the underlying value (:class:`~cntk.core.Value`)\n\
+    \     instances (default), or if they should remain intact, as they contain\n\
+    \     additional meta information required by the Trainer (specifically, by\n\
+    \     the :meth:`~cntk.train.trainer.Trainer.train_minibatch` method).\n\nReturns:\n\
+    \    `dict` that maps variables to sanitized batches\n"
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_var_map
+- _type: function
+  module: cntk.internal.sanitize
+  name: cntk.internal.sanitize.sanitize_variable_value_dict
+  summary: ''
+  type: Method
+  uid: cntk.internal.sanitize.sanitize_variable_value_dict

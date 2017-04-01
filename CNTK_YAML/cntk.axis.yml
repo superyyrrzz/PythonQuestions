@@ -1,0 +1,168 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis
+  summary: ''
+  type: Namespace
+  uid: cntk.axis
+- _type: class
+  children: []
+  module: cntk.axis
+  name: cntk.axis.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.axis.Global
+- _type: class
+  children:
+  - cntk.axis.Axis.all_axes
+  - cntk.axis.Axis.all_static_axes
+  - cntk.axis.Axis.default_batch_axis
+  - cntk.axis.Axis.default_dynamic_axis
+  - cntk.axis.Axis.default_input_variable_dynamic_axes
+  - cntk.axis.Axis.end_static_axis
+  - cntk.axis.Axis.is_ordered
+  - cntk.axis.Axis.is_static_axis
+  - cntk.axis.Axis.name
+  - cntk.axis.Axis.new_leading_axis
+  - cntk.axis.Axis.new_unique_dynamic_axis
+  - cntk.axis.Axis.static_axis_index
+  - cntk.axis.Axis.unknown_dynamic_axes
+  module: cntk.axis
+  name: cntk.axis.Axis
+  summary: 'An axis object describes the axis of a variable and is used for specifying
+
+    the axes parameters of certain functions such as reductions.  Besides the
+
+    static axes corresponding to each of the axes of the variable''s shape,
+
+    variables of kind ''input'' and any ''output'' variables dependent on an
+
+    ''input'' variable also have two additional dynamic axes whose dimensions are
+
+    known only when the variable is bound to actual data during compute time
+
+    (viz. sequence axis and batch axis denoting the axis along which multiple
+
+    sequences are batched).
+
+
+    Axis parameters can also be negative, which allows to refere axis starting
+
+    from the last axis. Please be aware that Axis objects work in a
+
+    column-major wise, as opposed to any other function in the library.
+
+    '
+  type: Class
+  uid: cntk.axis.Axis
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.all_axes
+  summary: "Axis object representing all the axes--static and dynamic--of an operand.\n\
+    \nReturns:\n    :class:`Axis`: all axes\n"
+  type: Method
+  uid: cntk.axis.Axis.all_axes
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.all_static_axes
+  summary: "Axis object representing all the static axes of an operand.\n\nReturns:\n\
+    \    :class:`Axis`: all static axes\n"
+  type: Method
+  uid: cntk.axis.Axis.all_static_axes
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.default_batch_axis
+  summary: "Returns an Axis object representing the batch axis\n\nReturns:\n    :class:`Axis`:\
+    \ default batch axis\n"
+  type: Method
+  uid: cntk.axis.Axis.default_batch_axis
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.default_dynamic_axis
+  summary: "Returns an Axis object representing the default dynamic axis\n\nReturns:\n\
+    \    :class:`Axis`: default dynamic axis\n"
+  type: Method
+  uid: cntk.axis.Axis.default_dynamic_axis
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.default_input_variable_dynamic_axes
+  summary: "Default dynamic axes of the input variable\n\nReturns:\n    tuple of :class:`Axis`:\
+    \ instances\n"
+  type: Method
+  uid: cntk.axis.Axis.default_input_variable_dynamic_axes
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.end_static_axis
+  summary: "DEPRECATED.\n\nCreates an Axis object representing a new leading static\
+    \ axis.\n\nReturns:\n    :class:`Axis`: axis object representing a new leading\
+    \ static axis.\n"
+  type: Method
+  uid: cntk.axis.Axis.end_static_axis
+- _type: attribute
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.is_ordered
+  summary: "Returns True if the axis is ordered; i.e. if there is an ordering between\
+    \ the dimensions along the axis.\n\nReturns:\n    `bool`: True if this axis is\
+    \ ordered and False otherwise\n"
+  type: Property
+  uid: cntk.axis.Axis.is_ordered
+- _type: attribute
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.is_static_axis
+  summary: "Returns True if the axis is of type static and False otherwise\n\nReturns:\n\
+    \    bool: True if this axis is of type static and False otherwise\n"
+  type: Property
+  uid: cntk.axis.Axis.is_static_axis
+- _type: attribute
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.name
+  summary: "Returns the name of this axis.\n\nReturns:\n    str: the name of this\
+    \ axis.\n"
+  type: Property
+  uid: cntk.axis.Axis.name
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.new_leading_axis
+  summary: "Creates an Axis object representing a new leading static axis.\n\nReturns:\n\
+    \    :class:`Axis`: axis object representing a new leading static axis.\n"
+  type: Method
+  uid: cntk.axis.Axis.new_leading_axis
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.new_unique_dynamic_axis
+  summary: "Creates an Axis object representing a new unique dynamic axis.\n\nArgs:\n\
+    \    name (str): name of the dynmic axis\n\nReturns:\n    :class:`Axis`: new unique\
+    \ dynamic axis\n"
+  type: Method
+  uid: cntk.axis.Axis.new_unique_dynamic_axis
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.static_axis_index
+  summary: "Returns the integer with which the static axis is defined. For example,\
+    \ 0 = first axis, 1 = second axis, etc.\n\nArgs:\n    checked (bool): if True\
+    \ then this function will throw an exception if the axis is not static.\n\nReturns:\n\
+    \    `int`: the number with which the static axis is defined.\n"
+  type: Method
+  uid: cntk.axis.Axis.static_axis_index
+- _type: method
+  class: cntk.axis.Axis
+  module: cntk.axis
+  name: cntk.axis.Axis.unknown_dynamic_axes
+  summary: "Unknown dynamic axes\n\nReturns:\n    tuple of :class:`Axis`: instances\n"
+  type: Method
+  uid: cntk.axis.Axis.unknown_dynamic_axes

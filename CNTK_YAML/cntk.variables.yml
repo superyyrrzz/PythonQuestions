@@ -1,0 +1,289 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.variables.Constant
+  - cntk.variables.Parameter
+  - cntk.variables.Record
+  - cntk.variables.Variable
+  - cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables
+  summary: ''
+  type: Namespace
+  uid: cntk.variables
+- _type: class
+  children: []
+  module: cntk.variables
+  name: cntk.variables.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.variables.Global
+- _type: class
+  children:
+  - cntk.variables.Constant.value
+  module: cntk.variables
+  name: cntk.variables.Constant
+  summary: "A constant value. It can be a scalar, vector, matrix, or tensor\nof floating\
+    \ point numbers that cannot be modified.\n\nA Constant is a :class:`~cntk.variables.Variable`\
+    \ and therefore inherits all its methods.\n\nExample:\n     >>> c = C.Constant(1,\
+    \ (2,3))\n     >>> c.value\n         array([[ 1.,  1.,  1.],\n               \
+    \ [ 1.,  1.,  1.]], dtype=float32)\n\nArgs:\n   value (`np.ndarray` or `list`\
+    \ or `float` or `int`): Initial value.\n    BUGBUG: Document initializers\n  \
+    \ dtype (`np.float32` or `np.float64`): data type to store the values as.\n  \
+    \ device (:class:`~cntk.device.DeviceDescriptor`): the device on which the values\
+    \ should reside.\n   name (`str`): an optional name for this constant.\n"
+  type: Class
+  uid: cntk.variables.Constant
+- _type: attribute
+  class: cntk.variables.Constant
+  module: cntk.variables
+  name: cntk.variables.Constant.value
+  summary: 'NumPy array of the value
+
+    '
+  type: Property
+  uid: cntk.variables.Constant.value
+- _type: class
+  children:
+  - cntk.variables.Parameter.value
+  module: cntk.variables
+  name: cntk.variables.Parameter
+  summary: "A trainable parameter. It can be a scalar, vector, matrix, or tensor\n\
+    of floating point numbers that can be modified by a training\nprocedure.\n\nExample:\n\
+    \     >>> p = C.Parameter((13,42,7), init=C.glorot_uniform())\n     >>> p.shape\n\
+    \         (13, 42, 7)\n\n     >>> # example with inferred dimensions\n     >>>\
+    \ W = C.Parameter((C.InferredDimension, 42), init=C.glorot_uniform())\n     >>>\
+    \ W.shape   # -1 indicates dimension yet to be inferred\n         (-1, 42)\n \
+    \    >>> x = C.input(13)\n     >>> y = C.times(x, W)  # times operation now knows\
+    \ that the input dimension of W must be 13\n     >>> W.shape          # hence,\
+    \ the shape has been updated\n         (13, 42)\n\nArgs:\n   shape (`tuple`):\
+    \ the shape of the tensor holding the parameters\n   init (value (`np.ndarray`,\
+    \ `list`, `float`, `int`) or\n    :class:`~cntk.initializer`: Initial value.\n\
+    \    If a numpy array is specified the shape argument is ignored and\n    the\
+    \ tensor gets the shape of this argument. Alternatively, an\n    initializer from\
+    \ :class:`~cntk.initializer` can be specified.\n   dtype (`np.float32` or `np.float64`):\
+    \ data type of the values stored.\n   device (:class:`~cntk.device.DeviceDescriptor`):\
+    \ the device on which the values should reside.\n   name (`str`): an optional\
+    \ name for this parameter\n\nParameters are Variables and therefore they inherit\
+    \ all their methods.\n"
+  type: Class
+  uid: cntk.variables.Parameter
+- _type: attribute
+  class: cntk.variables.Parameter
+  module: cntk.variables
+  name: cntk.variables.Parameter.value
+  summary: 'NumPy array of the value
+
+    '
+  type: Property
+  uid: cntk.variables.Parameter.value
+- _type: class
+  children:
+  - cntk.variables.Record.updated_with
+  module: cntk.variables
+  name: cntk.variables.Record
+  summary: "Easy construction of a record (=immutable singleton class) from keyword\
+    \ arguments.\ne.g. r = Record(x = 13, y = 42) ; x = r.x\n\nArgs:\n    kwargs:\
+    \ keyword arguments to turn into the record members\n\nReturns:\n    A singleton\
+    \ class instance that has all passed kw args as immutable class members.\n"
+  type: Class
+  uid: cntk.variables.Record
+- _type: method
+  class: cntk.variables.Record
+  module: cntk.variables
+  name: cntk.variables.Record.updated_with
+  summary: "Create a new Record from an existing one with members modified or added.\n\
+    e.g. r = Record(x = 13) ; print(r.x) ; r2 = r.updated_with(x = 42) ; print(r2.x)\n\
+    \nArgs:\n    kwargs: keyword arguments to turn into the record members\n\nReturns:\n\
+    \    A singleton class instance that has all passed kw args as immutable class\
+    \ members.\n"
+  type: Method
+  uid: cntk.variables.Record.updated_with
+- _type: class
+  children:
+  - cntk.variables.Variable.as_constant
+  - cntk.variables.Variable.as_parameter
+  module: cntk.variables
+  name: cntk.variables.Variable
+  summary: "Denotes a symbolic entity corresponding to the inputs and outputs of a\
+    \ Function.\n\nArgs:\n   shape (`tuple`): the shape of this variable.\n   dtype\
+    \ (`np.float32 or np.float64`): data type of the values that will be bound to\
+    \ this variable.\n    Default is np.float32\n   needs_gradient (`bool`): if set\
+    \ to True any expression that contains this variable\n    will also be differentiated\
+    \ with respect to this variable.\n   is_sparse(`bool`): whether this is a sparse\
+    \ or dense input (or output)\n   dynamic_axes(`list` of :class:`~cntk.axis.Axis`):\
+    \ the dynamic axes of this variable. These\n    express dimensions that can vary\
+    \ across examples or minibatches.\n   name(`str`): an optional name for this parameter.\n"
+  type: Class
+  uid: cntk.variables.Variable
+- _type: method
+  class: cntk.variables.Variable
+  module: cntk.variables
+  name: cntk.variables.Variable.as_constant
+  summary: 'Converts this instance into a :class:`Constant`
+
+    '
+  type: Method
+  uid: cntk.variables.Variable.as_constant
+- _type: method
+  class: cntk.variables.Variable
+  module: cntk.variables
+  name: cntk.variables.Variable.as_parameter
+  summary: 'Converts this instance into a :class:`Parameter`
+
+    '
+  type: Method
+  uid: cntk.variables.Variable.as_parameter
+- _type: class
+  children:
+  - cntk.variables.VariableMixin.dtype
+  - cntk.variables.VariableMixin.dynamic_axes
+  - cntk.variables.VariableMixin.is_constant
+  - cntk.variables.VariableMixin.is_input
+  - cntk.variables.VariableMixin.is_output
+  - cntk.variables.VariableMixin.is_parameter
+  - cntk.variables.VariableMixin.is_placeholder
+  - cntk.variables.VariableMixin.is_sparse
+  - cntk.variables.VariableMixin.name
+  - cntk.variables.VariableMixin.needs_gradient
+  - cntk.variables.VariableMixin.owner
+  - cntk.variables.VariableMixin.shape
+  - cntk.variables.VariableMixin.type
+  - cntk.variables.VariableMixin.uid
+  module: cntk.variables
+  name: cntk.variables.VariableMixin
+  summary: 'Standard properties for :class:`Variable` and its derived classes
+
+    :class:`Parameter` and :class:`Constant`.
+
+    '
+  type: Class
+  uid: cntk.variables.VariableMixin
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.dtype
+  summary: 'The NumPy type of this variable.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.dtype
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.dynamic_axes
+  summary: 'The dynamic axes of this variable.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.dynamic_axes
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.is_constant
+  summary: 'Whether this variable is a constant.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.is_constant
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.is_input
+  summary: 'Whether this variable is an input.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.is_input
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.is_output
+  summary: 'Whether this variable is an output.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.is_output
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.is_parameter
+  summary: 'Whether this variable is a parameter.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.is_parameter
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.is_placeholder
+  summary: 'Whether this variable is a placeholder.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.is_placeholder
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.is_sparse
+  summary: 'Whether this variable is sparse.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.is_sparse
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.name
+  summary: 'The name of this variable.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.name
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.needs_gradient
+  summary: 'Whether this variable needs gradients.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.needs_gradient
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.owner
+  summary: 'The function this variable is an output of.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.owner
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.shape
+  summary: 'The shape of this variable as a tuple.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.shape
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.type
+  summary: 'The complete type of the data represented by this Variable as a single
+    Variable.Type instance.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.type
+- _type: attribute
+  class: cntk.variables.VariableMixin
+  module: cntk.variables
+  name: cntk.variables.VariableMixin.uid
+  summary: 'The internally generated unique name of the variable.
+
+    '
+  type: Property
+  uid: cntk.variables.VariableMixin.uid

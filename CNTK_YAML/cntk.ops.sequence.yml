@@ -1,0 +1,239 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence
+  summary: ''
+  type: Namespace
+  uid: cntk.ops.sequence
+- _type: class
+  children:
+  - cntk.ops.sequence.broadcast_as
+  - cntk.ops.sequence.delay
+  - cntk.ops.sequence.first
+  - cntk.ops.sequence.gather
+  - cntk.ops.sequence.input
+  - cntk.ops.sequence.is_first
+  - cntk.ops.sequence.is_last
+  - cntk.ops.sequence.last
+  - cntk.ops.sequence.reduce_max
+  - cntk.ops.sequence.reduce_sum
+  - cntk.ops.sequence.scatter
+  - cntk.ops.sequence.slice
+  - cntk.ops.sequence.softmax
+  - cntk.ops.sequence.where
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.ops.sequence.Global
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.broadcast_as
+  summary: "Creates a sequence out of a non-sequence by endowing the ``operand``\n\
+    with dynamic axes of the same type as the ``broadcast_as_operand``\nand broadcasting\
+    \ the value of the ``operand`` along those dynamic axes.\n\nExample:\n    >>>\
+    \ x = C.sequence.input(shape=(3,2))\n    >>> t = C.sequence.last(x)\n    >>> b\
+    \ = C.sequence.is_first(x)\n    >>> y = C.sequence.broadcast_as(t, b)\n    >>>\
+    \ # create one sequence of 4 tensors each with shape (3,2)\n    >>> x0 = np.reshape(np.arange(24.0,dtype=np.float32),(1,4,3,2))\n\
+    \    >>> y.eval({x:x0})\n    [array([[[ 18.,  19.],\n             [ 20.,  21.],\n\
+    \             [ 22.,  23.]],\n    <BLANKLINE>\n            [[ 18.,  19.],\n  \
+    \           [ 20.,  21.],\n             [ 22.,  23.]],\n    <BLANKLINE>\n    \
+    \        [[ 18.,  19.],\n             [ 20.,  21.],\n             [ 22.,  23.]],\n\
+    \    <BLANKLINE>\n            [[ 18.,  19.],\n             [ 20.,  21.],\n   \
+    \          [ 22.,  23.]]], dtype=float32)]\n\nArgs:\n    operand: the symbolic\
+    \ tensor whose value will be broadcast\n    broadcast_as_operand: the symbolic\
+    \ tensor whose dynamic axes will\n        be used to broadcast the operand\n \
+    \   name (str): the name of the node in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.broadcast_as
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.delay
+  summary: "This function combines :func:`~cntk.ops.past_value` and :func:`~cntk.ops.future_value`\
+    \ into a single function.\nThis is useful when the time_step is computed and can\
+    \ be positive, negative, or 0.\n\nArgs:\n    x: the tensor (or its name) from\
+    \ which the past value is obtained\n    initial_state: tensor or scalar representing\
+    \ the initial value to be used when the input tensor is shifted in time.\n   \
+    \ time_step (int): the number of time steps to look into the past, where negative\
+    \ values mean to look into the future, and 0 means a no-op (default 1).\n    name\
+    \ (str, optional): the name of the Function instance in the network\n"
+  type: Method
+  uid: cntk.ops.sequence.delay
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.first
+  summary: "Returns the first element of its symbolic input sequence ``seq``\n\nExample:\n\
+    \    >>> x = C.sequence.input(shape=(3,2))\n    >>> y = C.sequence.first(x)\n\
+    \    >>> # create one sequence of 4 tensors each with shape (3,2)\n    >>> x0\
+    \ = np.reshape(np.arange(24.0,dtype=np.float32),(1,4,3,2))\n    >>> y.eval({x:x0})\n\
+    \    array([[[ 0.,  1.],\n             [ 2.,  3.],\n             [ 4.,  5.]]],\
+    \ dtype=float32)\n\nArgs:\n    seq: the symbolic tensor denoting a sequence\n\
+    \    name (str): the name of the node in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.first
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.gather
+  summary: "Takes two sequences of the same length and returns a new sequence whose\n\
+    elements are those elements of sequence ``seq`` whose corresponding element\n\
+    in ``condition`` is True, preserving the ordering of ``seq``.\n\nThis operation\
+    \ is also known as stream compaction, or copy_if.\n\nExample:\n    >>> x = C.sequence.input(shape=(3,2))\n\
+    \    >>> z = C.greater(C.reduce_sum(x),60)\n    >>> y = C.sequence.gather(x,z)\n\
+    \    >>> # create one sequence of 4 tensors each with shape (3,2)\n    >>> x0\
+    \ = np.reshape(np.arange(24.0,dtype=np.float32),(1,4,3,2))\n    >>> y.eval({x:x0})\n\
+    \    [array([[[ 12.,  13.],\n             [ 14.,  15.],\n             [ 16., \
+    \ 17.]],\n    <BLANKLINE>\n            [[ 18.,  19.],\n             [ 20.,  21.],\n\
+    \             [ 22.,  23.]]], dtype=float32)]\n\nArgs:\n    seq: the symbolic\
+    \ sequence from which elements will be selected\n    condition: the symbolic sequence\
+    \ of booleans which indicate which\n        elements should be selected\n    new_sequence_axis_typeinfo:\
+    \  tuple of integers indicating\n        the scaling and additive factors for\
+    \ the length of the new sequence axis\n        w.r.t. the operand sequence. This\
+    \ is used to determine the sequence axis\n        to be used for the output of\
+    \ the gather operation. If this argument is left \n        unspecified, a new\
+    \ independent sequence axis is created.\n    name (str): the name of the node\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.gather
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.input
+  summary: "It creates an input in the network: a place where data,\nsuch as features\
+    \ and labels, should be provided.\n\nArgs:\n    shape (tuple or int): the shape\
+    \ of the input tensor\n    dtype (np.float32 or np.float64): data type. Default\
+    \ is np.float32.\n    needs_gradients (bool, optional): whether to back-propagates\
+    \ to it or not. False by default.\n    is_sparse (bool, optional): whether the\
+    \ variable is sparse (`False` by default)\n    dynamic_axes (list or tuple, default):\
+    \ a list of dynamic axis (e.g., batch axis, time axis)\n    name (str, optional):\
+    \ the name of the Function instance in the network\n\nReturns:\n    :class:`~cntk.variables.Variable`\n"
+  type: Method
+  uid: cntk.ops.sequence.input
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.is_first
+  summary: "Returns a symbolic sequence of booleans with the same length as ``seq``.\
+    \ The\nfirst element of the sequence is 1 and all others are 0.\n\nExample:\n\
+    \    >>> x = C.sequence.input(shape=(3,2))\n    >>> y = C.sequence.is_first(x)\n\
+    \    >>> # create one sequence of 4 tensors each with shape (3,2)\n    >>> x0\
+    \ = np.reshape(np.arange(24.0,dtype=np.float32),(1,4,3,2))\n    >>> y.eval({x:x0})\n\
+    \    [array([ 1.,  0.,  0.,  0.], dtype=float32)]\n\nArgs:\n    seq: the symbolic\
+    \ tensor denoting a sequence\n    name (str): the name of the node in the network\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.is_first
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.is_last
+  summary: "Returns a symbolic sequence of booleans with the same length as ``seq``.\
+    \ The\nlast element of the sequence is 1 and all others are 0.\n\nExample:\n \
+    \   >>> x = C.sequence.input(shape=(3,2))\n    >>> y = C.sequence.is_last(x)\n\
+    \    >>> # create one sequence of 4 tensors each with shape (3,2)\n    >>> x0\
+    \ = np.reshape(np.arange(24.0,dtype=np.float32),(1,4,3,2))\n    >>> y.eval({x:x0})\n\
+    \    [array([ 0.,  0.,  0.,  1.], dtype=float32)]\n\nArgs:\n    seq: the symbolic\
+    \ tensor denoting a sequence\n    name (str): the name of the node in the network\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.is_last
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.last
+  summary: "Returns the last element of its symbolic input sequence ``seq``\n\nExample:\n\
+    \    >>> x = C.sequence.input(shape=(3,2))\n    >>> y = C.sequence.last(x)\n \
+    \   >>> # create one sequence of 4 tensors each with shape (3,2)\n    >>> x0 =\
+    \ np.reshape(np.arange(24.0,dtype=np.float32),(1,4,3,2))\n    >>> y.eval({x:x0})\n\
+    \    array([[[ 18.,  19.],\n             [ 20.,  21.],\n             [ 22.,  23.]]],\
+    \ dtype=float32)\n\nArgs:\n    seq: the symbolic tensor denoting a sequence\n\
+    \    name (str): the name of the node in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.last
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.reduce_max
+  summary: "Get the max value in the sequence values\n\nArgs:\n  x: input sequence\n\
+    \  name: the name of the operator\nReturns:\n  The max value in the input sequence\n"
+  type: Method
+  uid: cntk.ops.sequence.reduce_max
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.reduce_sum
+  summary: "Computes the sum of the input sequence's elements across the sequence\
+    \ axis.\n\nExamples:\n    >>> x = C.sequence.input(shape=(3,2))\n    >>> # create\
+    \ one sequence of 4 tensors each with shape (3,2)\n    >>> x0 = np.reshape(np.arange(24.0,dtype=np.float32),(1,4,3,2))\n\
+    \    >>> y = C.sequence.reduce_sum(x)\n    >>> y.eval({x:x0})\n    array([[[ 36.,\
+    \  40.],\n             [ 44.,  48.],\n             [ 52.,  56.]]], dtype=float32)\n\
+    \nArgs:\n    seq: sequence input tensor\n    name (`str`, optional): the name\
+    \ of the Function instance in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.reduce_sum
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.scatter
+  summary: "Performs the inverse of gather. The sequence ``seq`` must have as many\n\
+    elements as the number of True values in the sequence ``condition``.\nIt will\
+    \ return a sequence whose length is the same as the ``condition``\nsequence with\
+    \ zeroes everywhere except for the locations where ``condition``\nevaluates to\
+    \ True in which case it will copy the elements from ``seq``\npreserving their\
+    \ order.\n\nExample:\n    >>> x = C.sequence.input(shape=(3,2))\n    >>> t = C.sequence.last(x)\n\
+    \    >>> b = C.sequence.is_first(x)\n    >>> y = C.sequence.scatter(t, b)\n  \
+    \  >>> # create one sequence of 4 tensors each with shape (3,2)\n    >>> x0 =\
+    \ np.reshape(np.arange(24.0,dtype=np.float32),(1,4,3,2))\n    >>> y.eval({x:x0})\n\
+    \    [array([[[ 18.,  19.],\n             [ 20.,  21.],\n             [ 22., \
+    \ 23.]],\n    <BLANKLINE>\n            [[  0.,   0.],\n             [  0.,   0.],\n\
+    \             [  0.,   0.]],\n    <BLANKLINE>\n            [[  0.,   0.],\n  \
+    \           [  0.,   0.],\n             [  0.,   0.]],\n    <BLANKLINE>\n    \
+    \        [[  0.,   0.],\n             [  0.,   0.],\n             [  0.,   0.]]],\
+    \ dtype=float32)]\n\nArgs:\n    seq: the symbolic sequence from which elements\
+    \ will be copied in the\n        output\n    condition: the symbolic sequence\
+    \ which denotes the locations where\n        elements should be copied\n    new_sequence_axis_typeinfo:\
+    \  tuple of integers indicating\n        the scaling and additive factors for\
+    \ the length of the new sequence axis\n        w.r.t. the condition sequence.\
+    \ This is used to determine the sequence axis\n        to be used for the output\
+    \ of the gather operation. If this argument is left \n        unspecified a new\
+    \ independent sequence axis is created.\n    name (str): the name of the node\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.scatter
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.slice
+  summary: "Slice the input sequence.\n\nExamples:\n    TBA\nArgs:\n    seq: sequence\
+    \ input tensor\n    begin_index (`int`): the index along sequence axis where the\
+    \ slicing starts\n    end_index (`int`): the index along sequence axis where the\
+    \ slicing ends\n    name (`str`, optional): the name of the Function instance\
+    \ in the network\n\nSee also:\n    Indexing in NumPy: https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.slice
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.softmax
+  summary: 'Compute softmax along with a squence values
+
+    '
+  type: Method
+  uid: cntk.ops.sequence.softmax
+- _type: function
+  module: cntk.ops.sequence
+  name: cntk.ops.sequence.where
+  summary: "Given a symbolic sequence ``condition`` of boolean-like (1/0) values,\
+    \ it will return\na new sequence containing the indices for which the values were\
+    \ true.\n\nIf ``condition`` has a value other than 0 or 1, it will denote a repeat\
+    \ factor.\nIf a repeat factor is fractional, it will round up but deduct the overshoot\
+    \ from the\nnext repeat factor.\n\nExample:\n    >>> x = C.sequence.input(shape=(3,2))\n\
+    \    >>> z = C.greater(C.reduce_sum(x), 60)\n    >>> # create one sequence of\
+    \ 4 tensors each with shape (3,2)\n    >>> x0 = np.reshape(np.arange(24.0, dtype=np.float32),\
+    \ (1,4,3,2))\n    >>> z.eval({x:x0})\n    [array([[ 0.],\n            [ 0.],\n\
+    \            [ 1.],\n            [ 1.]], dtype=float32)]\n    >>> y = C.sequence.where(z)\n\
+    \    >>> y.eval({x:x0})\n    [array([ 2.,  3.], dtype=float32)]\n\n    >>> # repeat\
+    \ frame[1] twice, frame[3] three times, and frame[4] twice\n    >>> C.sequence.where(C.sequence.input(1)).eval([[[1],\
+    \ [2], [1], [3], [2]]])\n    [array([ 0.,  1.,  1.,  2.,  3.,  3.,  3.,  4., \
+    \ 4.], dtype=float32)]\n    >>> # note that the above are the indices that are\
+    \ passed to \n\n    >>> # repeat frames with a fractional factor\n    >>> C.sequence.where(C.sequence.input(1)).eval([[[1.2]]*10])\n\
+    \    [array([ 0.,  0.,  1.,  2.,  3.,  4.,  5.,  5.,  6.,  7.,  8.,  9.],\n  \
+    \      dtype=float32)]\n    >>> # as a result, a 1.2 times stretch is realized\
+    \ by duplicating frame[0] and frame[5]\n\nArgs:\n    condition: sequence of 0\
+    \ or 1 values for filtering, or other positive values for repetition (also fractional)\n\
+    \    name (str): the name of the node in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sequence.where

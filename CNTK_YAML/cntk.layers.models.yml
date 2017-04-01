@@ -1,0 +1,16 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.layers.models
+  name: cntk.layers.models
+  summary: ''
+  type: Namespace
+  uid: cntk.layers.models
+- _type: class
+  children: []
+  module: cntk.layers.models
+  name: cntk.layers.models.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.layers.models.Global

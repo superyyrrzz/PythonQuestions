@@ -1,0 +1,91 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.debugging.debug
+  name: cntk.debugging.debug
+  summary: "In order to debug a graph one simply needs to wrap the root node as follows::\n\
+    \n    # ... setting up the model in z\n    from cntk.debug import debug_model\n\
+    \    z = debug_model(z)\n\nThen, when ``z`` is evaluated or trained (i.e. when\
+    \ either\n:meth:`~cntk.ops.functions.Function.forward` or\n:meth:`~cntk.ops.functions.Function.backward`\
+    \ is called, you will see the\nfollowing command-line interface::\n\n    ===================================\
+    \ forward  ===================================\n    Parameter node with uid='Parameter28'\
+    \ shape=[](2,)\n    [CNTK forward] >>> help\n        Commands:\n        n - execute\
+    \ the next node\n        n <number> - execute the next <number> nodes\n\n    \
+    \    u f - execute until forward pass (like 'n' when already in forward pass)\n\
+    \        u b - execute until backward pass (like 'n' when already in backward\
+    \ pass)\n        u name - execute until a node with that name is hit\n       \
+    \ u <lambda> - execute until the lambda expression is True. Examples:\n      \
+    \               Until a Times node is hit:\n                         lambda arg,\
+    \ node: node.op_name == 'Times'\n                     Until a node is hit that\
+    \ has 3 dimensions:\n                         lambda arg, node: len(node.shape)\
+    \ == 3\n                     Until the variance of the input exceeds 1 (np = numpy):\n\
+    \                         lambda arg, node: np.var(arg) > 1\n\n        c - execute\
+    \ until end\n        p - print input (forward) or root gradients (backward)\n\
+    \        d - drop into a pdb shell\n        q - quit\n\n    [CNTK backward] >>>\
+    \ n\n\n    Times node with uid='Times29' shape=[*,*](2,)\n    [CNTK forward] >>>\
+    \ n\n    =================================== backward ===================================\n\
+    \    Times node with uid='Times29' shape=[*,*](2,)\n    [CNTK backward] >>> p\n\
+    \    State: None\n    Root gradients:\n    [[[-0.79412955  0.79412955]]\n    \
+    \ [[-0.79412955  0.79412955]]\n     [[ 0.20587046 -0.20587045]]\n     [[ 0.20587046\
+    \ -0.20587045]]\n     [[ 0.20587046 -0.20587045]]\n     [[ 0.20587046 -0.20587045]]\n\
+    \     [[-0.79412955  0.79412955]]\n     [[ 0.20587046 -0.20587045]]\n     [[ 0.20587039\
+    \ -0.20587039]]\n     [[-0.79412961  0.79412961]]]\n\nAt every stop the following\
+    \ information is given:\n * Forward or backward pass\n * Node type (e.g. 'Times')\n\
+    \ * Name if given, otherwise it is omitted\n * uid, which is a unique reference\
+    \ within the graph\n * shape having the format [dynamic axis](static axes). E.g.\
+    \ ``[*,*](2,)``\n   means that the node's output has two dynamic axes (batch and\
+    \ sequence) and\n   one static axis (2 dimensions)\n"
+  type: Namespace
+  uid: cntk.debugging.debug
+- _type: class
+  children:
+  - cntk.debugging.debug.debug_model
+  - cntk.debugging.debug.save_as_legacy_model
+  - cntk.debugging.debug.set_computation_network_trace_level
+  - cntk.debugging.debug.set_computation_network_track_gap_nans
+  module: cntk.debugging.debug
+  name: cntk.debugging.debug.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.debugging.debug.Global
+- _type: function
+  module: cntk.debugging.debug
+  name: cntk.debugging.debug.debug_model
+  summary: "Returns a cloned model that has debug nodes inserted everywhere. When\
+    \ the\ngraph is evaluated or trained, those nodes will allow to inspect the graph.\n\
+    \nArgs:\n  model (root node): root node until which the nodes are to be debugged\n\
+    \  in_stream (object behaving like sys.stdin, default stdin): `readline()`\n \
+    \  will be called on it to obtain user input\n  out_stream (object behaving like\
+    \ sys.stdout, default stdout): `write()`\n   and `flush()` will be called on it\
+    \ to output debug info to the user\n  exit_func (callable, default sys.exit):\
+    \ callable that takes an exit code and is called,\n   when the user exits the\
+    \ debugging process\n\nReturns:\n  a clone of the model that has debugging enabled\n"
+  type: Method
+  uid: cntk.debugging.debug.debug_model
+- _type: function
+  module: cntk.debugging.debug
+  name: cntk.debugging.debug.save_as_legacy_model
+  summary: "Save the network of ``root_op`` in ``filename``.\nFor debugging purposes\
+    \ only, very likely to be deprecated in the future.\n\nArgs:\n    root_op (:class:`~cntk.ops.functions.Function`):\
+    \ op of the graph to save\n    filename (str): filename to store the model in.\n"
+  type: Method
+  uid: cntk.debugging.debug.save_as_legacy_model
+- _type: function
+  module: cntk.debugging.debug
+  name: cntk.debugging.debug.set_computation_network_trace_level
+  summary: "Set trace level to the computation network. Currently supported values:\n\
+    \n   0\n     turn off trace\n   1\n     output nodes' dimensions and some other\
+    \ static info\n   1000\n     output each node's abs sum of elements in its value\
+    \ matrix for every forward/backward\n   1000000\n     output each node's full\
+    \ matrix for every forward/backward\n\nArgs:\n    level (int): trace level\n"
+  type: Method
+  uid: cntk.debugging.debug.set_computation_network_trace_level
+- _type: function
+  module: cntk.debugging.debug
+  name: cntk.debugging.debug.set_computation_network_track_gap_nans
+  summary: "Fill in NaNs in gaps of sequences to track unmasked uninitialized data.\n\
+    For debugging purposes only.\n\nArgs:\n    enable (bool): whether to enable gap\
+    \ nans tracking (with performance impact)\n"
+  type: Method
+  uid: cntk.debugging.debug.set_computation_network_track_gap_nans

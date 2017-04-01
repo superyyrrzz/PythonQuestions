@@ -1,0 +1,107 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.io.transforms
+  name: cntk.io.transforms
+  summary: ''
+  type: Namespace
+  uid: cntk.io.transforms
+- _type: class
+  children:
+  - cntk.io.transforms.color
+  - cntk.io.transforms.crop
+  - cntk.io.transforms.mean
+  - cntk.io.transforms.scale
+  module: cntk.io.transforms
+  name: cntk.io.transforms.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.io.transforms.Global
+- _type: function
+  module: cntk.io.transforms
+  name: cntk.io.transforms.color
+  summary: "Color transform that can be used to pass to `map_features` for data augmentation.\n\
+    \nArgs:\n    brightness_radius (float, default 0.0): Radius for brightness change.\
+    \ Must be\n      set within [0.0, 1.0]. For example, assume brightness_radius\
+    \ = 0.2, a random\n      number `x` is uniformly drawn from [-0.2, 0.2], and every\
+    \ pixel's value is\n      added by `x*meanVal`, where meanVal is the mean of the\
+    \ image pixel intensity\n      combining all color channels.\n    contrast_radius\
+    \ (float, default 0.0): Radius for contrast change. Must be\n      set within\
+    \ [0.0, 1.0]. For example, assume contrast_radius = 0.2, a random\n      number\
+    \ `x` is uniformly drawn from [-0.2, 0.2], and every pixel's value is\n      multiplied\
+    \ by `1+x`.\n    saturation_radius (float, default 0.0): Radius for saturation\
+    \ change. Only for\n      color images and must be set within [0.0, 1.0]. For\
+    \ example, assume\n      saturation_radius = 0.2, a random number `x` is uniformly\
+    \ drawn from [-0.2, 0.2],\n      and every pixel's saturation is multiplied by\
+    \ `1+x`.\n\nReturns:\n    A dictionary-like object describing the mean transform\n"
+  type: Method
+  uid: cntk.io.transforms.color
+- _type: function
+  module: cntk.io.transforms
+  name: cntk.io.transforms.crop
+  summary: "Crop transform that can be used to pass to `map_features`\n\nArgs:\n \
+    \   crop_type (str, default 'center'): 'center', 'randomside', 'randomarea',\n\
+    \      or 'multiview10'.  'randomside' and 'randomarea' are usually used during\n\
+    \      training, while 'center' and 'multiview10' are usually used during testing.\n\
+    \      Random cropping is a popular data augmentation technique used to improve\n\
+    \      generalization of the DNN.\n    crop_size (`int`, default 0): crop size\
+    \ in pixels. Ignored if set to 0.\n      When crop_size is non-zero, for example,\
+    \ crop_size=256, it means a cropping\n      window of size 256x256 pixels will\
+    \ be taken. If one want to crop with\n      non-square shapes, specify crop_size=256:224\
+    \ will crop 256x224 (width x height)\n      pixels. `When crop_size is specified,\
+    \ side_ratio, area_ratio and aspect_ratio\n      will be ignored.`\n    side_ratio\
+    \ (`float`, default 0.0): It specifies the ratio of final image\n      side (width\
+    \ or height) with respect to the original image. Ignored if set\n      to 0.0.\
+    \ Otherwise, must be set within `(0,1]`. For example, with an input\n      image\
+    \ size of 640x480, side_ratio of 0.5 means we crop a square region\n      (if\
+    \ aspect_ratio is 1.0) of the input image, whose width and height are\n      equal\
+    \ to 0.5*min(640, 480) = 240. To enable scale jitter (a popular data\n      augmentation\
+    \ technique), use colon-delimited values like side_ratio=0.5:0.75,\n      which\
+    \ means the crop will have size between 240 (0.5*min(640, 480)) and 360\n    \
+    \  (0.75*min(640, 480)).\n    area_ratio (`float`, default 0.0): It specifies\
+    \ the area ratio of final image\n      with respect to the original image. Ignored\
+    \ if set to 0.0. Otherwise, must be\n      set within `(0,1]`. For example, for\
+    \ an input image size of 200x150 pixels,\n      the area is 30,000. If area_ratio\
+    \ is 0.3333, we crop a square region (if\n      aspect_ratio is 1.0) with width\
+    \ and height equal to sqrt(30,000*0.3333)=100.\n      To enable scale jitter,\
+    \ use colon-delimited values such as area_ratio=0.3333:0.8,\n      which means\
+    \ the crop will have size between 100 (sqrt(30,000*0.3333)) and\n      155 (sqrt(30,000*0.8)).\n\
+    \    aspect_ratio (`float`, default 1.0): It specifies the aspect ratio (width/height\n\
+    \      or height/width) of the crop window. Must be set within `(0,1]`. For example,\n\
+    \      if due to size_ratio the crop size is 240x240, an aspect_ratio of 0.64\
+    \ will\n      change the window size to non-square: 192x300 or 300x192, each having\
+    \ 50%\n      chance. Note the area of the crop window does not change. To enable\
+    \ aspect\n      ratio jitter, use colon-delimited values such as aspect_ratio=0.64:1.0,\
+    \ which means\n      the crop will have size between 192x300 (or euqally likely\
+    \ 300x192) and 240x240.\n    jitter_type (str, default 'none'): crop scale jitter\
+    \ type, possible\n      values are 'none' and 'uniratio'. 'uniratio' means uniform\
+    \ distributed jitter\n      scale between the minimum and maximum ratio values.\n\
+    \nReturns:\n    A dictionary-like object describing the crop transform\n"
+  type: Method
+  uid: cntk.io.transforms.crop
+- _type: function
+  module: cntk.io.transforms
+  name: cntk.io.transforms.mean
+  summary: "Mean transform that can be used to pass to `map_features` for data augmentation.\n\
+    \nArgs:\n    filename (str): file that stores the mean values for each pixel\n\
+    \     in OpenCV matrix XML format\n\nReturns:\n    dict:\n    A dictionary-like\
+    \ object describing the mean transform\n"
+  type: Method
+  uid: cntk.io.transforms.mean
+- _type: function
+  module: cntk.io.transforms
+  name: cntk.io.transforms.scale
+  summary: "Scale transform that can be used to pass to `map_features` for data augmentation.\n\
+    \nArgs:\n    width (int): width of the image in pixels\n    height (int): height\
+    \ of the image in pixels\n    channels (int): channels of the image\n    interpolations\
+    \ (str, default 'linear'): possible values are\n      'nearest', 'linear', 'cubic',\
+    \ and 'lanczos'\n    scale_mode (str, default 'fill'): 'fill', 'crop' or 'pad'.\n\
+    \      'fill' - warp the image to the given target size.\n      'crop' - resize\
+    \ the image's shorter side to the given target size and crop the overlap.\n  \
+    \    'pad'  - resize the image's larger side to the given target size, center\
+    \ it and pad the rest\n    pad_value (int, default -1): -1 or int value. The pad\
+    \ value used for the 'pad' mode.\n     If set to -1 then the border will be replicated.\n\
+    \nReturns:\n    A dictionary-like object describing the scale transform\n"
+  type: Method
+  uid: cntk.io.transforms.scale

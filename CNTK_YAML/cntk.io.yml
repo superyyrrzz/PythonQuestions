@@ -1,0 +1,377 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.io.MinibatchData
+  - cntk.io.MinibatchSource
+  - cntk.io.StreamConfiguration
+  - cntk.io.TraceLevel
+  module: cntk.io
+  name: cntk.io
+  summary: ''
+  type: Namespace
+  uid: cntk.io
+- _type: class
+  children:
+  - cntk.io.CTFDeserializer
+  - cntk.io.HTKFeatureDeserializer
+  - cntk.io.HTKMLFDeserializer
+  - cntk.io.ImageDeserializer
+  - cntk.io.StreamDef
+  - cntk.io.sequence_to_cntk_text_format
+  module: cntk.io
+  name: cntk.io.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.io.Global
+- _type: function
+  module: cntk.io
+  name: cntk.io.CTFDeserializer
+  summary: "Configures the CNTK text-format reader that reads text-based files with\
+    \ lines of the form::\n\n    [Sequence_Id] (Sample)+\n\nwhere::\n\n    Sample=|Input_Name\
+    \ (Value )*\n\nArgs:\n    filename (str): file name containing the text input\n\
+    \nSee also:\n    `CNTKTextReader format <https://github.com/microsoft/cntk/wiki/BrainScript-CNTKTextFormat-Reader>`_\n"
+  type: Method
+  uid: cntk.io.CTFDeserializer
+- _type: function
+  module: cntk.io
+  name: cntk.io.HTKFeatureDeserializer
+  summary: "Configures the HTK feature reader that reads speech data from scp files.\n\
+    \nArgs:\n    streams: any dictionary-like object that contains a mapping from\
+    \ stream names\n        to :class:`StreamDef` objects. Each StreamDef object configures\
+    \ a feature stream.\n"
+  type: Method
+  uid: cntk.io.HTKFeatureDeserializer
+- _type: function
+  module: cntk.io
+  name: cntk.io.HTKMLFDeserializer
+  summary: "Configures an HTK label reader that reads speech HTK format MLF (Master\
+    \ Label File)\n\nArgs:\n    label_mapping_file (str): path to the label mapping\
+    \ file\n    streams: any dictionary-like object that contains a mapping from stream\
+    \ names\n        to :class:`StreamDef` objects. Each StreamDef object configures\
+    \ a label stream.\n"
+  type: Method
+  uid: cntk.io.HTKMLFDeserializer
+- _type: function
+  module: cntk.io
+  name: cntk.io.ImageDeserializer
+  summary: "Configures the image reader that reads images and corresponding\nlabels\
+    \ from a file of the form::\n\n     <full path to image> <tab> <numerical label\
+    \ (0-based class id)>\n\nor::\n\n    sequenceId <tab> path <tab> label\n\nArgs:\n\
+    \    filename (str): file name of the map file that associates images to\n   \
+    \  classes\n\nSee also:\n    `Image reader definition <https://github.com/microsoft/cntk/wiki/BrainScript-Image-reader>`_\n"
+  type: Method
+  uid: cntk.io.ImageDeserializer
+- _type: class
+  children:
+  - cntk.io.MinibatchData.as_sequences
+  - cntk.io.MinibatchData.data
+  - cntk.io.MinibatchData.end_of_sweep
+  - cntk.io.MinibatchData.is_sparse
+  - cntk.io.MinibatchData.mask
+  - cntk.io.MinibatchData.num_samples
+  - cntk.io.MinibatchData.num_sequences
+  - cntk.io.MinibatchData.shape
+  - cntk.io.MinibatchData.value
+  module: cntk.io
+  name: cntk.io.MinibatchData
+  summary: 'Holds a minibatch of input data. This is never directly created, but
+
+    only returned by :class:`MinibatchSource` instances.
+
+    '
+  type: Class
+  uid: cntk.io.MinibatchData
+- _type: method
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.as_sequences
+  summary: "Convert the value of this minibatch instance to a sequence of NumPy\n\
+    arrays that have their masked entries removed.\n\nReturns:\n    a list of NumPy\
+    \ arrays if dense, otherwise a SciPy CSR array\n"
+  type: Method
+  uid: cntk.io.MinibatchData.as_sequences
+- _type: attribute
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.data
+  summary: 'Retrieves the underlying :class:`~cntk.core.Value` instance.
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchData.data
+- _type: attribute
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.end_of_sweep
+  summary: 'Indicates whether the data in this minibatch comes from a sweep end
+
+    or crosses a sweep boundary (and as a result includes data from
+
+    different sweeps).
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchData.end_of_sweep
+- _type: attribute
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.is_sparse
+  summary: 'Whether the data in this minibatch is sparse.
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchData.is_sparse
+- _type: attribute
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.mask
+  summary: 'The mask object of the minibatch. In it, `2` marks the beginning of a
+
+    sequence, `1` marks a sequence element as valid, and `0` marks it as
+
+    invalid.
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchData.mask
+- _type: attribute
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.num_samples
+  summary: 'The number of samples in this minibatch
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchData.num_samples
+- _type: attribute
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.num_sequences
+  summary: 'The number of sequences in this minibatch
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchData.num_sequences
+- _type: attribute
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.shape
+  summary: 'The shape of the data in this minibatch as tuple.
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchData.shape
+- _type: attribute
+  class: cntk.io.MinibatchData
+  module: cntk.io
+  name: cntk.io.MinibatchData.value
+  summary: 'The value of the minibatch as a NumPy array.
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchData.value
+- _type: class
+  children:
+  - cntk.io.MinibatchSource.current_position
+  - cntk.io.MinibatchSource.get_checkpoint_state
+  - cntk.io.MinibatchSource.is_distributed
+  - cntk.io.MinibatchSource.next_minibatch
+  - cntk.io.MinibatchSource.restore_from_checkpoint
+  - cntk.io.MinibatchSource.stream_info
+  - cntk.io.MinibatchSource.stream_infos
+  - cntk.io.MinibatchSource.streams
+  module: cntk.io
+  name: cntk.io.MinibatchSource
+  summary: "MinibatchSource(deserializers, max_samples=cntk.io.INFINITELY_REPEAT,\
+    \ max_sweeps=cntk.io.INFINITELY_REPEAT,\n    randomization_window_in_chunks=cntk.io.DEFAULT_RANDOMIZATION_WINDOW,\
+    \ randomization_window_in_samples=0, \n    trace_level=cntk.io.TraceLevel.Warning,\
+    \ multithreaded_deserializer=False, frame_mode=False,\n    truncation_length=0,\
+    \ randomize=None, randomization_window=None, sample_based_randomization_window=None,\n\
+    \    epoch_size=None)\n\nArgs:\n    deserializers (a single deserializer or a\
+    \ `list`): deserializers to be used in the composite reader\n    max_samples (`int`,\
+    \ defaults to :const:`cntk.io.INFINITELY_REPEAT`): The maximum number of input\
+    \ samples \n      (not 'label samples') the reader can produce. After this number\
+    \ has been reached, the reader \n      returns empty minibatches on subsequent\
+    \ calls to GetNextMinibatch(). `max_samples` and `max_sweeps`\n      are mutually\
+    \ exclusive, an exception will be raised if both have non-default values.\n  \
+    \    **Important:** \n      `See <https://github.com/Microsoft/CNTK/wiki/BrainScript-epochSize-and-Python-epoch_size-in-CNTK>`__\
+    \ \n      for a description of input and label samples.\n    max_sweeps (`int`,\
+    \ defaults to :const:`cntk.io.INFINITELY_REPEAT`): The maximum number of of sweeps\
+    \ over \n      the input dataset After this number has been reached, the reader\
+    \ returns empty minibatches on \n      subsequent calls to GetNextMinibatch().\
+    \ `max_samples` and `max_sweeps` are mutually exclusive, \n      an exception\
+    \ will be raised if both have non-default values.\n    randomization_window_in_chunks\
+    \ (`int`, defaults to :const:`cntk.io.DEFAULT_RANDOMIZATION_WINDOW_IN_CHUNKS`):\
+    \ \n      size of the randomization window in chunks, non-zero value enables randomization.\
+    \ \n      `randomization_window_in_chunks` and `randomization_window_in_samples`\
+    \ are mutually exclusive,\n      an exception will be raised if both have non-zero\
+    \ values.\n    randomization_window_in_samples (`int`, defaults to `0`): size\
+    \ of the randomization window in samples, \n      non-zero value enables randomization.\
+    \ \n      `randomization_window_in_chunks` and `randomization_window_in_samples`\
+    \ are mutually exclusive,\n      an exception will be raised if both have non-zero\
+    \ values.\n    trace_level (an instance of :class:`cntk.io.TraceLevel`, defaults\
+    \ to `TraceLevel.Warning`): \n      the output verbosity level.\n    multithreaded_deserializer\
+    \ (`bool`, defaults to `False`): specifies if the deserialization should be \n\
+    \      done on a single or multiple threads.\n    frame_mode (`bool`, defaults\
+    \ to `False`): switches the frame mode on and off. If the frame mode \n      is\
+    \ enabled the input data will be processed as individual frames ignoring all sequence\
+    \ information \n      (this option cannot be used for BPTT, an exception will\
+    \ be raised if frame mode is enabled and the\n      truncation length is non-zero).\n\
+    \    truncation_length (`int`, defaults to `0`): truncation length in samples,\
+    \ non-zero value enables \n      the truncation (only applicable for BPTT, cannot\
+    \ be used in frame mode, an exception will be raised \n      if frame mode is\
+    \ enabled and the truncation length is non-zero).\n\n    randomize (`bool`, defaults\
+    \ to `None`): !DEPRECATED! please use randomization_window_in_chunks or\n    \
+    \  randomization_window_in_samples instead\n    randomization_window (int, defaults\
+    \ to `None`): !DEPRECATED! please use randomization_window_in_chunks or\n    \
+    \  randomization_window_in_samples instead\n    sample_based_randomization_window\
+    \ (`bool`, defaults to `None`): !DEPRECATED! please use \n      randomization_window_in_chunks\
+    \ or randomization_window_in_samples instead\n    epoch_size (`int`, defaults\
+    \ to `None`): !DEPRECATED! please use max_samples or max_sweeps instead \n"
+  type: Class
+  uid: cntk.io.MinibatchSource
+- _type: attribute
+  class: cntk.io.MinibatchSource
+  module: cntk.io
+  name: cntk.io.MinibatchSource.current_position
+  summary: "Gets current position in the minibatch source.\n\nReturns:\n    Minibatch\
+    \ position :class:`~cntk.cntk_py.Dictionary` on the global timeline.\n"
+  type: Property
+  uid: cntk.io.MinibatchSource.current_position
+- _type: method
+  class: cntk.io.MinibatchSource
+  module: cntk.io
+  name: cntk.io.MinibatchSource.get_checkpoint_state
+  summary: "Gets the checkpoint state of the MinibatchSource.\n\nReturns:\n    cntk.cntk_py.Dictionary:\n\
+    \    A :class:`~cntk.cntk_py.Dictionary` that has the checkpoint state of the\
+    \ MinibatchSource\n"
+  type: Method
+  uid: cntk.io.MinibatchSource.get_checkpoint_state
+- _type: attribute
+  class: cntk.io.MinibatchSource
+  module: cntk.io
+  name: cntk.io.MinibatchSource.is_distributed
+  summary: 'Whether the minibatch source is running distributed
+
+    '
+  type: Property
+  uid: cntk.io.MinibatchSource.is_distributed
+- _type: method
+  class: cntk.io.MinibatchSource
+  module: cntk.io
+  name: cntk.io.MinibatchSource.next_minibatch
+  summary: "Reads a minibatch that contains data for all input streams.  The\nminibatch\
+    \ size is specified in terms of #samples and/or #sequences for the\nprimary input\
+    \ stream; value of 0 for #samples/#sequences means\nunspecified.  In case the\
+    \ size is specified in terms of both #sequences\nand #samples, the smaller of\
+    \ the 2 is taken.  An empty map is returned\nwhen the MinibatchSource has no more\
+    \ data to return.\n\nArgs:\n    minibatch_size_in_samples (int): number of samples\
+    \ to retrieve for\n      the next minibatch. Must be > 0.\n      **Important:**\n\
+    \      Click `here <https://github.com/Microsoft/CNTK/wiki/BrainScript-minibatchSize-and-Python-minibatch_size_in_samples-in-CNTK>`__\
+    \ for a full description of this parameter. \n    input_map (dict): mapping of\
+    \ :class:`~cntk.variables.Variable`\n      to :class:`~cntk.cntk_py.StreamInformation`\
+    \ which will be used to convert the\n      returned data.\n    device (`DeviceDescriptor`,\
+    \ defaults to `None`): CNTK DeviceDescriptor\n    num_data_partitions: Used for\
+    \ distributed training, indicates into how many partitions\n      the source should\
+    \ split the data.\n    partition_index (`int`, defaults to `None`): Used for distributed\
+    \ training, indicates data from which partition to take.\n\nReturns:\n    cntk.io.MinibatchData:\n\
+    \    A mapping of :class:`~cntk.cntk_py.StreamInformation` to :class:`MinibatchData`\
+    \ if\n    `input_map` was not specified. Otherwise, the returned value will\n\
+    \    be a mapping of :class:`~cntk.variables.Variable` to class:`MinibatchData`.\n"
+  type: Method
+  uid: cntk.io.MinibatchSource.next_minibatch
+- _type: method
+  class: cntk.io.MinibatchSource
+  module: cntk.io
+  name: cntk.io.MinibatchSource.restore_from_checkpoint
+  summary: "Restores the MinibatchSource state from the specified checkpoint.\n\n\
+    Args:\n    checkpoint (:class:`~cntk.cntk_py.Dictionary`): checkpoint to restore\
+    \ from\n"
+  type: Method
+  uid: cntk.io.MinibatchSource.restore_from_checkpoint
+- _type: method
+  class: cntk.io.MinibatchSource
+  module: cntk.io
+  name: cntk.io.MinibatchSource.stream_info
+  summary: 'Gets the description of the stream with given name.
+
+    Throws an exception if there are none or multiple streams with this
+
+    same name.
+
+    '
+  type: Method
+  uid: cntk.io.MinibatchSource.stream_info
+- _type: method
+  class: cntk.io.MinibatchSource
+  module: cntk.io
+  name: cntk.io.MinibatchSource.stream_infos
+  summary: "Describes the streams 'this' minibatch source produces.\n\nReturns:\n\
+    \    A `list` of instances of :class:`~cntk.cntk_py.StreamInformation`\n"
+  type: Method
+  uid: cntk.io.MinibatchSource.stream_infos
+- _type: attribute
+  class: cntk.io.MinibatchSource
+  module: cntk.io
+  name: cntk.io.MinibatchSource.streams
+  summary: "Describes the streams 'this' minibatch source produces.\n\nReturns:\n\
+    \    A `dict` mapping input names to instances of \n    :class:`~cntk.cntk_py.StreamInformation`\n"
+  type: Property
+  uid: cntk.io.MinibatchSource.streams
+- _type: class
+  children: []
+  module: cntk.io
+  name: cntk.io.StreamConfiguration
+  summary: "Configuration of a stream in a text format reader.\n\nArgs:\n    name\
+    \ (str): name of this stream\n    dim (int): dimensions of this stream. A text\
+    \ format reader reads data\n      as flat arrays. If you need different shapes\
+    \ you can\n      :func:`~cntk.ops.reshape` it later.\n    is_sparse (bool, defaults\
+    \ to `False`): whether the provided data is sparse\n      (`False` by default)\n\
+    \    stream_alias (str, defaults to ''): name of the stream in the file\n"
+  type: Class
+  uid: cntk.io.StreamConfiguration
+- _type: function
+  module: cntk.io
+  name: cntk.io.StreamDef
+  summary: "   Configuration of a stream for use with the builtin Deserializers.\n\
+    \   The meanings of some configuration keys have a mild dependency on the\n  \
+    \ exact deserializer, and certain keys are meaningless for certain deserializers.\n\
+    \nArgs:\n    field (`str`, defaults to `None`): this is the name of the stream\n\
+    \n     * for CTFDeserializer the name is inside the CTF file\n     * for ImageDeserializer\
+    \ the acceptable names are `image` or `label`\n     * for HTKFeatureDeserializer\
+    \ and HTKMLFDeserializer only the default\n       value of None is acceptable\n\
+    \n    shape (`int` or `tuple`, defaults to `None`): dimensions of this stream.\
+    \ HTKFeatureDeserializer,\n     HTKMLFDeserializer, and CTFDeserializer read data\n\
+    \     as flat arrays. If you need different shapes you can\n     :func:`~cntk.ops.reshape`\
+    \ it later.\n    is_sparse (`bool`, defaults to `False`): whether the provided\
+    \ data is sparse.\n     `False` by default, unless mlf is provided.\n    transforms\
+    \ (`list`, defaults to `None`): list of transforms to be applied by the Deserializer.\n\
+    \     Currently only ImageDeserializer supports transforms.\n    context (`tuple`,\
+    \ defaults to `None`): left and right context to consider when reading in HTK\n\
+    \     data. Only supported by HTKFeatureDeserializer.\n    scp (`str` or `list`,\
+    \ defaults to `None`): scp files for HTK data\n    mlf (`str` or `list`, defaults\
+    \ to `None`): mlf files for HTK data\n    broadcast (`bool`, defaults to `None`):\
+    \ whether the features in this stream should be\n     broadcast to the whole sequence\
+    \ (useful in e.g. ivectors with HTK)\n"
+  type: Method
+  uid: cntk.io.StreamDef
+- _type: class
+  children: []
+  module: cntk.io
+  name: cntk.io.TraceLevel
+  summary: 'An enumeration.
+
+    '
+  type: Class
+  uid: cntk.io.TraceLevel
+- _type: function
+  module: cntk.io
+  name: cntk.io.sequence_to_cntk_text_format
+  summary: "Converts a list of NumPy arrays representing tensors of inputs into a\n\
+    format that is readable by :class:`~cntk.io.CTFDeserializer`.\n\nArgs:\n    seq_idx\
+    \ (int): number of current sequence\n    alias_tensor_map (dict): maps alias (str)\
+    \ to tensor (ndarray). Tensors\n      are assumed to have dynamic axis.\n\nReturns:\n\
+    \    str:\n    String representation in `CNTKTextReader format <https://github.com/microsoft/cntk/wiki/BrainScript-CNTKTextFormat-Reader>`_\n"
+  type: Method
+  uid: cntk.io.sequence_to_cntk_text_format

@@ -1,0 +1,38 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.internal.swig_helper
+  name: cntk.internal.swig_helper
+  summary: ''
+  type: Namespace
+  uid: cntk.internal.swig_helper
+- _type: class
+  children:
+  - cntk.internal.swig_helper.map_if_possible
+  - cntk.internal.swig_helper.typemap
+  module: cntk.internal.swig_helper
+  name: cntk.internal.swig_helper.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.internal.swig_helper.Global
+- _type: function
+  module: cntk.internal.swig_helper
+  name: cntk.internal.swig_helper.map_if_possible
+  summary: ''
+  type: Method
+  uid: cntk.internal.swig_helper.map_if_possible
+- _type: function
+  module: cntk.internal.swig_helper
+  name: cntk.internal.swig_helper.typemap
+  summary: 'Decorator that upcasts return types from Swig types to cntk types that
+
+    inherit from Swig. It does so recursively, e.g. if the return type is a
+
+    tuple containing a dictionary, it will try to upcast every element in the
+
+    tuple and all the keys and values in the dictionary.
+
+    '
+  type: Method
+  uid: cntk.internal.swig_helper.typemap

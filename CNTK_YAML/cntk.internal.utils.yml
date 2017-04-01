@@ -1,0 +1,86 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.internal.utils
+  name: cntk.internal.utils
+  summary: ''
+  type: Namespace
+  uid: cntk.internal.utils
+- _type: class
+  children:
+  - cntk.internal.utils.eval
+  - cntk.internal.utils.get_data_type
+  - cntk.internal.utils.get_python_function_arguments
+  - cntk.internal.utils.map_function_arguments
+  module: cntk.internal.utils
+  name: cntk.internal.utils.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.internal.utils.Global
+- _type: function
+  module: cntk.internal.utils
+  name: cntk.internal.utils.eval
+  summary: "It evaluates ``op`` on the data provided by the reader. This is useful\n\
+    mainly to explore the operators and for convenient unit testing.\n\nArgs:\n  \
+    \  op (:class:`~cntk.ops.functions.Function`): operation to evaluate\n    arguments:\
+    \ maps variables to their input data. The\n     interpretation depends on the\
+    \ input type:\n\n      * `dict`: keys are input variable or names, and values\
+    \ are the input data.\n\n      * any other type: if node has a unique input, ``arguments``\
+    \ is mapped to this input.\n        For nodes with more than one input, only `dict`\
+    \ is allowed.\n\n     In both cases, every sample in the data will be interpreted\n\
+    \     as a new sequence. To mark samples as continuations of the\n     previous\
+    \ sequence, specify ``arguments`` as `tuple`: the\n     first element will be\
+    \ used as ``arguments``, and the second one will\n     be used as a list of bools,\
+    \ denoting whether a sequence is a new\n     one (`True`) or a continuation of\
+    \ the previous one (`False`).\n     Data should be either NumPy arrays or a\n\
+    \     :class:`~cntk.io.MinibatchData` instance.\n    seq_starts (list of bools\
+    \ or None): if None, every sequence is\n     treated as a new sequence. Otherwise,\
+    \ it is interpreted as a list of\n     Booleans that tell whether a sequence is\
+    \ a new sequence (`True`) or a\n     continuation of the sequence in the same\
+    \ slot of the previous\n     minibatch (`False`)\n    precision (str or None):\
+    \ precision being 'float32', 'float64', or\n     None, in which case it will be\
+    \ determined by inspecting the operator\n     (costly)\n    device (:class:`~cntk.device.DeviceDescriptor`,\
+    \ default None): device\n     this value should be put on\n    backward_pass (`bool`,\
+    \ optional): whether a backward pass is performed\n    expected_backward (`dict`\
+    \ or None): keys are variables for which to\n     compute a backward ouptut. By\
+    \ default (None) all entries from\n     'arguments' are used\n\nReturns:\n   \
+    \ mapping of output variables to their values.\n"
+  type: Method
+  uid: cntk.internal.utils.eval
+- _type: function
+  module: cntk.internal.utils
+  name: cntk.internal.utils.get_data_type
+  summary: "Calculates the highest precision numpy data type of the provided parameters.\n\
+    If the parameter is a Function instance, it calculates it based on its\ninputs.\
+    \ placeholders are ignored in the type determination.\n\nArgs:\n    args (number,\
+    \ list, NumPy array, :class:`~cntk.variables.Variable`, or :class:`~cntk.ops.functions.Function`):\
+    \ input\n\nReturns:\n    np.float32, np.float64, or None\n"
+  type: Method
+  uid: cntk.internal.utils.get_data_type
+- _type: function
+  module: cntk.internal.utils
+  name: cntk.internal.utils.get_python_function_arguments
+  summary: 'Helper to get the parameter names and annotations of a Python function.
+
+    '
+  type: Method
+  uid: cntk.internal.utils.get_python_function_arguments
+- _type: function
+  module: cntk.internal.utils
+  name: cntk.internal.utils.map_function_arguments
+  summary: 'Helper to determine the argument map for use with various call operations.
+
+    Returns a dictionary from parameters to whatever arguments are passed.
+
+    Accepted are both positional and keyword arguments.
+
+    This mimics Python''s argument interpretation, except that keyword arguments are
+    not optional.
+
+    This does not require the arguments to be Variables or Functions. It is also called
+    by train_minibatch() and @Signature.
+
+    '
+  type: Method
+  uid: cntk.internal.utils.map_function_arguments

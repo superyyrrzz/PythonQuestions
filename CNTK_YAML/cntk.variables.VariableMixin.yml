@@ -1,0 +1,16 @@
+api_name: []
+items:
+- _type: class
+  children: []
+  module: cntk.variables.VariableMixin
+  name: cntk.variables.VariableMixin.Type
+  summary: 'Describes a Variable''s type; that is, all arguments to instantiate a
+    Placeholder or Input.
+
+    These are meant to be passed to update_signature.
+
+    All are optional, meaning unspecified.
+
+    '
+  type: Class
+  uid: cntk.variables.VariableMixin.Type

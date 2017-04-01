@@ -1,0 +1,56 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.debugging.profiler
+  name: cntk.debugging.profiler
+  summary: ''
+  type: Namespace
+  uid: cntk.debugging.profiler
+- _type: class
+  children:
+  - cntk.debugging.profiler.disable_profiler
+  - cntk.debugging.profiler.enable_profiler
+  - cntk.debugging.profiler.start_profiler
+  - cntk.debugging.profiler.stop_profiler
+  module: cntk.debugging.profiler
+  name: cntk.debugging.profiler.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.debugging.profiler.Global
+- _type: function
+  module: cntk.debugging.profiler
+  name: cntk.debugging.profiler.disable_profiler
+  summary: 'Disable profiler from gathering data.
+
+    '
+  type: Method
+  uid: cntk.debugging.profiler.disable_profiler
+- _type: function
+  module: cntk.debugging.profiler
+  name: cntk.debugging.profiler.enable_profiler
+  summary: 'Enable profiler to gather data. Note that in training_session, profiler
+    would be enabled automatically after the first check point
+
+    '
+  type: Method
+  uid: cntk.debugging.profiler.enable_profiler
+- _type: function
+  module: cntk.debugging.profiler
+  name: cntk.debugging.profiler.start_profiler
+  summary: "Start profiler to prepare performance statistics gathering. Note that\n\
+    the profiler is not enabled after start\n(`example\n<https://github.com/Microsoft/CNTK/wiki/Performance-Profiler#for-python>`_).\n\
+    \nArgs:\n    dir: directory for profiler output\n    sync_gpu: whether profiler\
+    \ syncs CPU with GPU when timing\n    reserve_mem: size in byte for profiler memory\
+    \ reserved\n"
+  type: Method
+  uid: cntk.debugging.profiler.start_profiler
+- _type: function
+  module: cntk.debugging.profiler
+  name: cntk.debugging.profiler.stop_profiler
+  summary: 'Stop profiler from gathering performance statistics and flush them to
+    file
+
+    '
+  type: Method
+  uid: cntk.debugging.profiler.stop_profiler

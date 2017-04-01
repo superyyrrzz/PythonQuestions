@@ -1,0 +1,32 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.debugging
+  name: cntk.debugging
+  summary: ''
+  type: Namespace
+  uid: cntk.debugging
+- _type: class
+  children:
+  - cntk.debugging.dump_function
+  - cntk.debugging.dump_signature
+  module: cntk.debugging
+  name: cntk.debugging.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.debugging.Global
+- _type: function
+  module: cntk.debugging
+  name: cntk.debugging.dump_function
+  summary: ''
+  type: Method
+  uid: cntk.debugging.dump_function
+- _type: function
+  module: cntk.debugging
+  name: cntk.debugging.dump_signature
+  summary: 'Debug helper that prints the signature of a Function.
+
+    '
+  type: Method
+  uid: cntk.debugging.dump_signature

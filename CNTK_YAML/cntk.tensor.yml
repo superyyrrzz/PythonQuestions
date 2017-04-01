@@ -1,0 +1,47 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.tensor.ArrayMixin
+  - cntk.tensor.TensorOpsMixin
+  module: cntk.tensor
+  name: cntk.tensor
+  summary: ''
+  type: Namespace
+  uid: cntk.tensor
+- _type: class
+  children: []
+  module: cntk.tensor
+  name: cntk.tensor.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.tensor.Global
+- _type: class
+  children:
+  - cntk.tensor.ArrayMixin.asarray
+  module: cntk.tensor
+  name: cntk.tensor.ArrayMixin
+  summary: ''
+  type: Class
+  uid: cntk.tensor.ArrayMixin
+- _type: method
+  class: cntk.tensor.ArrayMixin
+  module: cntk.tensor
+  name: cntk.tensor.ArrayMixin.asarray
+  summary: 'Converts the instance''s data to a NumPy array.
+
+    '
+  type: Method
+  uid: cntk.tensor.ArrayMixin.asarray
+- _type: class
+  children: []
+  module: cntk.tensor
+  name: cntk.tensor.TensorOpsMixin
+  summary: 'This class defines math overloads so that CNTK nodes can be written in
+    math
+
+    expressions.
+
+    '
+  type: Class
+  uid: cntk.tensor.TensorOpsMixin

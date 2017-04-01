@@ -1,0 +1,78 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.eval.evaluator.Evaluator
+  module: cntk.eval.evaluator
+  name: cntk.eval.evaluator
+  summary: 'An evaluator provides functionality to evaluate minibatches against the
+    specified evaluation function.
+
+    '
+  type: Namespace
+  uid: cntk.eval.evaluator
+- _type: class
+  children: []
+  module: cntk.eval.evaluator
+  name: cntk.eval.evaluator.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.eval.evaluator.Global
+- _type: class
+  children:
+  - cntk.eval.evaluator.Evaluator.evaluation_function
+  - cntk.eval.evaluator.Evaluator.summarize_test_progress
+  - cntk.eval.evaluator.Evaluator.test_minibatch
+  module: cntk.eval.evaluator
+  name: cntk.eval.evaluator.Evaluator
+  summary: "Class for evaluation of minibatches against the specified evaluation function.\n\
+    \nArgs:\n   eval_function (:class:`~cntk.ops.functions.Function`): evaluation\
+    \ function.\n   progress_writers (list): optionally, list of progress writers\
+    \ from :mod:`cntk.utils` to track\n     training progress.\n"
+  type: Class
+  uid: cntk.eval.evaluator.Evaluator
+- _type: attribute
+  class: cntk.eval.evaluator.Evaluator
+  module: cntk.eval.evaluator
+  name: cntk.eval.evaluator.Evaluator.evaluation_function
+  summary: 'The evaluation function that the evaluator is using.
+
+    '
+  type: Property
+  uid: cntk.eval.evaluator.Evaluator.evaluation_function
+- _type: method
+  class: cntk.eval.evaluator.Evaluator
+  module: cntk.eval.evaluator
+  name: cntk.eval.evaluator.Evaluator.summarize_test_progress
+  summary: 'Updates the progress writers with the summary of test progress since start
+    and resets the internal
+
+    accumulators.
+
+    '
+  type: Method
+  uid: cntk.eval.evaluator.Evaluator.summarize_test_progress
+- _type: method
+  class: cntk.eval.evaluator.Evaluator
+  module: cntk.eval.evaluator
+  name: cntk.eval.evaluator.Evaluator.test_minibatch
+  summary: "Test the evaluation function on the specified batch of samples.\n\nArgs:\n\
+    \    arguments: maps variables to their\n     input data. The interpretation depends\
+    \ on the input type:\n\n       * `dict`: keys are input variable or names, and\
+    \ values are the input data.\n         See :meth:`~cntk.ops.functions.Function.forward`\
+    \ for details on passing input data.\n\n       * any other type: if node has an\
+    \ unique input, ``arguments`` is mapped to this input.\n         For nodes with\
+    \ more than one input, only `dict` is allowed.\n\n     In both cases, every sample\
+    \ in the data will be interpreted\n     as a new sequence. To mark samples as\
+    \ continuations of the\n     previous sequence, specify ``arguments`` as `tuple`:\
+    \ the\n     first element will be used as ``arguments``, and the second one will\n\
+    \     be used as a list of bools, denoting whether a sequence is a new\n     one\
+    \ (`True`) or a continuation of the previous one (`False`).\n     Data should\
+    \ be either NumPy arrays or a\n     :class:`~cntk.io.MinibatchData` instance.\n\
+    \    device (:class:`~cntk.device.DeviceDescriptor`): the device descriptor that\n\
+    \     contains the type and id of the device on which the computation is\n   \
+    \  to be performed.\n\nNote:\n     See :meth:`~cntk.ops.functions.Function.forward`\
+    \ for examples on\n     passing input data.\n\nReturns:\n    `float`: the average\
+    \ evaluation criterion value per sample for the\n      tested minibatch.\n"
+  type: Method
+  uid: cntk.eval.evaluator.Evaluator.test_minibatch

@@ -1,0 +1,179 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.train.distributed.Communicator
+  - cntk.train.distributed.DistributedLearner
+  - cntk.train.distributed.WorkerDescriptor
+  module: cntk.train.distributed
+  name: cntk.train.distributed
+  summary: 'Distributed learners manage learners in distributed environment.
+
+    '
+  type: Namespace
+  uid: cntk.train.distributed
+- _type: class
+  children:
+  - cntk.train.distributed.block_momentum_distributed_learner
+  - cntk.train.distributed.data_parallel_distributed_learner
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.train.distributed.Global
+- _type: class
+  children:
+  - cntk.train.distributed.Communicator.barrier
+  - cntk.train.distributed.Communicator.current_worker
+  - cntk.train.distributed.Communicator.finalize
+  - cntk.train.distributed.Communicator.is_main
+  - cntk.train.distributed.Communicator.num_workers
+  - cntk.train.distributed.Communicator.rank
+  - cntk.train.distributed.Communicator.workers
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Communicator
+  summary: "A communicator interface exposing communication primitives that serve\
+    \ as building blocks \nfor distributed training.\n"
+  type: Class
+  uid: cntk.train.distributed.Communicator
+- _type: method
+  class: cntk.train.distributed.Communicator
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Communicator.barrier
+  summary: 'Sync point to make sure all workers reach the same state.
+
+    '
+  type: Method
+  uid: cntk.train.distributed.Communicator.barrier
+- _type: method
+  class: cntk.train.distributed.Communicator
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Communicator.current_worker
+  summary: "Returns worker descriptor of current process.\n\nReturns:\n    :class:`WorkerDescriptor`:\
+    \ descriptor of current process.\n"
+  type: Method
+  uid: cntk.train.distributed.Communicator.current_worker
+- _type: method
+  class: cntk.train.distributed.Communicator
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Communicator.finalize
+  summary: 'Should be called when all communication is finished. No more communication
+    should happen after this call.
+
+    '
+  type: Method
+  uid: cntk.train.distributed.Communicator.finalize
+- _type: method
+  class: cntk.train.distributed.Communicator
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Communicator.is_main
+  summary: 'Indicates if the current communicator is instantiated on the main node.
+    The node with rank 0 is considered the main.
+
+    '
+  type: Method
+  uid: cntk.train.distributed.Communicator.is_main
+- _type: method
+  class: cntk.train.distributed.Communicator
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Communicator.num_workers
+  summary: 'Returns information about all MPI workers.
+
+    '
+  type: Method
+  uid: cntk.train.distributed.Communicator.num_workers
+- _type: method
+  class: cntk.train.distributed.Communicator
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Communicator.rank
+  summary: 'Returns rank of current process.
+
+    '
+  type: Method
+  uid: cntk.train.distributed.Communicator.rank
+- _type: method
+  class: cntk.train.distributed.Communicator
+  module: cntk.train.distributed
+  name: cntk.train.distributed.Communicator.workers
+  summary: "Returns workers in this communicator.\n\nReturns:\n    (`list`) of :class:`WorkerDescriptor`:\
+    \ workers in this communicator.\n"
+  type: Method
+  uid: cntk.train.distributed.Communicator.workers
+- _type: class
+  children:
+  - cntk.train.distributed.DistributedLearner.communicator
+  module: cntk.train.distributed
+  name: cntk.train.distributed.DistributedLearner
+  summary: 'A distributed learner that handles data like gradients/momentums across
+    multiple MPI workers
+
+    '
+  type: Class
+  uid: cntk.train.distributed.DistributedLearner
+- _type: method
+  class: cntk.train.distributed.DistributedLearner
+  module: cntk.train.distributed
+  name: cntk.train.distributed.DistributedLearner.communicator
+  summary: "Returns the distributed communicator that talks to other MPI workers\n\
+    \nReturns:\n    :class:`Communicator`: descriptor of current process.\n"
+  type: Method
+  uid: cntk.train.distributed.DistributedLearner.communicator
+- _type: class
+  children:
+  - cntk.train.distributed.WorkerDescriptor.global_rank
+  - cntk.train.distributed.WorkerDescriptor.host_id
+  module: cntk.train.distributed
+  name: cntk.train.distributed.WorkerDescriptor
+  summary: 'Distributed worker descriptor, returned by :class:`Communicator` instance.
+
+    '
+  type: Class
+  uid: cntk.train.distributed.WorkerDescriptor
+- _type: attribute
+  class: cntk.train.distributed.WorkerDescriptor
+  module: cntk.train.distributed
+  name: cntk.train.distributed.WorkerDescriptor.global_rank
+  summary: 'The global rank of the worker.
+
+    '
+  type: Property
+  uid: cntk.train.distributed.WorkerDescriptor.global_rank
+- _type: attribute
+  class: cntk.train.distributed.WorkerDescriptor
+  module: cntk.train.distributed
+  name: cntk.train.distributed.WorkerDescriptor.host_id
+  summary: 'The host id of the worker.
+
+    '
+  type: Property
+  uid: cntk.train.distributed.WorkerDescriptor.host_id
+- _type: function
+  module: cntk.train.distributed
+  name: cntk.train.distributed.block_momentum_distributed_learner
+  summary: "Creates a block momentum distributed learner. See [1] for more\ninformation.\n\
+    \nBlock Momentum divides the full dataset into M non-overlapping blocks,\nand\
+    \ each block is partitioned into N non-overlapping splits.\n\nDuring training,\
+    \ a random, unprocessed block is randomly taken by the trainer\nand the N partitions\
+    \ of this block are dispatched on the workers.\n\nArgs:\n    learner: a local\
+    \ learner (i.e. sgd)\n    block_size (int): size of the partition in samples\n\
+    \    block_momentum_as_time_constant (float): block momentum as time constant\n\
+    \    use_nestrov_momentum (bool): use nestrov momentum\n    reset_sgd_momentum_after_aggregation\
+    \ (bool): reset SGD momentum after aggregation\n    block_learning_rate (float):\
+    \ block learning rate\n    distributed_after (int): number of samples after which\
+    \ distributed training starts\n\nReturns:\n    a distributed learner instance\n\
+    \nSee also:\n    [1] K. Chen and Q. Huo. `Scalable training of deep learning machines\n\
+    \    by incremental block training with intra-block parallel optimization\n  \
+    \  and blockwise model-update filtering\n    <https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/0005880.pdf>`_.\
+    \ \n    Proceedings of ICASSP, 2016. \n"
+  type: Method
+  uid: cntk.train.distributed.block_momentum_distributed_learner
+- _type: function
+  module: cntk.train.distributed
+  name: cntk.train.distributed.data_parallel_distributed_learner
+  summary: "Creates a data parallel distributed learner\n\nArgs:\n    learner: a local\
+    \ learner (i.e. sgd)\n    distributed_after (int): number of samples after which\
+    \ distributed training starts\n    num_quantization_bits (int): number of bits\
+    \ for quantization (1 to 32)\n    use_async_buffered_parameter_update (bool):\
+    \ use async buffered parameter update\nReturns:\n    a distributed learner instance\n"
+  type: Method
+  uid: cntk.train.distributed.data_parallel_distributed_learner

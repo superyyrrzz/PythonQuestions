@@ -1,0 +1,1420 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.ops
+  name: cntk.ops
+  summary: ''
+  type: Namespace
+  uid: cntk.ops
+- _type: class
+  children:
+  - cntk.ops.abs
+  - cntk.ops.alias
+  - cntk.ops.argmax
+  - cntk.ops.argmin
+  - cntk.ops.as_block
+  - cntk.ops.as_composite
+  - cntk.ops.associative_multi_arg
+  - cntk.ops.batch_normalization
+  - cntk.ops.ceil
+  - cntk.ops.clip
+  - cntk.ops.combine
+  - cntk.ops.constant
+  - cntk.ops.convolution
+  - cntk.ops.convolution_transpose
+  - cntk.ops.cos
+  - cntk.ops.dropout
+  - cntk.ops.element_divide
+  - cntk.ops.element_max
+  - cntk.ops.element_min
+  - cntk.ops.element_select
+  - cntk.ops.element_times
+  - cntk.ops.elu
+  - cntk.ops.equal
+  - cntk.ops.exp
+  - cntk.ops.floor
+  - cntk.ops.forward_backward
+  - cntk.ops.future_value
+  - cntk.ops.greater
+  - cntk.ops.greater_equal
+  - cntk.ops.hardmax
+  - cntk.ops.input
+  - cntk.ops.input_variable
+  - cntk.ops.labels_to_graph
+  - cntk.ops.leaky_relu
+  - cntk.ops.less
+  - cntk.ops.less_equal
+  - cntk.ops.log
+  - cntk.ops.log_add_exp
+  - cntk.ops.minus
+  - cntk.ops.negate
+  - cntk.ops.not_equal
+  - cntk.ops.one_hot
+  - cntk.ops.optimized_rnnstack
+  - cntk.ops.output_variable
+  - cntk.ops.param_relu
+  - cntk.ops.parameter
+  - cntk.ops.past_value
+  - cntk.ops.per_dim_mean_variance_normalize
+  - cntk.ops.placeholder
+  - cntk.ops.placeholder_variable
+  - cntk.ops.plus
+  - cntk.ops.pooling
+  - cntk.ops.random_sample
+  - cntk.ops.random_sample_inclusion_frequency
+  - cntk.ops.reciprocal
+  - cntk.ops.reduce_log_sum_exp
+  - cntk.ops.reduce_max
+  - cntk.ops.reduce_mean
+  - cntk.ops.reduce_min
+  - cntk.ops.reduce_prod
+  - cntk.ops.reduce_sum
+  - cntk.ops.relu
+  - cntk.ops.reshape
+  - cntk.ops.roipooling
+  - cntk.ops.round
+  - cntk.ops.sigmoid
+  - cntk.ops.sin
+  - cntk.ops.slice
+  - cntk.ops.softmax
+  - cntk.ops.softplus
+  - cntk.ops.splice
+  - cntk.ops.sqrt
+  - cntk.ops.square
+  - cntk.ops.stop_gradient
+  - cntk.ops.tanh
+  - cntk.ops.times
+  - cntk.ops.times_transpose
+  - cntk.ops.transpose
+  - cntk.ops.unpooling
+  module: cntk.ops
+  name: cntk.ops.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.ops.Global
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.abs
+  summary: "Computes the element-wise absolute of ``x``:\n\n:math:`abs(x) = |x|`\n\
+    \nExample:\n    >>> C.abs([-1, 1, -2, 3]).eval()\n    array([ 1.,  1.,  2.,  3.],\
+    \ dtype=float32)\n\nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function`\
+    \ that outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.abs
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.alias
+  summary: " Create a new Function instance which just aliases the specified 'x' Function/Variable\n\
+    \ such that the 'Output' of the new 'Function' is same as the 'Output' of the\
+    \ specified\n 'x' Function/Variable, and has the newly specified name.\n The purpose\
+    \ of this operator is to create a new distinct reference to a symbolic\n computation\
+    \ which is different from the original Function/Variable that it aliases and can\n\
+    \ be used for e.g. to substitute a specific instance of the aliased Function/Variable\
+    \ in the\n computation graph instead of substituting all usages of the aliased\
+    \ Function/Variable.\n\nArgs:\n    operand: The Function/Variable to alias\n \
+    \   name (str, optional): the name of the Alias Function in the network\n\nReturns:\n\
+    \    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.alias
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.argmax
+  summary: "Computes the argmax of the input tensor's elements across the specified\
+    \ axis. \nIf no axis is specified, it will return the flatten index of the largest\
+    \ element\nin tensor x.\n\nExample:\n    >>> # create 3x2 matrix in a sequence\
+    \ of length 1 in a batch of one sample\n    >>> data = [[10, 20],[30, 40],[50,\
+    \ 60]]\n\n    >>> C.argmax(data, 0).eval()\n    array([[ 2.,  2.]], dtype=float32)\n\
+    \n    >>> C.argmax(data, 1).eval()\n    array([[ 1.],\n           [ 1.],\n   \
+    \        [ 1.]], dtype=float32)\n\nArgs:\n    x (`numpy.array` or :class:`~cntk.ops.functions.Function`):\
+    \ any :class:`~cntk.ops.functions.Function` that outputs a tensor.\n    axis (int\
+    \ or :class:`~cntk.axis.Axis`): axis along which the reduction will be performed\n\
+    \    name (str, default to ''): the name of the Function instance in the network\n\
+    \nReturns:\n    cntk.ops.functions.Function:\n    An instance of :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.argmax
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.argmin
+  summary: "Computes the argmin of the input tensor's elements across the specified\
+    \ axis. \nIf no axis is specified, it will return the flatten index of the smallest\
+    \ element\nin tensor x.\n\nExample:\n    >>> # create 3x2 matrix in a sequence\
+    \ of length 1 in a batch of one sample\n    >>> data = [[10, 30],[40, 20],[60,\
+    \ 50]]\n\n    >>> C.argmin(data, 0).eval()\n    array([[ 0.,  1.]], dtype=float32)\n\
+    \n    >>> C.argmin(data, 1).eval()\n    array([[ 0.],\n           [ 1.],\n   \
+    \        [ 1.]], dtype=float32)\n\nArgs:\n    x (`numpy.array` or :class:`~cntk.ops.functions.Function`):\
+    \ any :class:`~cntk.ops.functions.Function` that outputs a tensor.\n    axis (int\
+    \ or :class:`~cntk.axis.Axis`): axis along which the reduction will be performed\n\
+    \    name (str, default to ''): the name of the Function instance in the network\n\
+    \nReturns:\n    cntk.ops.functions.Function:\n    An instance of :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.argmin
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.as_block
+  summary: " Create a new block Function instance which just encapsulates the specified\
+    \ composite Function\n to create a new Function that appears to be a primitive.\
+    \ All the arguments of the composite\n being encapsulated must be Placeholder\
+    \ variables.\n The purpose of block Functions is to enable creation of hierarchical\
+    \ Function graphs\n where details of implementing certain building block operations\
+    \ can be encapsulated away\n such that the actual structure of the block's implementation\
+    \ is not inlined into\n the parent graph where the block is used, and instead\
+    \ the block just appears as an opaque\n primitive. Users still have the ability\
+    \ to peek at the underlying Function graph that implements\n the actual block\
+    \ Function.\n\nArgs:\n    composite: The composite Function that the block encapsulates\n\
+    \    block_arguments_map: A list of tuples, mapping from block's underlying composite's\
+    \ arguments to\n    actual variables they are connected to\n    block_op_name:\
+    \ Name of the op that the block represents\n    block_instance_name (str, optional):\
+    \ the name of the block Function in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.as_block
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.as_composite
+  summary: " Creates a composite Function that has the specified root_function as\
+    \ its root.\n The composite denotes a higher-level Function encapsulating the\
+    \ entire graph\n of Functions underlying the specified rootFunction.\n\nArgs:\n\
+    \    root_function: Root Function, the graph underlying which, the newly created\
+    \ composite encapsulates\n    name (str, optional): the name of the Alias Function\
+    \ in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.as_composite
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.associative_multi_arg
+  summary: "The output of this operation is the result of an operation (`plus`, `log_add_exp`,\
+    \ `element_times`, `element_max`, `element_min`)\nof two or more input tensors.\
+    \ Broadcasting is supported.\n\nExample:\n    >>> C.plus([1, 2, 3], [4, 5, 6]).eval()\n\
+    \    array([ 5.,  7.,  9.], dtype=float32)\n\n    >>> C.element_times([5., 10.,\
+    \ 15., 30.], [2.]).eval()\n    array([ 10.,  20.,  30.,  60.], dtype=float32)\n\
+    \n    >>> C.plus([-5, -4, -3, -2, -1], [10], [3, 2, 3, 2, 3], [-13], [+42], 'multi_arg_example').eval()\n\
+    \    array([ 37.,  37.,  39.,  39.,  41.], dtype=float32)\n\n    >>> C.element_times([5.,\
+    \ 10., 15., 30.], [2.], [1., 2., 1., 2.]).eval()\n    array([  10.,   40.,   30.,\
+    \  120.], dtype=float32)\n\n    >>> a = np.arange(3,dtype=np.float32)\n    >>>\
+    \ np.exp(C.log_add_exp(np.log(1+a), np.log(1+a*a)).eval())\n    array([ 2.,  4.,\
+    \  8.], dtype=float32)\n\nArgs:\n    left: left side tensor\n    right: right\
+    \ side tensor\n    name (str, optional): the name of the Function instance in\
+    \ the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.associative_multi_arg
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.batch_normalization
+  summary: "Normalizes layer outputs for every minibatch for each output (feature)\
+    \ independently\nand applies affine transformation to preserve representation\
+    \ of the layer.\n\nArgs:\n    operand: input of the batch normalization operation\n\
+    \    scale: parameter tensor that holds the learned componentwise-scaling factors\n\
+    \    bias: parameter tensor that holds the learned bias. ``scale`` and ``bias``\
+    \ must have the same\n     dimensions which must be equal to the input dimensions\
+    \ in case of ``spatial`` = False or\n     number of output convolution feature\
+    \ maps in case of ``spatial`` = True\n    running_mean: running mean which is\
+    \ used during evaluation phase and might be used during\n     training as well.\
+    \ You must pass a constant tensor with initial value 0 and the same dimensions\n\
+    \     as ``scale`` and ``bias``\n    running_inv_std: running variance. Represented\
+    \ as ``running_mean``\n    running_count: Denotes the total number of samples\
+    \ that have been used so far to compute \n     the ``running_mean`` and ``running_inv_std``\
+    \ parameters. You must pass a scalar (either rank-0 ``constant(val)``).\n    spatial(bool):\
+    \ flag that indicates whether to compute mean/var for each feature in a minibatch\n\
+    \     independently or, in case of convolutional layers, per future map\n    normalization_time_constant(float,\
+    \ default 5000): time constant for computing running average of\n     mean and\
+    \ variance as a low-pass filtered version of the batch statistics. \n    blend_time_constant(float,\
+    \ default 0): constant for smoothing batch estimates with the running\n     statistics\n\
+    \    epsilon: conditioner constant added to the variance when computing the inverse\
+    \ standard deviation\n    use_cudnn_engine(bool, default True):\n    name (str,\
+    \ optional): the name of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.batch_normalization
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.ceil
+  summary: "The output of this operation is the element wise value rounded to the\
+    \ smallest\ninteger greater than or equal to the input.\n\nExample:\n    >>> C.ceil([0.2,\
+    \ 1.3, 4., 5.5, 0.0]).eval()\n    array([ 1.,  2.,  4.,  6.,  0.], dtype=float32)\n\
+    \n    >>> C.ceil([[0.6, 3.3], [1.9, 5.6]]).eval()\n    array([[ 1.,  4.],\n  \
+    \         [ 2.,  6.]], dtype=float32)\n\nArgs:\n    arg: input tensor\n    name\
+    \ (str, optional): the name of the Function instance in the network (optional)\n\
+    Returns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.ceil
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.clip
+  summary: "Computes a tensor with all of its values clipped to fall\nbetween ``min_value``\
+    \ and ``max_value``, i.e.\n``min(max(x, min_value), max_value)``.\n\nThe output\
+    \ tensor has the same shape as ``x``.\n\nExample:\n    >>> C.clip([1., 2.1, 3.0,\
+    \ 4.1], 2., 4.).eval()\n    array([ 2. ,  2.1,  3. ,  4. ], dtype=float32)\n\n\
+    \    >>> C.clip([-10., -5., 0., 5., 10.], [-5., -4., 0., 3., 5.], [5., 4., 1.,\
+    \ 4., 9.]).eval()\n    array([-5., -4.,  0.,  4.,  9.], dtype=float32)\n\nArgs:\n\
+    \    x: tensor to be clipped\n    min_value (float): a scalar or a tensor which\
+    \ represents the minimum value to clip element\n     values to\n    max_value\
+    \ (float): a scalar or a tensor which represents the maximum value to clip element\n\
+    \     values to\n    name (str, optional): the name of the Function instance in\
+    \ the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.clip
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.combine
+  summary: " Create a new Function instance which just combines the outputs of the\
+    \ specified list of\n 'operands' Functions such that the 'Outputs' of the new\
+    \ 'Function' are union of the\n 'Outputs' of each of the specified 'operands'\
+    \ Functions. E.g., when creating a classification\n model, typically the CrossEntropy\
+    \ loss Function and the ClassificationError Function comprise\n the two roots\
+    \ of the computation graph which can be combined to create a single Function\n\
+    \ with 2 outputs; viz. CrossEntropy loss and ClassificationError output.\n\nExample:\n\
+    \    >>> in1 = C.input((4,))\n    >>> in2 = C.input((4,))\n\n    >>> in1_data\
+    \ = np.asarray([[1., 2., 3., 4.]], np.float32)\n    >>> in2_data = np.asarray([[0.,\
+    \ 5., -3., 2.]], np.float32)\n\n    >>> plus_operation = in1 + in2\n    >>> minus_operation\
+    \ = in1 - in2\n\n    >>> forward = C.combine([plus_operation, minus_operation]).eval({in1:\
+    \ in1_data, in2: in2_data})\n    >>> len(forward)\n    2\n    >>> list(forward.values())\
+    \ # doctest: +SKIP\n    [array([[[ 1., -3.,  6.,  2.]]], dtype=float32),\n   \
+    \  array([[[ 1.,  7.,  0.,  6.]]], dtype=float32)]\n\nArgs:\n    operands (list):\
+    \ list of functions or their variables to combine\n    name (str, optional): the\
+    \ name of the Combine Function in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.combine
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.constant
+  summary: "It creates a constant tensor initialized from a numpy array\n\nExample:\n\
+    \    >>> constant_data = C.constant([[1., 2.], [3., 4.], [5., 6.]])\n    >>> constant_data.value\n\
+    \    array([[ 1.,  2.],\n           [ 3.,  4.],\n           [ 5.,  6.]], dtype=float32)\n\
+    \nArgs:\n    value (scalar or NumPy array, optional): a scalar initial value that\
+    \ would be replicated for\n     every element in the tensor or NumPy array.\n\
+    \     If ``None``, the tensor will be initialized uniformly random.\n    shape\
+    \ (tuple or int, optional): the shape of the input tensor. If not provided, it\
+    \ will\n     be inferred from ``value``.\n    dtype (optional): data type of the\
+    \ constant. If a NumPy array and ``dtype``,\n     are given, then data will be\
+    \ converted if needed. If none given, it will default to ``np.float32``.\n   \
+    \ device (:class:`~cntk.device.DeviceDescriptor`): instance of DeviceDescriptor\n\
+    \    name (str, optional): the name of the Function instance in the network\n\
+    Returns:\n    :class:`~cntk.variables.Constant`\n"
+  type: Method
+  uid: cntk.ops.constant
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.convolution
+  summary: "Computes the convolution of ``convolution_map`` (typically a tensor of\
+    \ learnable parameters) with\n``operand`` (commonly an image or output of a previous\
+    \ convolution/pooling operation).\nThis operation is used in image and language\
+    \ processing applications. It supports arbitrary\ndimensions, strides, sharing,\
+    \ and padding.\n\nThis function operates on input tensors with dimensions :math:`[C\
+    \ \\times M_1 \\times M_2 \\times \\ldots \\times M_n]`. This can be understood\
+    \ as a rank-n\nobject, where each entry consists of a :math:`C`-dimensional vector.\
+    \ For example, an RGB image would have dimensions\n:math:`[3 \\times W \\times\
+    \ H]`, i.e. a :math:`[W \\times H]`-sized structure, where each entry (pixel)\
+    \ consists of a 3-tuple.\n\n`convolution` convolves the input ``operand`` with\
+    \ a :math:`n+2` rank tensor of (typically learnable) filters called\n``convolution_map``\
+    \ of shape :math:`[O \\times I \\times m_1 \\times m_2 \\times \\ldots \\times\
+    \ m_n ]` (typically :math:`m_i \\ll M_i`).\nThe first dimension, :math:`O`, is\
+    \ the nunber of convolution filters (i.e. the number of\nchannels in the output).\
+    \ The second dimension, :math:`I`, must match the number of channels in the input.\n\
+    The last n dimensions are the spatial extent of the filter. I.e. for each output\
+    \ position, a vector of\ndimension :math:`O` is computed. Hence, the total number\
+    \ of filter parameters is :math:`O \\times I \\times m_1 \\times m_2 \\times \\\
+    ldots \\times m_n`\n\n\nExample:\n    >>> img = np.reshape(np.arange(25.0, dtype\
+    \ = np.float32), (1, 5, 5))\n    >>> x = C.input(img.shape)\n    >>> filter =\
+    \ np.reshape(np.array([2, -1, -1, 2], dtype = np.float32), (1, 2, 2))\n    >>>\
+    \ kernel = C.constant(value = filter)\n    >>> np.round(C.convolution(kernel,\
+    \ x, auto_padding = [False]).eval({x: [img]}),5)\n    array([[[[  6.,   8.,  10.,\
+    \  12.],\n              [ 16.,  18.,  20.,  22.],\n              [ 26.,  28.,\
+    \  30.,  32.],\n              [ 36.,  38.,  40.,  42.]]]], dtype=float32)\n  \
+    \  \nArgs:\n    convolution_map: convolution filter weights, stored as a tensor\
+    \ of dimensions :math:`[O \\times I \\times m_1 \\times m_2 \\times \\ldots \\\
+    times m_n]`,\n     where :math:`[m_1 \\times m_2 \\times \\ldots \\times m_n]`\
+    \ must be the kernel dimensions (spatial extent of the filter).\n    operand:\
+    \ convolution input. A tensor with dimensions :math:`[I \\times M_1 \\times M_2\
+    \ \\times \\ldots \\times M_n]`.\n    strides (tuple, optional): stride dimensions.\
+    \ If strides[i] > 1 then only pixel positions that are multiples of strides[i]\
+    \ are computed.\n     For example, a stride of 2 will lead to a halving of that\
+    \ dimension. The first stride dimension that lines up with the number\n     of\
+    \ input channels can be set to any non-zero value.\n    sharing (bool): sharing\
+    \ flags for each input dimension\n    auto_padding (bool): flags for each input\
+    \ dimension whether it should be padded automatically (that is,\n     symmetrically)\
+    \ or not padded at all. Padding means that the convolution kernel is applied to\
+    \ all pixel positions, where all\n     pixels outside the area are assumed zero\
+    \ (\"padded with zeroes\"). Without padding, the kernels are only shifted over\n\
+    \     positions where all inputs to the kernel still fall inside the area. In\
+    \ this case, the output dimension will be less than\n     the input dimension.\
+    \ The last value that lines up with the number of input channels must be false.\n\
+    \    max_temp_mem_size_in_samples (int): maximum amount of auxiliary memory (in\
+    \ samples) that should be reserved to perform convolution\n     operations. Some\
+    \ convolution engines (e.g. cuDNN and GEMM-based engines) can benefit from using\
+    \ workspace as it may improve\n     performance. However, sometimes this may lead\
+    \ to higher memory utilization. Default is 0 which means the same as the input\n\
+    \     samples.\n    name (str, optional): the name of the Function instance in\
+    \ the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.convolution
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.convolution_transpose
+  summary: "Computes the transposed convolution of ``convolution_map`` (typically\
+    \ a tensor of learnable parameters) with\n``operand`` (commonly an image or output\
+    \ of a previous convolution/pooling operation).\nThis is also known as ``fractionally\
+    \ strided convolutional layers``, or, ``deconvolution``. \nThis operation is used\
+    \ in image and language processing applications. It supports arbitrary\ndimensions,\
+    \ strides, sharing, and padding.\n\nThis function operates on input tensors with\
+    \ dimensions :math:`[C \\times M_1 \\times M_2 \\times \\ldots \\times M_n]`.\
+    \ This can be understood as a rank-n\nobject, where each entry consists of a :math:`C`-dimensional\
+    \ vector. For example, an RGB image would have dimensions\n:math:`[3 \\times W\
+    \ \\times H]`, i.e. a :math:`[W \\times H]`-sized structure, where each entry\
+    \ (pixel) consists of a 3-tuple.\n\n`convolution_transpose` convolves the input\
+    \ ``operand`` with a :math:`n+2` rank tensor of (typically learnable) filters\
+    \ called\n``convolution_map`` of shape :math:`[O \\times I \\times m_1 \\times\
+    \ m_2 \\times \\ldots \\times m_n ]` (typically :math:`m_i \\ll M_i`).\nThe first\
+    \ dimension, :math:`O`, is the nunber of convolution filters (i.e. the number\
+    \ of\nchannels in the output). The second dimension, :math:`I`, must match the\
+    \ number of channels in the input.\nThe last n dimensions are the spatial extent\
+    \ of the filter. I.e. for each output position, a vector of\ndimension :math:`O`\
+    \ is computed. Hence, the total number of filter parameters is :math:`O \\times\
+    \ I \\times m_1 \\times m_2 \\times \\ldots \\times m_n`\n\n\nExample:\n    >>>\
+    \ img = np.reshape(np.arange(9.0, dtype = np.float32), (1, 3, 3))\n    >>> x =\
+    \ C.input(img.shape)\n    >>> filter = np.reshape(np.array([2, -1, -1, 2], dtype\
+    \ = np.float32), (1, 2, 2))\n    >>> kernel = C.constant(value = filter)\n   \
+    \ >>> np.round(C.convolution_transpose(kernel, x, auto_padding = [False]).eval({x:\
+    \ [img]}),5)\n    array([[[[  0.,   2.,   3.,  -2.],\n              [  6.,   4.,\
+    \   6.,  -1.],\n              [  9.,  10.,  12.,   2.],\n              [ -6.,\
+    \   5.,   6.,  16.]]]], dtype=float32)\n\nArgs:\n    convolution_map: convolution\
+    \ filter weights, stored as a tensor of dimensions :math:`[O \\times I \\times\
+    \ m_1 \\times m_2 \\times \\ldots \\times m_n]`,\n     where :math:`[m_1 \\times\
+    \ m_2 \\times \\ldots \\times m_n]` must be the kernel dimensions (spatial extent\
+    \ of the filter).\n    operand: convolution input. A tensor with dimensions :math:`[I\
+    \ \\times M_1 \\times M_2 \\times \\ldots \\times M_n]`.\n    strides (tuple,\
+    \ optional): stride dimensions. If strides[i] > 1 then only pixel positions that\
+    \ are multiples of strides[i] are computed.\n     For example, a stride of 2 will\
+    \ lead to a halving of that dimension. The first stride dimension that lines up\
+    \ with the number\n     of input channels can be set to any non-zero value.\n\
+    \    sharing (bool): sharing flags for each input dimension\n    auto_padding\
+    \ (bool): flags for each input dimension whether it should be padded automatically\
+    \ (that is,\n     symmetrically) or not padded at all. Padding means that the\
+    \ convolution kernel is applied to all pixel positions, where all\n     pixels\
+    \ outside the area are assumed zero (\"padded with zeroes\"). Without padding,\
+    \ the kernels are only shifted over\n     positions where all inputs to the kernel\
+    \ still fall inside the area. In this case, the output dimension will be less\
+    \ than\n     the input dimension. The last value that lines up with the number\
+    \ of input channels must be false.\n    output_shape: user expected output shape\
+    \ after convolution transpose. \n    max_temp_mem_size_in_samples (int): maximum\
+    \ amount of auxiliary memory (in samples) that should be reserved to perform convolution\n\
+    \     operations. Some convolution engines (e.g. cuDNN and GEMM-based engines)\
+    \ can benefit from using workspace as it may improve\n     performance. However,\
+    \ sometimes this may lead to higher memory utilization. Default is 0 which means\
+    \ the same as the input\n     samples.\n    name (str, optional): the name of\
+    \ the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.convolution_transpose
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.cos
+  summary: "Computes the element-wise cosine of ``x``:\n\nThe output tensor has the\
+    \ same shape as ``x``.\n\nExample:\n    >>> np.round(C.cos(np.arccos([[1,0.5],[-0.25,-0.75]])).eval(),5)\n\
+    \    array([[ 1.  ,  0.5 ],\n           [-0.25, -0.75]], dtype=float32)\n\nArgs:\n\
+    \    x: numpy array or any :class:`~cntk.ops.functions.Function` that outputs\
+    \ a tensor\n    name (str, optional): the name of the Function instance in the\
+    \ network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.cos
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.dropout
+  summary: "Each element of the input is independently set to 0 with probabily ``dropout_rate``\n\
+    or to 1 / (1 - ``dropout_rate``) times its original value (with probability 1-``dropout_rate``).\n\
+    Dropout is a good way to reduce overfitting.\n\nThis behavior only happens during\
+    \ training. During inference dropout is a no-op.\nIn the paper that introduced\
+    \ dropout it was suggested to scale the weights during inference\nIn CNTK's implementation,\
+    \ because the values that are not set to 0 are multiplied\nwith (1 / (1 - ``dropout_rate``)),\
+    \ this is not necessary.\n\nExample:\n    >>> data = [[10, 20],[30, 40],[50, 60]]\n\
+    \    >>> C.dropout(data, 0.5).eval() # doctest: +SKIP\n    array([[  0.,  40.],\n\
+    \           [  0.,  80.],\n           [  0.,   0.]], dtype=float32)\n\n    >>>\
+    \ C.dropout(data, 0.75).eval() # doctest: +SKIP\n    array([[   0.,    0.],\n\
+    \           [   0.,  160.],\n           [   0.,  240.]], dtype=float32)\n\nArgs:\n\
+    \    x: input tensor\n    dropout_rate (float, [0,1)): probability that an element\
+    \ of ``x`` will be set to zero\n    name (:class:`str`, optional): the name of\
+    \ the Function instance in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.dropout
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.element_divide
+  summary: "The output of this operation is the element-wise division of the two input\n\
+    tensors. It supports broadcasting.\n\nExample:\n    >>> C.element_divide([1.,\
+    \ 1., 1., 1.], [0.5, 0.25, 0.125, 0.]).eval()\n    array([ 2.,  4.,  8.,  0.],\
+    \ dtype=float32)\n\n    >>> C.element_divide([5., 10., 15., 30.], [2.]).eval()\n\
+    \    array([  2.5,   5. ,   7.5,  15. ], dtype=float32)\n\nArgs:\n    left: left\
+    \ side tensor\n    right: right side tensor\n    name (str, optional): the name\
+    \ of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.element_divide
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.element_max
+  summary: "The output of this operation is the element-wise max of the two or more\
+    \ input\ntensors. It supports broadcasting.\n\nArgs:\n    arg1: left side tensor\n\
+    \    arg2: right side tensor\n    *more_args: additional inputs\n    name (str,\
+    \ optional): the name of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.element_max
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.element_min
+  summary: "The output of this operation is the element-wise min of the two or more\
+    \ input\ntensors. It supports broadcasting.\n\nArgs:\n    arg1: left side tensor\n\
+    \    arg2: right side tensor\n    *more_args: additional inputs\n    name (str,\
+    \ optional): the name of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.element_min
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.element_select
+  summary: "return either ``value_if_true`` or ``value_if_false`` based on the value\
+    \ of ``flag``.\nIf ``flag`` != 0 ``value_if_true`` is returned, otherwise ``value_if_false``.\n\
+    Behaves analogously to numpy.where(...).\n\nExample:\n    >>> C.element_select([-10,\
+    \ -1, 0, 0.3, 100], [1, 10, 100, 1000, 10000], [ 2, 20, 200, 2000, 20000]).eval()\n\
+    \    array([     1.,     10.,    200.,   1000.,  10000.], dtype=float32)\n\nArgs:\n\
+    \    flag: condition tensor\n    value_if_true: true branch tensor\n    value_if_false:\
+    \ false branch tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.element_select
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.element_times
+  summary: "The output of this operation is the element-wise product of the two or\
+    \ more input\ntensors. It supports broadcasting.\n\nExample:\n    >>> C.element_times([1.,\
+    \ 1., 1., 1.], [0.5, 0.25, 0.125, 0.]).eval()\n    array([ 0.5  ,  0.25 ,  0.125,\
+    \  0.   ], dtype=float32)\n\n    >>> C.element_times([5., 10., 15., 30.], [2.]).eval()\n\
+    \    array([ 10.,  20.,  30.,  60.], dtype=float32)\n\n    >>> C.element_times([5.,\
+    \ 10., 15., 30.], [2.], [1., 2., 1., 2.]).eval()\n    array([  10.,   40.,   30.,\
+    \  120.], dtype=float32)\n\nArgs:\n    arg1: left side tensor\n    arg2: right\
+    \ side tensor\n    *more_args: additional inputs\n    name (str, optional): the\
+    \ name of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.element_times
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.elu
+  summary: "Exponential linear unit operation. Computes the element-wise exponential\
+    \ linear\nof ``x``: ``max(x, 0)`` for ``x >= 0`` and ``x``: ``exp(x)-1`` otherwise.\n\
+    \nThe output tensor has the same shape as ``x``.\n\nExample:\n    >>> C.elu([[-1,\
+    \ -0.5, 0, 1, 2]]).eval()\n    array([[-0.632121, -0.393469,  0.      ,  1.  \
+    \    ,  2.      ]], dtype=float32)\n\nArgs:\n    x (`numpy.array` or :class:`~cntk.ops.functions.Function`):\
+    \ any :class:`~cntk.ops.functions.Function` that outputs a tensor.\n    name (`str`,\
+    \ default to ''): the name of the Function instance in the network\n\nReturns:\n\
+    \    cntk.ops.functions.Function:\n    An instance of :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.elu
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.equal
+  summary: "Elementwise 'equal' comparison of two tensors. Result is 1 if values are\
+    \ equal 0 otherwise.\n\nExample:\n    >>> C.equal([41., 42., 43.], [42., 42.,\
+    \ 42.]).eval()\n    array([ 0.,  1.,  0.], dtype=float32)\n\n    >>> C.equal([-1,0,1],\
+    \ [1]).eval()\n    array([ 0.,  0.,  1.], dtype=float32)\n\nArgs:\n    left: left\
+    \ side tensor\n    right: right side tensor\n    name (str, optional): the name\
+    \ of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.equal
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.exp
+  summary: "Computes the element-wise exponential of ``x``:\n\n:math:`\\exp(x) = {e^x}`\n\
+    \nExample:\n    >>> C.exp([0., 1.]).eval()\n    array([ 1.      ,  2.718282],\
+    \ dtype=float32)\n\nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function`\
+    \ that outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.exp
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.floor
+  summary: "The output of this operation is the element wise value rounded to the\
+    \ largest\ninteger less than or equal to the input.\n\nExample:\n    >>> C.floor([0.2,\
+    \ 1.3, 4., 5.5, 0.0]).eval()\n    array([ 0.,  1.,  4.,  5.,  0.], dtype=float32)\n\
+    \n    >>> C.floor([[0.6, 3.3], [1.9, 5.6]]).eval()\n    array([[ 0.,  3.],\n \
+    \          [ 1.,  5.]], dtype=float32)\n\n    >>> C.floor([-5.5, -4.2, -3., -0.7,\
+    \ 0]).eval()\n    array([-6., -5., -3., -1.,  0.], dtype=float32)\n\n    >>> C.floor([[-0.6,\
+    \ -4.3], [1.9, -3.2]]).eval()\n    array([[-1., -5.],\n           [ 1., -4.]],\
+    \ dtype=float32)\n\nArgs:\n    arg: input tensor\n    name (str, optional): the\
+    \ name of the Function instance in the network (optional)\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.floor
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.forward_backward
+  summary: "Criterion node for training methods that rely on forward-backward Viterbi-like\
+    \ passes, e.g. Connectionist Temporal Classification (CTC) training\nThe node\
+    \ takes as the input the graph of labels, produced by the labels_to_graph operation\
+    \ that determines the exact forward/backward procedure. \nExample:\n    graph\
+    \ = cntk.labels_to_graph(labels)\n    networkOut = model(features)\n    fb = C.forward_backward(graph,\
+    \ networkOut, 132)\n\nArgs:\n    graph: labels graph\n    features: network output\n\
+    \    blankTokenId: id of the CTC blank label\n    delayConstraint: label output\
+    \ delay constraint introduced during training that allows to have shorter delay\
+    \ during inference. This is using the original time information to enforce that\
+    \ CTC tokens only get aligned within a time margin. Setting this parameter smaller\
+    \ will result in shorted delay between label output during decoding, yet may hurt\
+    \ accuracy. delayConstraint=-1 means no constraint\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.forward_backward
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.future_value
+  summary: "This function returns the future value w.r.t. ``x``. It is most often\
+    \ used when\ncreating RNNs. The resulting tensor has the same shape as the input\
+    \ but is\nthe next logical sample. The ``time_step`` parameter is the number of\
+    \ steps\nto look into the future and is 1 by default. If there is no future value\
+    \ (i.e.\nthe current sample is the last one in the tensor) then the ``initial_state``\n\
+    value is returned.\n\nThe initial state can be a constant (scalar or tensor),\
+    \ a learnable tensor\nor input data (which has a batch dimension, as needed for\
+    \ sequence-to-sequence models).\n\nExample:\n    >>> x = C.sequence.input(shape=(3,2))\n\
+    \    >>> # Create one sequence with 4 tensors of shape (3, 2)\n    >>> x0 = np.reshape(np.arange(24,dtype=np.float32),(1,4,3,2))\n\
+    \    >>> y = C.future_value(x) # using initial state of 0 by default\n    >>>\
+    \ y.eval({x:x0})\n    [array([[[  6.,   7.],\n             [  8.,   9.],\n   \
+    \          [ 10.,  11.]],\n    <BLANKLINE>\n            [[ 12.,  13.],\n     \
+    \        [ 14.,  15.],\n             [ 16.,  17.]],\n    <BLANKLINE>\n       \
+    \     [[ 18.,  19.],\n             [ 20.,  21.],\n             [ 22.,  23.]],\n\
+    \    <BLANKLINE>\n            [[  0.,   0.],\n             [  0.,   0.],\n   \
+    \          [  0.,   0.]]], dtype=float32)]\n\nArgs:\n    x: the tensor (or its\
+    \ name) from which the future value is obtained.\n    initial_state: tensor or\
+    \ scalar representing the initial value to be used when the input tensor is shifted\
+    \ in time.\n    time_step (int): the number of time steps to look into the future\
+    \ (default 1)\n    name (str, optional): the name of the Function instance in\
+    \ the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.future_value
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.greater
+  summary: "Elementwise 'greater' comparison of two tensors. Result is 1 if left >\
+    \ right else 0.\n\nExample:\n    >>> C.greater([41., 42., 43.], [42., 42., 42.]).eval()\n\
+    \    array([ 0.,  0.,  1.], dtype=float32)\n\n    >>> C.greater([-1,0,1], [0]).eval()\n\
+    \    array([ 0.,  0.,  1.], dtype=float32)\n\nArgs:\n    left: left side tensor\n\
+    \    right: right side tensor\n    name (str, optional): the name of the Function\
+    \ instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.greater
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.greater_equal
+  summary: "Elementwise 'greater equal' comparison of two tensors. Result is 1 if\
+    \ left >= right else 0.\n\nExample:\n    >>> C.greater_equal([41., 42., 43.],\
+    \ [42., 42., 42.]).eval()\n    array([ 0.,  1.,  1.], dtype=float32)\n\n    >>>\
+    \ C.greater_equal([-1,0,1], [0]).eval()\n    array([ 0.,  1.,  1.], dtype=float32)\n\
+    \nArgs:\n    left: left side tensor\n    right: right side tensor\n    name (str,\
+    \ optional): the name of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.greater_equal
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.hardmax
+  summary: "Creates a tensor with the same shape as the input tensor, with zeros everywhere\
+    \ and a 1.0 where the\nmaximum value of the input tensor is located. If the maximum\
+    \ value is repeated, 1.0 is placed in the first location found.\n\nExample:\n\
+    \    >>> C.hardmax([1., 1., 2., 3.]).eval()\n    array([ 0.,  0.,  0.,  1.], dtype=float32)\n\
+    \n    >>> C.hardmax([1., 3., 2., 3.]).eval()\n    array([ 0.,  1.,  0.,  0.],\
+    \ dtype=float32)\n\nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function`\
+    \ that outputs a tensor\n    name (str): the name of the Function instance in\
+    \ the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.hardmax
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.input
+  summary: "It creates an input in the network: a place where data,\nsuch as features\
+    \ and labels, should be provided.\n\nArgs:\n    shape (tuple or int): the shape\
+    \ of the input tensor\n    dtype (np.float32 or np.float64): data type. Default\
+    \ is np.float32.\n    needs_gradients (bool, optional): whether to back-propagates\
+    \ to it or not. False by default.\n    is_sparse (bool, optional): whether the\
+    \ variable is sparse (`False` by default)\n    dynamic_axes (list or tuple, default):\
+    \ a list of dynamic axis (e.g., batch axis, sequence axis)\n    name (str, optional):\
+    \ the name of the Function instance in the network\n\nReturns:\n    :class:`~cntk.variables.Variable`\n"
+  type: Method
+  uid: cntk.ops.input
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.input_variable
+  summary: "DEPRECATED.\n\nIt creates an input in the network: a place where data,\n\
+    such as features and labels, should be provided.\n\nArgs:\n    shape (tuple or\
+    \ int): the shape of the input tensor\n    dtype (np.float32 or np.float64): data\
+    \ type. Default is np.float32.\n    needs_gradients (bool, optional): whether\
+    \ to back-propagates to it or not. False by default.\n    is_sparse (bool, optional):\
+    \ whether the variable is sparse (`False` by default)\n    dynamic_axes (list\
+    \ or tuple, default): a list of dynamic axis (e.g., batch axis, time axis)\n \
+    \   name (str, optional): the name of the Function instance in the network\n\n\
+    Returns:\n    :class:`~cntk.ops.variables.Variable`\n"
+  type: Method
+  uid: cntk.ops.input_variable
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.labels_to_graph
+  summary: "Conversion node from labels to graph. Typically used as an input to ForwardBackward\
+    \ node. \nThis node's objective is to transform input labels into a graph representing\
+    \ exact forward-backward criterion.\nExample:\n    num_classes = 2\n    labels\
+    \ = cntk.input((num_classes))\n    graph = cntk.labels_to_graph(labels)\n\nArgs:\n\
+    \    labels: input training labels\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.labels_to_graph
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.leaky_relu
+  summary: "Leaky Rectified linear operation. Computes the element-wise leaky rectified\
+    \ linear\nof ``x``: ``max(x, 0)`` for ``x >= 0`` and ``x``: ``0.01*x`` otherwise.\n\
+    \nThe output tensor has the same shape as ``x``.\n\nExample:\n    >>> C.leaky_relu([[-1,\
+    \ -0.5, 0, 1, 2]]).eval()\n    array([[-0.01 , -0.005,  0.   ,  1.   ,  2.   ]],\
+    \ dtype=float32)\n\nArgs:\n    x (`numpy.array` or :class:`~cntk.ops.functions.Function`):\
+    \ any :class:`~cntk.ops.functions.Function` that outputs a tensor.\n    name (`str`,\
+    \ default to ''): the name of the Function instance in the network\n\nReturns:\n\
+    \    cntk.ops.functions.Function:\n    An instance of :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.leaky_relu
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.less
+  summary: "Elementwise 'less' comparison of two tensors. Result is 1 if left < right\
+    \ else 0.\n\nExample:\n   >>> C.less([41., 42., 43.], [42., 42., 42.]).eval()\n\
+    \   array([ 1.,  0.,  0.], dtype=float32)\n\n   >>> C.less([-1,0,1], [0]).eval()\n\
+    \   array([ 1.,  0.,  0.], dtype=float32)\n\nArgs:\n    left: left side tensor\n\
+    \    right: right side tensor\n    name (str, optional): the name of the Function\
+    \ instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.less
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.less_equal
+  summary: "Elementwise 'less equal' comparison of two tensors. Result is 1 if left\
+    \ <= right else 0.\n\nExample:\n    >>> C.less_equal([41., 42., 43.], [42., 42.,\
+    \ 42.]).eval()\n    array([ 1.,  1.,  0.], dtype=float32)\n\n    >>> C.less_equal([-1,0,1],\
+    \ [0]).eval()\n    array([ 1.,  1.,  0.], dtype=float32)\n\nArgs:\n    left: left\
+    \ side tensor\n    right: right side tensor\n    name (str, optional): the name\
+    \ of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.less_equal
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.log
+  summary: "Computes the element-wise the natural logarithm of ``x``:\n\nExample:\n\
+    \    >>> C.log([1., 2.]).eval()\n    array([ 0.      ,  0.693147], dtype=float32)\n\
+    \nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function` that\
+    \ outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n\nNote:\n\
+    \    CNTK returns -85.1 for log(x) if ``x`` is negative or zero. The reason is\
+    \ that\n    it uses 1e-37 (whose natural logarithm is -85.1) as the smallest float\n\
+    \    number for `log`, because this is the only guaranteed precision across\n\
+    \    platforms. This will be changed to return `NaN` and `-inf`.\n"
+  type: Method
+  uid: cntk.ops.log
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.log_add_exp
+  summary: "Calculates the log of the sum of the exponentials\nof the two or more\
+    \ input tensors. It supports broadcasting.\n\nExample:\n    >>> a = np.arange(3,dtype=np.float32)\n\
+    \    >>> np.exp(C.log_add_exp(np.log(1+a), np.log(1+a*a)).eval())\n    array([\
+    \ 2.,  4.,  8.], dtype=float32)\n    >>> np.exp(C.log_add_exp(np.log(1+a), [0.]).eval())\n\
+    \    array([ 2.,  3.,  4.], dtype=float32)\n\nArgs:\n    arg1: left side tensor\n\
+    \    arg2: right side tensor\n    *more_args: additional inputs\n    name (str,\
+    \ optional): the name of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.log_add_exp
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.minus
+  summary: "The output of this operation is left minus right tensor. It supports broadcasting.\n\
+    \nExample:\n    >>> C.minus([1, 2, 3], [4, 5, 6]).eval()\n    array([-3., -3.,\
+    \ -3.], dtype=float32)\n\n    >>> C.minus([[1,2],[3,4]], 1).eval()\n    array([[\
+    \ 0.,  1.],\n           [ 2.,  3.]], dtype=float32)\n\nArgs:\n    left: left side\
+    \ tensor\n    right: right side tensor\n    name (str, optional): the name of\
+    \ the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.minus
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.negate
+  summary: "Computes the element-wise negation of ``x``:\n\n:math:`negate(x) = -x`\n\
+    \nExample:\n    >>> C.negate([-1, 1, -2, 3]).eval()\n    array([ 1., -1.,  2.,\
+    \ -3.], dtype=float32)\n\nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function`\
+    \ that outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.negate
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.not_equal
+  summary: "Elementwise 'not equal' comparison of two tensors. Result is 1 if left\
+    \ != right else 0.\n\nExample:\n    >>> C.not_equal([41., 42., 43.], [42., 42.,\
+    \ 42.]).eval()\n    array([ 1.,  0.,  1.], dtype=float32)\n\n    >>> C.not_equal([-1,0,1],\
+    \ [0]).eval()\n    array([ 1.,  0.,  1.], dtype=float32)\n\nArgs:\n    left: left\
+    \ side tensor\n    right: right side tensor\n    name (str, optional): the name\
+    \ of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.not_equal
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.one_hot
+  summary: "Create one hot tensor based on the input tensor\n\nExample:\n    >>> data\
+    \ = np.asarray([[[1, 2],\n    ...                     [4, 5]]], dtype=np.float32)\n\
+    \n    >>> x = C.input_variable((2,))\n    >>> C.one_hot(x, 6, False).eval({x:data})\n\
+    \    [array([[[ 0.,  1.,  0.,  0.,  0.,  0.],\n             [ 0.,  0.,  1.,  0.,\
+    \  0.,  0.]],\n    <BLANKLINE>\n            [[ 0.,  0.,  0.,  0.,  1.,  0.],\n\
+    \             [ 0.,  0.,  0.,  0.,  0.,  1.]]], dtype=float32)]\n\nArgs:\n   \
+    \ x: input tensor, the value must be positive integer and less than num_class\n\
+    \    num_classes: the number of class in one hot tensor\n    sparse_output: if\
+    \ set as True, we will create the one hot tensor as sparse.\n            axis:\
+    \ The axis to fill (default: -1, a new inner-most axis).\n    name (str, optional,\
+    \ keyword only): the name of the Function instance in the network\n\nReturns:\n\
+    \    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.one_hot
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.optimized_rnnstack
+  summary: "An RNN implementation that uses the primitives in cuDNN.\nIf cuDNN is\
+    \ not available it fails.\n\nArgs:\n    operand: input of the optimized RNN stack.\n\
+    \    weights: parameter tensor that holds the learned weights.\n    hidden_size\
+    \ (int): number of hidden units in each layer (and in each direction).\n    num_layers\
+    \ (int): number of layers in the stack.\n    bidirectional(bool, default False):\
+    \ whether each layer should compute both in forward\n     and separately in backward\
+    \ mode and concatenate the results\n     (if True the output is twice the hidden_size).\
+    \ The default is\n     False which means the recurrence is only computed in the\
+    \ forward direction.\n    recurrent_op (str, optional): one of 'lstm', 'gru',\
+    \ 'relu', or 'tanh'.\n    name (str, optional): the name of the Function instance\
+    \ in the network\n\nExample:\n    >>> from _cntk_py import InferredDimension,\
+    \ constant_initializer\n    >>> W = C.parameter((InferredDimension,4), constant_initializer(0.1))\n\
+    \    >>> x = C.input(shape=(4,))\n    >>> s = np.reshape(np.arange(20.0, dtype=np.float32),\
+    \ (5,4))\n    >>> t = np.reshape(np.arange(12.0, dtype=np.float32), (3,4))\n \
+    \   >>> f = C.optimized_rnnstack(x, W, 8, 2) # doctest: +SKIP\n    >>> r = f.eval({x:[s,t]})\
+    \                # doctest: +SKIP\n    >>> len(r)                            \
+    \   # doctest: +SKIP\n    2\n    >>> print(*r[0].shape)                   # doctest:\
+    \ +SKIP\n    5 8\n    >>> print(*r[1].shape)                   # doctest: +SKIP\n\
+    \    3 8\n    >>> r[0][:3,:]-r[1]                      # doctest: +SKIP\n    array([[\
+    \ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],\n           [ 0.,  0.,  0.,  0.,  0.,\
+    \  0.,  0.,  0.],\n           [ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.]], dtype=float32)\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.optimized_rnnstack
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.output_variable
+  summary: "It creates an output variable that is used to define a user defined function.\n\
+    \nArgs:\n    shape (tuple or int): the shape of the input tensor\n    dtype (np.float32\
+    \ or np.float64): data type\n    dynamic_axes (list or tuple): a list of dynamic\
+    \ axis (e.g., batch axis, time axis)\n    name (str, optional): the name of the\
+    \ Function instance in the network\n\nReturns:\n    :class:`~cntk.variables.Variable`\
+    \ that is of output type\n"
+  type: Method
+  uid: cntk.ops.output_variable
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.param_relu
+  summary: "Parametric rectified linear operation. Computes the element-wise parameteric\
+    \ rectified linear\nof ``x``: ``max(x, 0)`` for ``x >= 0`` and ``x``: ``alpha*x``\
+    \ otherwise.\n\nThe output tensor has the same shape as ``x``.\n\nExample:\n \
+    \   >>> alpha = C.constant(value=[[0.5, 0.5, 0.5, 0.5, 0.5]])\n    >>> C.param_relu(alpha,\
+    \ [[-1, -0.5, 0, 1, 2]]).eval()\n    array([[-0.5 , -0.25,  0.  ,  1.  ,  2. \
+    \ ]], dtype=float32)\n\nArgs:\n    alpha (:class:`~cntk.variables.Parameter`):\
+    \ same shape as x\n    x (`numpy.array` or :class:`~cntk.ops.functions.Function`):\
+    \ any :class:`~cntk.ops.functions.Function` that outputs a tensor.\n    name (`str`,\
+    \ default to ''): the name of the Function instance in the network\n\nReturns:\n\
+    \    cntk.ops.functions.Function:\n    An instance of :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.param_relu
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.parameter
+  summary: "It creates a parameter tensor.\n\nExample:\n    >>> init_parameter = C.parameter(shape=(3,4),\
+    \ init=2)\n    >>> np.asarray(init_parameter) # doctest: +SKIP\n    array([[ 2.,\
+    \  2.,  2.,  2.],\n           [ 2.,  2.,  2.,  2.],\n           [ 2.,  2.,  2.,\
+    \  2.]], dtype=float32)\n\nArgs:\n    shape (tuple or int, optional): the shape\
+    \ of the input tensor. If not provided, it\n     will be inferred from ``value``.\n\
+    \    init (scalar or NumPy array or initializer): if init is a scalar\n     it\
+    \ will be replicated for every element in the tensor or\n     NumPy array. If\
+    \ it is the output of an initializer form\n     :mod:`cntk.initializer` it will\
+    \ be used to initialize the tensor at\n     the first forward pass. If `None`,\
+    \ the tensor will be initialized\n     with 0.\n    dtype (optional): data type\
+    \ of the constant. If a NumPy array and ``dtype``,\n     are given, then data\
+    \ will be converted if needed. If none given, it will default to ``np.float32``.\n\
+    \    device (:class:`~cntk.device.DeviceDescriptor`): instance of DeviceDescriptor\n\
+    \    name (str, optional): the name of the Parameter instance in the network\n\
+    \nReturns:\n    :class:`~cntk.variables.Parameter`\n"
+  type: Method
+  uid: cntk.ops.parameter
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.past_value
+  summary: "This function returns the past value w.r.t. ``x``. It is most often used\
+    \ when\ncreating RNNs. The resulting tensor has the same shape as the input but\
+    \ is\nthe previous logical sample. The ``time_step`` parameter is the number of\
+    \ steps\nto look into the past and is 1 by default. If there is no past value\
+    \ (i.e.\nthe current sample is the first one in the tensor)  then the ``initial_state``\n\
+    value is returned.\n\nThe initial state can be a constant (scalar or tensor),\
+    \ a learnable tensor\nor input data (which has a batch dimension, as needed for\
+    \ sequence-to-sequence models).\n\nExample:\n    >>> # create example input: one\
+    \ sequence with 4 tensors of shape (3, 2)\n    >>> from cntk.layers.typing import\
+    \ Tensor, Sequence\n    >>> x = input(**Sequence[Tensor[3,2]])\n    >>> x0 = np.reshape(np.arange(24,dtype=np.float32),(1,4,3,2))\n\
+    \    >>> x0\n    array([[[[  0.,   1.],\n             [  2.,   3.],\n        \
+    \     [  4.,   5.]],\n    <BLANKLINE>\n            [[  6.,   7.],\n          \
+    \   [  8.,   9.],\n             [ 10.,  11.]],\n    <BLANKLINE>\n            [[\
+    \ 12.,  13.],\n             [ 14.,  15.],\n             [ 16.,  17.]],\n    <BLANKLINE>\n\
+    \            [[ 18.,  19.],\n             [ 20.,  21.],\n             [ 22., \
+    \ 23.]]]], dtype=float32)\n\n    >>> # this demonstrates how past_value shifts\
+    \ the sequence by one, padding with initial_state\n    >>> y = C.past_value(x)\
+    \ # initial_state is 0 by default\n    >>> y.eval({x:x0})\n    [array([[[  0.,\
+    \   0.],\n             [  0.,   0.],\n             [  0.,   0.]],\n    <BLANKLINE>\n\
+    \            [[  0.,   1.],\n             [  2.,   3.],\n             [  4., \
+    \  5.]],\n    <BLANKLINE>\n            [[  6.,   7.],\n             [  8.,   9.],\n\
+    \             [ 10.,  11.]],\n    <BLANKLINE>\n            [[ 12.,  13.],\n  \
+    \           [ 14.,  15.],\n             [ 16.,  17.]]], dtype=float32)]\n\n  \
+    \  >>> # here, we pass a the initial_state as input data (e.g. sequence-to-sequence)\n\
+    \    >>> s = input(**Tensor[3,2])  # not a Sequence[], e.g. a final encoder hidden\
+    \ state\n    >>> s0 = np.reshape(np.arange(6,dtype=np.float32)/2,(1,1,3,2))\n\
+    \    >>> s0\n    array([[[[ 0. ,  0.5],\n             [ 1. ,  1.5],\n        \
+    \     [ 2. ,  2.5]]]], dtype=float32)\n    >>> y = C.past_value(x, initial_state=s)\n\
+    \    >>> y.eval({x:x0, s:s0}) # same as the previous example except for the first\
+    \ time step\n    [array([[[  0. ,   0.5],\n             [  1. ,   1.5],\n    \
+    \         [  2. ,   2.5]],\n    <BLANKLINE>\n            [[  0. ,   1. ],\n  \
+    \           [  2. ,   3. ],\n             [  4. ,   5. ]],\n    <BLANKLINE>\n\
+    \            [[  6. ,   7. ],\n             [  8. ,   9. ],\n             [ 10.\
+    \ ,  11. ]],\n    <BLANKLINE>\n            [[ 12. ,  13. ],\n             [ 14.\
+    \ ,  15. ],\n             [ 16. ,  17. ]]], dtype=float32)]\n\nArgs:\n    x: the\
+    \ tensor (or its name) from which the past value is obtained\n    initial_state:\
+    \ tensor or scalar representing the initial value to be used when the input tensor\
+    \ is shifted in time.\n    time_step (int): the number of time steps to look into\
+    \ the past (default 1)\n    name (str, optional): the name of the Function instance\
+    \ in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.past_value
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.per_dim_mean_variance_normalize
+  summary: "Computes per dimension mean-variance normalization of the specified input\
+    \ operand.\n\nArgs:\n    operand: the variable to be normalized\n    mean (NumPy\
+    \ array): per dimension mean to use for the normalization\n    inv_stddev (NumPy\
+    \ array): per dimension standard deviation to use for the normalization\n    name\
+    \ (str, optional): the name of the Function instance in the network\nReturns:\n\
+    \    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.per_dim_mean_variance_normalize
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.placeholder
+  summary: "It creates a placeholder variable that has to be later bound to an actual\
+    \ variable.\nA common use of this is to serve as a placeholder for a later output\
+    \ variable in a\nrecurrent network, which is replaced with the actual output variable\
+    \ by calling\nreplace_placeholder(s).\n\nArgs:\n    shape (tuple or int): the\
+    \ shape of the variable tensor\n    dynamic_axes (list): the list of dynamic axes\
+    \ that the actual variable uses\n    name (str, optional): the name of the placeholder\
+    \ variable in the network\n\nReturns:\n    :class:`~cntk.variables.Variable`\n"
+  type: Method
+  uid: cntk.ops.placeholder
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.placeholder_variable
+  summary: "DEPRECATED.\n\nIt creates a placeholder variable for recurrence networks,\
+    \ when the network's dynamic axes\nare unfolded, the place holder will get assigned\
+    \ a variable along the correspondent dynamic axis.\n\nArgs:\n    shape (tuple\
+    \ or int): the shape of the variable tensor\n    dynamic_axes (list): the list\
+    \ of dynamic axes that the actual variable uses\n    name (str, optional): the\
+    \ name of the placeholder variable in the network\n\nReturns:\n    :class:`~cntk.ops.variables.Variable`\n"
+  type: Method
+  uid: cntk.ops.placeholder_variable
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.plus
+  summary: "The output of this operation is the sum of the two or more input tensors.\
+    \ It supports broadcasting.\n\nExample:\n    >>> C.plus([1, 2, 3], [4, 5, 6]).eval()\n\
+    \    array([ 5.,  7.,  9.], dtype=float32)\n\n    >>> C.plus([-5, -4, -3, -2,\
+    \ -1], [10]).eval()\n    array([ 5.,  6.,  7.,  8.,  9.], dtype=float32)\n\n \
+    \   >>> C.plus([-5, -4, -3, -2, -1], [10], [3, 2, 3, 2, 3], [-13], [+42], 'multi_arg_example').eval()\n\
+    \    array([ 37.,  37.,  39.,  39.,  41.], dtype=float32)\n\n    >>> C.plus([-5,\
+    \ -4, -3, -2, -1], [10], [3, 2, 3, 2, 3]).eval()\n    array([  8.,   8.,  10.,\
+    \  10.,  12.], dtype=float32)\n\nArgs:\n    arg1: left side tensor\n    arg2:\
+    \ right side tensor\n    *more_args: additional inputs\n    name (str, optional):\
+    \ the name of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.plus
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.pooling
+  summary: "The pooling operations compute a new tensor by selecting the maximum or\
+    \ average value in the pooling input.\nIn the case of average pooling with padding,\
+    \ the average is only over the valid region.\n\nN-dimensional pooling allows to\
+    \ create max or average pooling of any dimensions, stride or padding.\n\nExample:\n\
+    \    >>> img = np.reshape(np.arange(16, dtype = np.float32), [1, 4, 4])\n    >>>\
+    \ x = C.input(img.shape)\n    >>> C.pooling(x, C.AVG_POOLING, (2,2), (2,2)).eval({x\
+    \ : [img]})\n    array([[[[  2.5,   4.5],\n              [ 10.5,  12.5]]]], dtype=float32)\n\
+    \    >>> C.pooling(x, C.MAX_POOLING, (2,2), (2,2)).eval({x : [img]})\n    array([[[[\
+    \  5.,   7.],\n              [ 13.,  15.]]]], dtype=float32)\n\nArgs:\n    operand:\
+    \ pooling input\n    pooling_type: one of :const:`~cntk.ops.MAX_POOLING` or :const:`~cntk.ops.AVG_POOLING`\n\
+    \    pooling_window_shape: dimensions of the pooling window\n    strides (default\
+    \ 1): strides.\n    auto_padding (default [False,]): automatic padding flags for\
+    \ each input dimension.\n    ceil_out_dim (default False): ceiling while computing\
+    \ output size\n    include_pad(default False): include pad while average pooling\n\
+    \    name (str, optional): the name of the Function instance in the network\n\
+    Returns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.pooling
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.random_sample
+  summary: "Estimates inclusion frequencies for random sampling with or without\n\
+    replacement.\n\nThe output value is a set of num_samples random samples represented\n\
+    by a (sparse) matrix of shape [num_samples x len(weights)],\nwhere len(weights)\
+    \ is the number of classes (categories) to choose\nfrom. The output has no dynamic\
+    \ axis.\nThe samples are drawn according to the weight vector p(i) =\nweights[i]\
+    \ / sum(weights)\nWe get one set of samples per minibatch.\nIntended use cases\
+    \ are e.g. sampled softmax, noise contrastive\nestimation etc.\n\nArgs:\n    weights:\
+    \ input vector of sampling weights which should be\n        non-negative numbers.\n\
+    \    num_samples (int): number of expected samples\n    allow_duplicates (bool):\
+    \ If sampling is done\n        with replacement (`True`) or without (`False`).\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n\n"
+  type: Method
+  uid: cntk.ops.random_sample
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.random_sample_inclusion_frequency
+  summary: "For weighted sampling with the specifed sample size (`num_samples`)\n\
+    this operation computes the expected number of occurences of each class\nin the\
+    \ the sampled set. In case of sampling without replacement\nthe result is only\
+    \ an estimate which might be quite rough in the\ncase of small sample sizes.\n\
+    Intended uses are e.g. sampled softmax, noise contrastive \nestimation etc.\n\
+    This operation will be typically used together \nwith :func:`random_sample`.\n\
+    \nArgs:\n    weights: input vector of sampling weights which should be \n    \
+    \ non-negative numbers. \n    num_samples (int): number of expected samples\n\
+    \    allow_duplicates (bool): If sampling is done\n     with replacement (`True`)\
+    \ or without (`False`).\n\nExample:\n    >>> import numpy as np\n    >>> from\
+    \ cntk import *\n    >>> # weight vector with 100 '1000'-values followed \n  \
+    \  >>> # by 100 '1' values\n    >>> w1 = np.full((100),1000, dtype = np.float)\n\
+    \    >>> w2 = np.full((100),1, dtype = np.float)\n    >>> w = np.concatenate((w1,\
+    \ w2))\n    >>> f = random_sample_inclusion_frequency(w, 150, True).eval()\n \
+    \   >>> f[0]\n    1.4985015\n    >>> f[1]\n    1.4985015\n    >>> f[110]\n   \
+    \ 0.0014985015\n    >>> # when switching to sampling without duplicates samples\
+    \ are\n    >>> # forced to pick the low weight classes too\n    >>> f = random_sample_inclusion_frequency(w,\
+    \ 150, False).eval()\n    >>> f[0]\n    1.0\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.random_sample_inclusion_frequency
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.reciprocal
+  summary: "Computes the element-wise reciprocal of ``x``:\n\nExample:\n    >>> C.reciprocal([-1/3,\
+    \ 1/5, -2, 3]).eval()\n    array([-3.      ,  5.      , -0.5     ,  0.333333],\
+    \ dtype=float32)\n\nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function`\
+    \ that outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.reciprocal
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.reduce_log_sum_exp
+  summary: "Computes the log of the sum of the exponentiations of the input tensor's\n\
+    elements across the specified axis.\n\nExample:\n    >>> x = C.input(shape=(3,2))\n\
+    \    >>> val = np.reshape(np.arange(6.0, dtype=np.float32), (3,2))\n    >>> lse\
+    \ = C.reduce_log_sum_exp(x)\n    >>> lse.eval({x:[val]})\n    array([ 5.456193],\
+    \ dtype=float32)\n    >>> np.log(np.sum(np.exp(val)))\n    5.4561934\n\nArgs:\n\
+    \    x: input tensor\n    axis (int or :class:`~cntk.axis.Axis`): axis along which\
+    \ the reduction will be performed\n    name (str): the name of the Function instance\
+    \ in the network\n\nSee also:\n    :func:`~cntk.ops.reduce_sum` for more details\
+    \ and examples.\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.reduce_log_sum_exp
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.reduce_max
+  summary: "Computes the max of the input tensor's elements across the specified axis.\n\
+    \nExample:\n    >>> # create 3x2 matrix in a sequence of length 1 in a batch of\
+    \ one sample\n    >>> data = [[10, 20],[30, 40],[50, 60]]\n\n    >>> C.reduce_max(data,\
+    \ 0).eval()\n    array([[ 50.,  60.]], dtype=float32)\n\n    >>> C.reduce_max(data,\
+    \ 1).eval()\n    array([[ 20.],\n           [ 40.],\n           [ 60.]], dtype=float32)\n\
+    \nArgs:\n    x: input tensor\n    axis (int or :class:`~cntk.axis.Axis`): axis\
+    \ along which the reduction will be performed\n    name (str): the name of the\
+    \ Function instance in the network\n\nSee also:\n    :func:`~cntk.ops.reduce_sum`\
+    \ for more details and examples.\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.reduce_max
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.reduce_mean
+  summary: "Computes the mean of the input tensor's elements across the specified\
+    \ axis.\n\nExample:\n    >>> # create 3x2 matrix in a sequence of length 1 in\
+    \ a batch of one sample\n    >>> data = [[5, 20],[30, 40],[55, 60]]\n\n    >>>\
+    \ C.reduce_mean(data, 0).eval()\n    array([[ 30.,  40.]], dtype=float32)\n\n\
+    \    >>> C.reduce_mean(data, 1).eval()\n    array([[ 12.5],\n           [ 35.\
+    \ ],\n           [ 57.5]], dtype=float32)\n\nArgs:\n    x: input tensor\n    axis\
+    \ (int or :class:`~cntk.axis.Axis`): axis along which the reduction will be performed\n\
+    \    name (str, optional): the name of the Function instance in the network\n\n\
+    See also:\n    :func:`~cntk.ops.reduce_sum` for more details and examples.\n\n\
+    Returns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.reduce_mean
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.reduce_min
+  summary: "Computes the min of the input tensor's elements across the specified axis.\n\
+    \nExample:\n    >>> # create 3x2 matrix in a sequence of length 1 in a batch of\
+    \ one sample\n    >>> data = [[10, 20],[30, 40],[50, 60]]\n\n    >>> C.reduce_min(data,\
+    \ 0).eval()\n    array([[ 10.,  20.]], dtype=float32)\n\n    >>> C.reduce_min(data,\
+    \ 1).eval()\n    array([[ 10.],\n           [ 30.],\n           [ 50.]], dtype=float32)\n\
+    \nArgs:\n    x: input tensor\n    axis (int or :class:`~cntk.axis.Axis`): axis\
+    \ along which the reduction will be performed\n    name (str): the name of the\
+    \ Function instance in the network\n\nSee also:\n    :func:`~cntk.ops.reduce_sum`\
+    \ for more details and examples.\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.reduce_min
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.reduce_prod
+  summary: "Computes the min of the input tensor's elements across the specified axis.\n\
+    \nExample:\n    >>> # create 3x2 matrix in a sequence of length 1 in a batch of\
+    \ one sample\n    >>> data = [[1, 2],[3, 4],[5, 6]]\n\n    >>> C.reduce_prod(data,\
+    \ 0).eval()\n    array([[ 15.,  48.]], dtype=float32)\n\n    >>> C.reduce_prod(data,\
+    \ 1).eval()\n    array([[  2.],\n           [ 12.],\n           [ 30.]], dtype=float32)\n\
+    \nArgs:\n    x: input tensor\n    axis (int or :class:`~cntk.axis.Axis`): axis\
+    \ along which the reduction will be performed\n    name (str): the name of the\
+    \ Function instance in the network\n\nSee also:\n    :func:`~cntk.ops.reduce_sum`\
+    \ for more details and examples.\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.reduce_prod
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.reduce_sum
+  summary: "Computes the sum of the input tensor's elements across one axis. If the\
+    \ axis parameter\nis not specified then the sum will be computed over all static\
+    \ axes, which is \nequivalent with specifying ``axis=Axis.all_static_axes()``.\
+    \ If \n``axis=Axis.all_axes()``, the output is a scalar which is the sum of all\
+    \ the \nelements in the minibatch.\n\nExample:\n    >>> x = C.sequence.input((2,2))\n\
+    \    >>> # create a batch of 2 sequences each containing 2 2x2 matrices \n   \
+    \ >>> x0 = np.arange(16,dtype=np.float32).reshape(2,2,2,2)\n    >>> # reduce over\
+    \ all static axes\n    >>> C.reduce_mean(x).eval({x:x0})\n    [array([  1.5, \
+    \  5.5], dtype=float32),\n     array([  9.5,  13.5], dtype=float32)]\n    >>>\
+    \ # reduce over specified axes\n    >>> C.reduce_mean(x,axis=0).eval({x:x0})\n\
+    \    [array([[[  1.,   2.]],\n    <BLANKLINE>\n            [[  5.,   6.]]], dtype=float32),\n\
+    \    <BLANKLINE>\n    <BLANKLINE>\n     array([[[  9.,  10.]],\n    <BLANKLINE>\n\
+    \            [[ 13.,  14.]]], dtype=float32)]\n    >>> C.reduce_mean(x,axis=1).eval({x:x0})\n\
+    \    [array([[[  0.5],\n             [  2.5]],\n    <BLANKLINE>\n            [[\
+    \  4.5],\n             [  6.5]]], dtype=float32),\n    <BLANKLINE>\n    <BLANKLINE>\n\
+    \     array([[[  8.5],\n             [ 10.5]],\n    <BLANKLINE>\n            [[\
+    \ 12.5],\n             [ 14.5]]], dtype=float32)]\n    >>> # reduce over all axes\n\
+    \    >>> np.round(C.reduce_mean(x, axis=C.Axis.all_axes()).eval({x:x0}),5)\n \
+    \   7.5\n    >>> # reduce over all axes when the batch has sequences of different\
+    \ length\n    >>> x1 = np.arange(4,dtype=np.float32).reshape(1,2,2)\n    >>> x2\
+    \ = np.arange(12,dtype=np.float32).reshape(3,2,2)\n    >>> np.round(C.reduce_mean(x,\
+    \ axis=C.Axis.all_axes()).eval({x:[x1,x2]}),5)\n    4.5\n    >>> (np.sum(x1)+np.sum(x2))/(x1.size+x2.size)\n\
+    \    4.5\n\nArgs:\n    x: input tensor\n    axis (int or :class:`~cntk.axis.Axis`):\
+    \ axis along which the reduction will be performed\n    name (str, optional):\
+    \ the name of the Function instance in the network\n\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.reduce_sum
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.relu
+  summary: "Rectified linear operation. Computes the element-wise rectified linear\n\
+    of ``x``: ``max(x, 0)``\n\nThe output tensor has the same shape as ``x``.\n\n\
+    Example:\n    >>> C.relu([[-1, -0.5, 0, 1, 2]]).eval()\n    array([[ 0.,  0.,\
+    \  0.,  1.,  2.]], dtype=float32)\n\nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function`\
+    \ that outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.relu
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.reshape
+  summary: "Reinterpret input samples as having different tensor dimensions\nOne dimension\
+    \ may be specified as 0 and will be inferred\n\nThe output tensor has the shape\
+    \ specified by 'shape'.\n\nExample:\n    >>> i1 = C.input(shape=(3,2))\n    >>>\
+    \ C.reshape(i1, (2,3)).eval({i1:np.asarray([[[[0., 1.],[2., 3.],[4., 5.]]]], dtype=np.float32)})\n\
+    \    array([[[ 0.,  1.,  2.],\n             [ 3.,  4.,  5.]]], dtype=float32)\n\
+    \nArgs:\n    x: tensor to be reshaped\n    shape (tuple): a tuple defining the\
+    \ resulting shape\n    begin_axis (int or None): shape replacement begins at this\
+    \ axis. Negative values\n     are counting from the end. `None` is the same as\
+    \ 0. To refer to the end of the shape tuple, pass `Axis.new_leading_axis()`\n\
+    \    end_axis (int or None): shape replacement ends at this axis (excluding this\
+    \ axis).\n     Negative values are counting from the end. `None` refers to the\
+    \ end of the shape tuple.\n    name (str, optional): the name of the Function\
+    \ instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.reshape
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.roipooling
+  summary: "The ROI (Region of Interest) pooling operation pools over sub-regions\
+    \ of an input volume and produces\na fixed sized output volume regardless of the\
+    \ ROI size. It is used for example for object detection.\n\nEach input image has\
+    \ a fixed number of regions of interest, which are specified as bounding boxes\
+    \ (x, y, w, h)\nthat are relative to the image size [W x H]. This operation can\
+    \ be used as a replacement for the final\npooling layer of an image classification\
+    \ network (as presented in Fast R-CNN and others).\n\nArgs:\n    conv_feature_map:\
+    \ a convolutional feature map as the input volume ([W x H x C x N]).\n    rois:\
+    \ the coordinates of the ROIs per image ([4 x roisPerImage x N]), each ROI is\
+    \ (x, y, w, h) relative to original image size.\n    roi_output_shape: dimensions\
+    \ (width x height) of the ROI pooling output shape\n    name (str, optional):\
+    \ the name of the Function instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.roipooling
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.round
+  summary: "The output of this operation is the element wise value rounded to the\
+    \ nearest integer.\nIn case of tie, where element can have exact fractional part\
+    \ of 0.5\nthis operation follows \"round half-up\" tie breaking strategy.\nThis\
+    \ is different from the round operation of numpy which follows\nround half to\
+    \ even.\n\nExample:\n    >>> C.round([0.2, 1.3, 4., 5.5, 0.0]).eval()\n    array([\
+    \ 0.,  1.,  4.,  6.,  0.], dtype=float32)\n\n    >>> C.round([[0.6, 3.3], [1.9,\
+    \ 5.6]]).eval()\n    array([[ 1.,  3.],\n           [ 2.,  6.]], dtype=float32)\n\
+    \n    >>> C.round([-5.5, -4.2, -3., -0.7, 0]).eval()\n    array([-5., -4., -3.,\
+    \ -1.,  0.], dtype=float32)\n\n    >>> C.round([[-0.6, -4.3], [1.9, -3.2]]).eval()\n\
+    \    array([[-1., -4.],\n           [ 2., -3.]], dtype=float32)\n\nArgs:\n   \
+    \ arg: input tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network (optional)\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.round
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.sigmoid
+  summary: "Computes the element-wise sigmoid of ``x``:\n\n:math:`sigmoid(x) = {1\
+    \ \\over {1+\\exp(-x)}}`\n\nThe output tensor has the same shape as ``x``.\n\n\
+    Example:\n    >>> C.sigmoid([-2, -1., 0., 1., 2.]).eval()\n    array([ 0.119203,\
+    \  0.268941,  0.5     ,  0.731059,  0.880797], dtype=float32)\n\nArgs:\n    x:\
+    \ numpy array or any :class:`~cntk.ops.functions.Function` that outputs a tensor\n\
+    \    name (str, optional): the name of the Function instance in the network\n\
+    Returns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sigmoid
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.sin
+  summary: "Computes the element-wise sine of ``x``:\n\nThe output tensor has the\
+    \ same shape as ``x``.\n\nExample:\n    >>> np.round(C.sin(np.arcsin([[1,0.5],[-0.25,-0.75]])).eval(),5)\n\
+    \    array([[ 1.  ,  0.5 ],\n           [-0.25, -0.75]], dtype=float32)\n\nArgs:\n\
+    \    x: numpy array or any :class:`~cntk.ops.functions.Function` that outputs\
+    \ a tensor\n    name (str, optional): the name of the Function instance in the\
+    \ network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.sin
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.slice
+  summary: "Slice the input along one or multiple axes.\n\nExample:\n    >>> # slice\
+    \ using input variable\n    >>> # create 2x3 matrix\n    >>> x1 = C.input((2,3))\n\
+    \    >>> # slice index 1 (second) at first axis\n    >>> C.slice(x1, 0, 1, 2).eval({x1:\
+    \ np.asarray([[[1,2,-3],\n    ...                                            \
+    \ [4, 5, 6]]],dtype=np.float32)})\n    array([[[ 4.,  5.,  6.]]], dtype=float32)\n\
+    \    <BLANKLINE>\n    >>> # slice index 0 (first) at second axis\n    >>> C.slice(x1,\
+    \ 1, 0, 1).eval({x1: np.asarray([[[1,2,-3],\n    ...                         \
+    \                    [4, 5, 6]]],dtype=np.float32)})\n    array([[[ 1.],\n   \
+    \         [ 4.]]], dtype=float32)\n    >>> # slice along multiple axes\n    >>>\
+    \ C.slice(x1, [0,1], [1,0], [2,1]).eval({x1: np.asarray([[[1, 2, -3],\n    ...\
+    \                                                         [4, 5, 6]]],dtype=np.float32)})\n\
+    \    array([[[ 4.]]], dtype=float32)\n    <BLANKLINE>\n    >>> # slice using constant\n\
+    \    >>> data = np.asarray([[1, 2, -3],\n    ...                    [4, 5,  6]],\
+    \ dtype=np.float32)\n    >>> x = C.constant(value=data)\n    >>> C.slice(x, 0,\
+    \ 1, 2).eval()\n    array([[ 4.,  5.,  6.]], dtype=float32)\n    >>> C.slice(x,\
+    \ 1, 0, 1).eval()\n    array([[ 1.],\n           [ 4.]], dtype=float32)\n    >>>\
+    \ C.slice(x, [0,1], [1,0], [2,1]).eval()\n    array([[ 4.]], dtype=float32)\n\
+    \    <BLANKLINE>\n    >>> # slice using the index overload\n    >>> data = np.asarray([[1,\
+    \ 2, -3],\n    ...                    [4, 5,  6]], dtype=np.float32)\n    >>>\
+    \ x = C.constant(value=data)\n    >>> x[0].eval()\n    array([[ 1.,  2.,  -3.]],\
+    \ dtype=float32)\n    >>> x[0, [1,2]].eval()\n    array([[ 2.,  -3.]], dtype=float32)\n\
+    \    <BLANKLINE>\n    >>> x[1].eval()\n    array([[ 4.,  5.,  6.]], dtype=float32)\n\
+    \    >>> x[:,:2,:].eval()\n    array([[ 1.,  2.],\n           [ 4.,  5.]], dtype=float32)\n\
+    \nArgs:\n    x: input tensor\n    axis (int or :class:`~cntk.axis.Axis`): axis\
+    \ along which ``begin_index`` and ``end_index``\n     will be used. If it is of\
+    \ type int it will be used as a static axis.\n    begin_index (int): the index\
+    \ along axis where the slicing starts\n    end_index (int): the index along axis\
+    \ where the slicing ends\n    name (str, optional): the name of the Function instance\
+    \ in the network\n\nSee also:\n    Indexing in NumPy: https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.slice
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.softmax
+  summary: "Computes the gradient of :math:`f(z)=\\log\\sum_i\\exp(z_i)` at ``z =\
+    \ x``. Concretely,\n\n:math:`\\mathrm{softmax}(x)=\\left[\\frac{\\exp(x_1)}{\\\
+    sum_i\\exp(x_i)}\\quad\\frac{\\exp(x_1)}{\\sum_i\\exp(x_i)}\\quad\\ldots\\quad\\\
+    frac{\\exp(x_1)}{\\sum_i\\exp(x_i)}\\right]`\n\nwith the understanding that the\
+    \ implementation can use equivalent formulas\nfor efficiency and numerical stability.\n\
+    \nThe output is a vector of non-negative numbers that sum to 1 and can\ntherefore\
+    \ be interpreted as probabilities for mutually exclusive outcomes\nas in the case\
+    \ of multiclass classification.\n\nIf ``axis`` is given, the softmax will be computed\
+    \ along that axis.\n\nExample:\n    >>> C.softmax([[1, 1, 2, 3]]).eval()\n   \
+    \ array([[ 0.082595,  0.082595,  0.224515,  0.610296]], dtype=float32)\n\n   \
+    \ >>> C.softmax([1, 1]).eval()\n    array([ 0.5,  0.5], dtype=float32)\n\n   \
+    \ >>> C.softmax([[[1, 1], [3, 5]]], axis=-1).eval()\n    array([[[ 0.5     , \
+    \ 0.5     ],\n            [ 0.119203,  0.880797]]], dtype=float32)\n\nArgs:\n\
+    \    x: numpy array or any :class:`~cntk.ops.functions.Function` that outputs\
+    \ a tensor\n    axis (int or :class:`~cntk.axis.Axis`): axis along which the softmax\
+    \ operation will be performed\n    name (str, optional): the name of the Function\
+    \ instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.softmax
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.softplus
+  summary: "Softplus operation. Computes the element-wise softplus of ``x``:\n\n:math:`\\\
+    mathrm{softplus}(x) = {\\log(1+\\exp(x))}`\n\nThe optional ``steepness`` allows\
+    \ to make the knee sharper (``steepness>1``) or softer, by computing\n``softplus(x\
+    \ * steepness) / steepness``.\n(For very large steepness, this approaches a linear\
+    \ rectifier).\n\nThe output tensor has the same shape as ``x``.\n\nExample:\n\
+    \    >>> C.softplus([[-1, -0.5, 0, 1, 2]]).eval()\n    array([[ 0.313262,  0.474077,\
+    \  0.693147,  1.313262,  2.126928]], dtype=float32)\n\n    >>> C.softplus([[-1,\
+    \ -0.5, 0, 1, 2]], steepness=4).eval()\n    array([[ 0.004537,  0.031732,  0.173287,\
+    \  1.004537,  2.000084]], dtype=float32)\n\nArgs:\n    x (`numpy.array` or :class:`~cntk.ops.functions.Function`):\
+    \ any :class:`~cntk.ops.functions.Function` that outputs a tensor.\n    steepness\
+    \ (float, optional): optional steepness factor\n    name (`str`, default to ''):\
+    \ the name of the Function instance in the network\nReturns:\n    cntk.ops.functions.Function:\n\
+    \    An instance of :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.softplus
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.splice
+  summary: "Concatenate the input tensors along an axis.\n\nExample:\n    >>> # create\
+    \ 2x2 matrix in a sequence of length 1 in a batch of one sample\n    >>> data1\
+    \ = np.asarray([[[1, 2],\n    ...                      [4, 5]]], dtype=np.float32)\n\
+    \n    >>> x = C.constant(value=data1)\n    >>> # create 3x2 matrix in a sequence\
+    \ of length 1 in a batch of one sample\n    >>> data2 = np.asarray([[[10, 20],\n\
+    \    ...                       [30, 40],\n    ...                       [50, 60]]],dtype=np.float32)\n\
+    \    >>> y = C.constant(value=data2)\n    >>> # splice both inputs on axis=0 returns\
+    \ a 5x2 matrix\n    >>> C.splice(x, y, axis=1).eval()\n    array([[[  1.,   2.],\n\
+    \            [  4.,   5.],\n            [ 10.,  20.],\n            [ 30.,  40.],\n\
+    \            [ 50.,  60.]]], dtype=float32)\n\nArgs:\n    inputs: one or more\
+    \ input tensors\n    axis (int or :class:`~cntk.axis.Axis`, optional, keyword\
+    \ only): axis along which the\n     concatenation will be performed\n    name\
+    \ (str, optional, keyword only): the name of the Function instance in the network\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.splice
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.sqrt
+  summary: "Computes the element-wise square-root of ``x``:\n\n:math:`sqrt(x) = {\\\
+    sqrt[2]{x}}`\n\nExample:\n    >>> C.sqrt([0., 4.]).eval()\n    array([ 0.,  2.],\
+    \ dtype=float32)\n\nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function`\
+    \ that outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n\nNote:\n\
+    \    CNTK returns zero for sqrt of negative nubmers, this will be changed to\n\
+    \    retrun NaN\n"
+  type: Method
+  uid: cntk.ops.sqrt
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.square
+  summary: "Computes the element-wise square of ``x``:\n\nExample:\n    >>> C.square([1.,\
+    \ 10.]).eval()\n    array([   1.,  100.], dtype=float32)\n\nArgs:\n    x: numpy\
+    \ array or any :class:`~cntk.ops.functions.Function` that outputs a tensor\n \
+    \   name (str, optional): the name of the Function instance in the network\nReturns:\n\
+    \    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.square
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.stop_gradient
+  summary: "Outputs its input as it and prevents any gradient contribution from its\
+    \ output to its input. \n\nArgs:\n    input: class:`~cntk.ops.functions.Function`\
+    \ that outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.stop_gradient
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.tanh
+  summary: "Computes the element-wise tanh of ``x``:\n\nThe output tensor has the\
+    \ same shape as ``x``.\n\nExample:\n    >>> C.tanh([[1,2],[3,4]]).eval()\n   \
+    \ array([[ 0.761594,  0.964028],\n           [ 0.995055,  0.999329]], dtype=float32)\n\
+    \nArgs:\n    x: numpy array or any :class:`~cntk.ops.functions.Function` that\
+    \ outputs a tensor\n    name (str, optional): the name of the Function instance\
+    \ in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.tanh
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.times
+  summary: "The output of this operation is the matrix product of the two input matrices.\n\
+    It supports broadcasting. Sparse is supported in the left operand, if it is a\
+    \ matrix.\nThe operator '@' has been overloaded such that in Python 3.5 and later\
+    \ X @ W equals times(X, W).\n\nFor better performance on times operation on sequence\
+    \ which is followed by sequence.reduce_sum, use\ninfer_input_rank_to_map=TIMES_REDUCE_SEQUENCE_AXIS_WITHOUT_INFERRED_INPUT_RANK,\
+    \ i.e. replace following::\n\n    sequence.reduce_sum(times(seq1, seq2))\n\nwith::\n\
+    \n    times(seq1, seq2, infer_input_rank_to_map=TIMES_REDUCE_SEQUENCE_AXIS_WITHOUT_INFERRED_INPUT_RANK)\n\
+    \nExample:\n    >>> C.times([[1,2],[3,4]], [[5],[6]]).eval()\n    array([[ 17.],\n\
+    \           [ 39.]], dtype=float32)\n\n    >>> C.times(1.*np.reshape(np.arange(8),\
+    \ (2,2,2)),1.*np.reshape(np.arange(8), (2,2,2)), output_rank=1).eval()\n    array([[\
+    \ 28.,  34.],\n           [ 76.,  98.]])\n\n    >>> C.times(1.*np.reshape(np.arange(8),\
+    \ (2,2,2)),1.*np.reshape(np.arange(8), (2,2,2)), output_rank=2).eval()\n    array([[[[\
+    \  4.,   5.],\n             [  6.,   7.]],\n    <BLANKLINE>\n            [[ 12.,\
+    \  17.],\n             [ 22.,  27.]]],\n    <BLANKLINE>\n    <BLANKLINE>\n   \
+    \        [[[ 20.,  29.],\n             [ 38.,  47.]],\n    <BLANKLINE>\n     \
+    \       [[ 28.,  41.],\n             [ 54.,  67.]]]])\n\nArgs:\n    left: left\
+    \ side matrix or tensor\n    right: right side matrix or tensor\n    output_rank\
+    \ (int): in case we have tensors as arguments, output_rank represents\n      \
+    \  the number of axes to be collapsed in order to transform the tensors\n    \
+    \    into matrices, perform the operation and then reshape back (explode the axes)\n\
+    \    infer_input_rank_to_map (int): meant for internal use only. Always use default\
+    \ value\n    name (str, optional): the name of the Function instance in the network\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.times
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.times_transpose
+  summary: "The output of this operation is the product of the first (``left``) argument\
+    \ with the second (``right``) argument transposed.\nThe second (``right``) argument\
+    \ must have a rank of 1 or 2.\nThis operation is conceptually computing ``np.dot(left,\
+    \ right.T)`` except when ``right`` is a vector\nin which case the output is ``np.dot(left,np.reshape(right,(1,-1)).T)``\
+    \ (matching numpy when ``left`` is a vector).\n\nExample:\n    >>> a=np.array([[1,2],[3,4]],dtype=np.float32)\n\
+    \    >>> b=np.array([2,-1],dtype=np.float32)\n    >>> c=np.array([[2,-1]],dtype=np.float32)\n\
+    \    >>> d=np.reshape(np.arange(24,dtype=np.float32),(4,3,2))\n    >>> print(C.times_transpose(a,\
+    \ a).eval())\n    [[  5.  11.]\n     [ 11.  25.]]\n    >>> print(C.times_transpose(a,\
+    \ b).eval())\n    [[ 0.]\n     [ 2.]]\n    >>> print(C.times_transpose(a, c).eval())\n\
+    \    [[ 0.]\n     [ 2.]]\n    >>> print(C.times_transpose(b, a).eval())\n    [\
+    \ 0.  2.]\n    >>> print(C.times_transpose(b, b).eval())\n    [ 5.]\n    >>> print(C.times_transpose(b,\
+    \ c).eval())\n    [ 5.]\n    >>> print(C.times_transpose(c, a).eval())\n    [[\
+    \ 0.  2.]]\n    >>> print(C.times_transpose(c, b).eval())\n    [[ 5.]]\n    >>>\
+    \ print(C.times_transpose(c, c).eval())\n    [[ 5.]]\n    >>> print(C.times_transpose(d,\
+    \ a).eval())\n    [[[   2.    4.]\n      [   8.   18.]\n      [  14.   32.]]\n\
+    \    <BLANKLINE>\n     [[  20.   46.]\n      [  26.   60.]\n      [  32.   74.]]\n\
+    \    <BLANKLINE>\n     [[  38.   88.]\n      [  44.  102.]\n      [  50.  116.]]\n\
+    \    <BLANKLINE>\n     [[  56.  130.]\n      [  62.  144.]\n      [  68.  158.]]]\n\
+    \    >>> print(C.times_transpose(d, b).eval())\n    [[[ -1.]\n      [  1.]\n \
+    \     [  3.]]\n    <BLANKLINE>\n     [[  5.]\n      [  7.]\n      [  9.]]\n  \
+    \  <BLANKLINE>\n     [[ 11.]\n      [ 13.]\n      [ 15.]]\n    <BLANKLINE>\n \
+    \    [[ 17.]\n      [ 19.]\n      [ 21.]]]\n    >>> print(C.times_transpose(d,\
+    \ c).eval())\n    [[[ -1.]\n      [  1.]\n      [  3.]]\n    <BLANKLINE>\n   \
+    \  [[  5.]\n      [  7.]\n      [  9.]]\n    <BLANKLINE>\n     [[ 11.]\n     \
+    \ [ 13.]\n      [ 15.]]\n    <BLANKLINE>\n     [[ 17.]\n      [ 19.]\n      [\
+    \ 21.]]]\n\nArgs:\n    left: left side tensor\n    right: right side matrix or\
+    \ vector\n    name (str, optional): the name of the Function instance in the network\n\
+    \nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.times_transpose
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.transpose
+  summary: "Swaps two axes of the tensor. The output tensor has the same data but\
+    \ with\n``axis1`` and ``axis2`` swapped.\n\nExample:\n    >>> C.transpose([[[0,1],[2,3],[4,5]]],\
+    \ 1, 2).eval()\n    array([[[ 0.,  2.,  4.],\n            [ 1.,  3.,  5.]]], dtype=float32)\n\
+    \nArgs:\n    x: tensor to be transposed\n    axis1 (int or :class:`~cntk.axis.Axis`):\
+    \ the axis to swap with ``axis2``\n    axis2 (int or :class:`~cntk.axis.Axis`):\
+    \ the axis to swap with ``axis1``\n    name (str, optional): the name of the Function\
+    \ instance in the network\nReturns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.transpose
+- _type: function
+  module: cntk.ops
+  name: cntk.ops.unpooling
+  summary: "Unpools the ``operand`` using information from ``pooling_input``. Unpooling\
+    \ mirrors the operations\nperformed by pooling and depends on the values provided\
+    \ to the corresponding pooling operation. The output\nshould have the same shape\
+    \ as pooling_input. Pooling the result of an unpooling operation should\ngive\
+    \ back the original input.\n\nExample:\n    >>> img = np.reshape(np.arange(16,\
+    \ dtype = np.float32), [1, 4, 4])\n    >>> x = C.input(img.shape)\n    >>> y =\
+    \ C.pooling(x, C.MAX_POOLING, (2,2), (2,2))\n    >>> C.unpooling(y, x, C.MAX_UNPOOLING,\
+    \ (2,2), (2,2)).eval({x : [img]})\n    array([[[[  0.,   0.,   0.,   0.],\n  \
+    \            [  0.,   5.,   0.,   7.],\n              [  0.,   0.,   0.,   0.],\n\
+    \              [  0.,  13.,   0.,  15.]]]], dtype=float32)\n\nArgs:\n    operand:\
+    \ unpooling input\n    pooling_input: input to the corresponding pooling operation\n\
+    \    unpooling_type: only :const:`~cntk.ops.MAX_UNPOOLING` is supported now\n\
+    \    unpooling_window_shape: dimensions of the unpooling window\n    strides (default\
+    \ 1): strides.\n    auto_padding: automatic padding flags for each input dimension.\n\
+    \    name (str, optional): the name of the Function instance in the network\n\
+    Returns:\n    :class:`~cntk.ops.functions.Function`\n"
+  type: Method
+  uid: cntk.ops.unpooling

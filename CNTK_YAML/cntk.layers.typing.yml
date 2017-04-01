@@ -1,0 +1,99 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.layers.typing.ParameterTensor
+  - cntk.layers.typing.Sequence
+  - cntk.layers.typing.SequenceOver
+  - cntk.layers.typing.SequenceOverMeta
+  - cntk.layers.typing.SparseTensor
+  - cntk.layers.typing.Tensor
+  module: cntk.layers.typing
+  name: cntk.layers.typing
+  summary: 'typing -- basic CNTK type meta-classes for CNTK @Function type signatures
+
+    '
+  type: Namespace
+  uid: cntk.layers.typing
+- _type: class
+  children:
+  - cntk.layers.typing.Signature
+  module: cntk.layers.typing
+  name: cntk.layers.typing.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.layers.typing.Global
+- _type: class
+  children: []
+  module: cntk.layers.typing
+  name: cntk.layers.typing.ParameterTensor
+  summary: 'Meta class to denote a parameter tensor (no batch axis). Use with dimensions,
+    e.g. ``ParameterTensor[512,256]``.
+
+    '
+  type: Class
+  uid: cntk.layers.typing.ParameterTensor
+- _type: class
+  children: []
+  module: cntk.layers.typing
+  name: cntk.layers.typing.Sequence
+  summary: 'Meta-meta class to denote a sequence of data tensors. Example: ``Sequence[Tensor[13,42]]``
+
+    '
+  type: Class
+  uid: cntk.layers.typing.Sequence
+- _type: class
+  children: []
+  module: cntk.layers.typing
+  name: cntk.layers.typing.SequenceOver
+  summary: 'Meta-meta-meta class to denote a sequence of data tensors over a custom
+    axis. Example: ``userAxis = Axis(); SequenceOver[userAxis][Tensor[13,42]]``
+
+    '
+  type: Class
+  uid: cntk.layers.typing.SequenceOver
+- _type: class
+  children: []
+  module: cntk.layers.typing
+  name: cntk.layers.typing.SequenceOverMeta
+  summary: ''
+  type: Class
+  uid: cntk.layers.typing.SequenceOverMeta
+- _type: function
+  module: cntk.layers.typing
+  name: cntk.layers.typing.Signature
+  summary: "``@Signature`` is a decorator to implement the function-argument annotations\
+    \ in Python-2.7,\nas needed by the ``@Function`` decorator.\nThis is only needed\
+    \ when you have not yet migrated to Python 3.x.\n\nNote: Although this is aimed\
+    \ at enabling ``@Function`` syntax with type annotations\nin Python 2.7, ``@Signature``\
+    \ is independent of CNTK and can be used for any argument annotation.\n\nArgs:\n\
+    \    *args: types of arguments of the function that this decorator is applied\
+    \ to, in the same order.\n    **kwargs: types of arguments with optional names,\
+    \ e.g. `x=Tensor[42]`. Use this second form for\n       longer argument lists.\n\
+    \nExample::\n\n # Python 3:\n @Function\n def f(x: Tensor[42]):\n     return sigmoid(x)\n\
+    \ # Python 2.7:\n @Function\n @Signature(Tensor[42])\n def f(x):\n     return\
+    \ sigmoid(x)\n\n # note that this:\n @Function\n @Signature(x:int)\n def sqr(x):\n\
+    \     return x*x\n # is identical to:\n def sqr(x):\n     return x*x\n sqr.__annotations__\
+    \ = {'x': int}``\n"
+  type: Method
+  uid: cntk.layers.typing.Signature
+- _type: class
+  children: []
+  module: cntk.layers.typing
+  name: cntk.layers.typing.SparseTensor
+  summary: 'Meta class to denote a sparse data tensor (with batch axis). Use with
+    dimensions, e.g. ``SparseTensor[129]``.
+
+    '
+  type: Class
+  uid: cntk.layers.typing.SparseTensor
+- _type: class
+  children: []
+  module: cntk.layers.typing
+  name: cntk.layers.typing.Tensor
+  summary: 'Meta class to denote a data tensor (with batch axis). Use with dimensions,
+    e.g. ``Tensor[13,42]``.
+
+    '
+  type: Class
+  uid: cntk.layers.typing.Tensor

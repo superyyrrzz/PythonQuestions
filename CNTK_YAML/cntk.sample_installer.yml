@@ -1,0 +1,50 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.sample_installer
+  name: cntk.sample_installer
+  summary: ''
+  type: Namespace
+  uid: cntk.sample_installer
+- _type: class
+  children:
+  - cntk.sample_installer.default_sample_dir
+  - cntk.sample_installer.default_sample_url
+  - cntk.sample_installer.install_samples
+  - cntk.sample_installer.module_is_unreleased
+  module: cntk.sample_installer
+  name: cntk.sample_installer.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.sample_installer.Global
+- _type: function
+  module: cntk.sample_installer
+  name: cntk.sample_installer.default_sample_dir
+  summary: ''
+  type: Method
+  uid: cntk.sample_installer.default_sample_dir
+- _type: function
+  module: cntk.sample_installer
+  name: cntk.sample_installer.default_sample_url
+  summary: ''
+  type: Method
+  uid: cntk.sample_installer.default_sample_url
+- _type: function
+  module: cntk.sample_installer
+  name: cntk.sample_installer.install_samples
+  summary: "Fetch the CNTK samples from a URL, extract to local directory, and install\n\
+    Python package requirements.\n\nArgs:\n    url: the URL of the sample zip file\
+    \ (if passed ``None``, which is default,\n     the sample URL matching the CNTK\
+    \ module release is chosen)\n    directory: the directory to extract the samples\
+    \ into (if passed\n     ``None``, which is default, a name matching the CNTK module\
+    \ release is\n     chosen, ``CNTK-Samples-<version>``)\n    quiet: whether to\
+    \ suppress all output (defaults to ``False``)\n"
+  type: Method
+  uid: cntk.sample_installer.install_samples
+- _type: function
+  module: cntk.sample_installer
+  name: cntk.sample_installer.module_is_unreleased
+  summary: ''
+  type: Method
+  uid: cntk.sample_installer.module_is_unreleased

@@ -1,0 +1,490 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.learners.Learner
+  - cntk.learners.UnitType
+  - cntk.learners.UserLearner
+  module: cntk.learners
+  name: cntk.learners
+  summary: 'Learner tunes a set of parameters during the training process. One can
+    use
+
+    different learners for different sets of parameters. Currently, CNTK supports
+
+    the following learning algorithms:
+
+
+    +------------------------+
+
+    | Learning algorithms    |
+
+    +========================+
+
+    | AdaDelta               |
+
+    +------------------------+
+
+    | AdaGrad                |
+
+    +------------------------+
+
+    | FSAdaGrad              |
+
+    +------------------------+
+
+    | Adam                   |
+
+    +------------------------+
+
+    | MomentumSGD            |
+
+    +------------------------+
+
+    | Nesterov               |
+
+    +------------------------+
+
+    | RMSProp                |
+
+    +------------------------+
+
+    | SGD                    |
+
+    +------------------------+
+
+    '
+  type: Namespace
+  uid: cntk.learners
+- _type: class
+  children:
+  - cntk.learners.adadelta
+  - cntk.learners.adagrad
+  - cntk.learners.adam
+  - cntk.learners.default_unit_gain_value
+  - cntk.learners.fsadagrad
+  - cntk.learners.learning_rate_schedule
+  - cntk.learners.momentum_as_time_constant_schedule
+  - cntk.learners.momentum_schedule
+  - cntk.learners.momentum_sgd
+  - cntk.learners.nesterov
+  - cntk.learners.rmsprop
+  - cntk.learners.set_default_unit_gain_value
+  - cntk.learners.sgd
+  - cntk.learners.training_parameter_schedule
+  module: cntk.learners
+  name: cntk.learners.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.learners.Global
+- _type: class
+  children:
+  - cntk.learners.Learner.learning_rate
+  - cntk.learners.Learner.parameters
+  - cntk.learners.Learner.reset_learning_rate
+  - cntk.learners.Learner.update
+  module: cntk.learners
+  name: cntk.learners.Learner
+  summary: 'Abstraction for learning a subset of parameters of a learnable function
+    using first order gradient values.
+
+    For example momentum, AdaGrad, RMSProp, etc. are different types of learners with
+    their own algorithms for
+
+    learning parameter values using first order gradients.
+
+    To instantiate a concrete learner, use the factory methods in this module.
+
+    '
+  type: Class
+  uid: cntk.learners.Learner
+- _type: method
+  class: cntk.learners.Learner
+  module: cntk.learners
+  name: cntk.learners.Learner.learning_rate
+  summary: 'Current learning rate.
+
+    '
+  type: Method
+  uid: cntk.learners.Learner.learning_rate
+- _type: attribute
+  class: cntk.learners.Learner
+  module: cntk.learners
+  name: cntk.learners.Learner.parameters
+  summary: 'The set of parameters associated with this learner.
+
+    '
+  type: Property
+  uid: cntk.learners.Learner.parameters
+- _type: method
+  class: cntk.learners.Learner
+  module: cntk.learners
+  name: cntk.learners.Learner.reset_learning_rate
+  summary: "Resets the learning rate. The new schedule is adjusted to be relative\
+    \ \nto the current number of elapsed samples/sweeps: the 0 offset in \nthe new\
+    \ schedule corresponds to the current value of elapsed samples/sweeps, \nand it\
+    \ takes effect from the current position in the training process onwards.\n\n\
+    Args:\n    learning_rate (output of :func:`learning_rate_schedule`)\n     learning\
+    \ rate to reset to\n"
+  type: Method
+  uid: cntk.learners.Learner.reset_learning_rate
+- _type: method
+  class: cntk.learners.Learner
+  module: cntk.learners
+  name: cntk.learners.Learner.update
+  summary: "Update the parameters associated with this learner.\n\nArgs:\n    gradient_values\
+    \ (dict): maps :class:`~cntk.variables.Parameter` to\n     a NumPy array containing\
+    \ the first order gradient values for the\n     Parameter w.r.t. the training\
+    \ objective.\n    training_sample_count (int): number of samples in the minibatch\n\
+    \nReturns:\n    `False` to indicate that learning has stopped for all of the parameters\
+    \ associated with this learner\n"
+  type: Method
+  uid: cntk.learners.Learner.update
+- _type: class
+  children:
+  - cntk.learners.UnitType.minibatch
+  - cntk.learners.UnitType.sample
+  module: cntk.learners
+  name: cntk.learners.UnitType
+  summary: 'Indicates whether the values in the schedule are specified on the per-sample
+    or
+
+    per-minibatch basis.
+
+    '
+  type: Class
+  uid: cntk.learners.UnitType
+- _type: attribute
+  class: cntk.learners.UnitType
+  module: cntk.learners
+  name: cntk.learners.UnitType.minibatch
+  summary: 'Schedule contains per-minibatch values (and need to be re-scaled by the
+    learner
+
+    using the actual minibatch size in samples).
+
+    '
+  type: Property
+  uid: cntk.learners.UnitType.minibatch
+- _type: attribute
+  class: cntk.learners.UnitType
+  module: cntk.learners
+  name: cntk.learners.UnitType.sample
+  summary: 'Schedule contains per-sample values.
+
+    '
+  type: Property
+  uid: cntk.learners.UnitType.sample
+- _type: class
+  children:
+  - cntk.learners.UserLearner.update
+  module: cntk.learners
+  name: cntk.learners.UserLearner
+  summary: 'Base class of all user-defined learners. To implement your own learning
+
+    algorithm, derive from this class and override the :meth:`update`.
+
+
+    Certain optimizers (such as AdaGrad) require additional storage.
+
+    This can be allocated and initialized during construction.
+
+    '
+  type: Class
+  uid: cntk.learners.UserLearner
+- _type: method
+  class: cntk.learners.UserLearner
+  module: cntk.learners
+  name: cntk.learners.UserLearner.update
+  summary: "Update the parameters associated with this learner.\n\nArgs:\n    gradient_values\
+    \ (dict): maps :class:`~cntk.variables.Parameter` to\n     a NumPy array containing\
+    \ the first order gradient values for the\n     Parameter w.r.t. the training\
+    \ objective.\n    training_sample_count (int): number of samples in the minibatch\n\
+    \    sweep_end (bool): if the data is fed by a conforming reader, this indicates\n\
+    \     whether a full pass over the dataset has just occured.\n\nReturns:\n   \
+    \ `False` to indicate that learning has stopped for all of the\n    parameters\
+    \ associated with this learner\n"
+  type: Method
+  uid: cntk.learners.UserLearner.update
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.adadelta
+  summary: "Creates an AdaDelta learner instance to learn the parameters. See [1]\
+    \ for\nmore information.\n\nArgs:\n    parameters (list of parameters): list of\
+    \ network parameters to tune.\n     These can be obtained by the root operator's\
+    \ ``parameters``.\n    rho (float): exponential smooth factor for each minibatch.\n\
+    \    epsilon (float): epsilon for sqrt.\n    l1_regularization_weight (float,\
+    \ optional): the L1 regularization weight per sample,\n     defaults to 0.0\n\
+    \    l2_regularization_weight (float, optional): the L2 regularization weight\
+    \ per sample,\n     defaults to 0.0\n    gaussian_noise_injection_std_dev (float,\
+    \ optional): the standard deviation\n     of the Gaussian noise added to parameters\
+    \ post update, defaults to 0.0\n    gradient_clipping_threshold_per_sample (float,\
+    \ optional): clipping threshold\n     per sample, defaults to infinity\n    gradient_clipping_with_truncation\
+    \ (bool, default ``True``): use gradient clipping\n     with truncation\n\nReturns:\n\
+    \    Instance of a :class:`~cntk.learners.Learner` that can be passed to the :class:`~cntk.train.trainer.Trainer`\n\
+    \nSee also:\n    [1]  Matthew D. Zeiler1, `ADADELTA: AN ADAPTIVE LEARNING RATE\
+    \ METHOD \n    <https://arxiv.org/pdf/1212.5701.pdf>`_.\n"
+  type: Method
+  uid: cntk.learners.adadelta
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.adagrad
+  summary: "Creates an AdaGrad learner instance to learn the parameters. See [1] for\n\
+    more information.\n\nArgs:\n    parameters (list of parameters): list of network\
+    \ parameters to tune.\n     These can be obtained by the root operator's ``parameters``.\n\
+    \    lr (output of :func:`learning_rate_schedule`): learning rate schedule.\n\
+    \    need_ave_multiplier (bool, default):\n    l1_regularization_weight (float,\
+    \ optional): the L1 regularization weight per sample,\n     defaults to 0.0\n\
+    \    l2_regularization_weight (float, optional): the L2 regularization weight\
+    \ per sample,\n     defaults to 0.0\n    gaussian_noise_injection_std_dev (float,\
+    \ optional): the standard deviation\n     of the Gaussian noise added to parameters\
+    \ post update, defaults to 0.0\n    gradient_clipping_threshold_per_sample (float,\
+    \ optional): clipping threshold\n     per sample, defaults to infinity\n    gradient_clipping_with_truncation\
+    \ (bool, default ``True``): use gradient clipping\n     with truncation\n\nReturns:\n\
+    \    Instance of a :class:`~cntk.learners.Learner` that can be passed to the :class:`~cntk.train.trainer.Trainer`\n\
+    \nSee also:\n    [1]  J. Duchi, E. Hazan, and Y. Singer. `Adaptive Subgradient\
+    \ Methods\n    for Online Learning and Stochastic Optimization\n    <http://www.magicbroom.info/Papers/DuchiHaSi10.pdf>`_.\
+    \ The Journal of\n    Machine Learning Research, 2011.\n"
+  type: Method
+  uid: cntk.learners.adagrad
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.adam
+  summary: "Creates an Adam learner instance to learn the parameters. See [1] for\
+    \ more\ninformation.\n\nArgs:\n    parameters (list of parameters): list of network\
+    \ parameters to tune.\n     These can be obtained by the root operator's ``parameters``.\n\
+    \    lr (output of :func:`learning_rate_schedule`): learning rate schedule.\n\
+    \    momentum (output of :func:`momentum_schedule` or :func:`momentum_as_time_constant_schedule`):\
+    \ momentum schedule.\n     For additional information, please refer to the `wiki\n\
+    \     <https://github.com/Microsoft/CNTK/wiki/BrainScript-SGD-Block#converting-learning-rate-and-momentum-parameters-from-other-toolkits>`_.\n\
+    \    unit_gain: when ``True``, momentum is interpreted as a unit-gain filter.\
+    \ Defaults\n     to the value returned by :func:`default_unit_gain_value`.\n \
+    \   variance_momentum (output of :func:`momentum_schedule` or :func:`momentum_as_time_constant_schedule`):\
+    \ variance momentum schedule. Defaults\n     to ``momentum_as_time_constant_schedule(720000)``.\n\
+    \    l1_regularization_weight (float, optional): the L1 regularization weight\
+    \ per sample,\n     defaults to 0.0\n    l2_regularization_weight (float, optional):\
+    \ the L2 regularization weight per sample,\n     defaults to 0.0\n    gaussian_noise_injection_std_dev\
+    \ (float, optional): the standard deviation\n     of the Gaussian noise added\
+    \ to parameters post update, defaults to 0.0\n    gradient_clipping_threshold_per_sample\
+    \ (float, optional): clipping threshold\n     per sample, defaults to infinity\n\
+    \    gradient_clipping_with_truncation (bool, default ``True``): use gradient\
+    \ clipping\n     with truncation\n\nReturns:\n    Instance of a :class:`~cntk.learners.Learner`\
+    \ that can be passed to the :class:`~cntk.train.trainer.Trainer`\n\nSee also:\n\
+    \    [1] D. Kingma, J. Ba. `Adam: A Method for Stochastic Optimization\n    <https://arxiv.org/abs/1412.6980>`_.\
+    \ International Conference for\n    Learning Representations, 2015.\n"
+  type: Method
+  uid: cntk.learners.adam
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.default_unit_gain_value
+  summary: 'Returns true if by default momentum is applied in the unit-gain fashion.
+
+    '
+  type: Method
+  uid: cntk.learners.default_unit_gain_value
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.fsadagrad
+  summary: "Creates an FSAdaGrad learner instance to learn the parameters.\n\nArgs:\n\
+    \    parameters (list of parameters): list of network parameters to tune.\n  \
+    \   These can be obtained by the root operator's ``parameters``.\n    lr (output\
+    \ of :func:`learning_rate_schedule`): learning rate schedule.\n    momentum (output\
+    \ of :func:`momentum_schedule` or :func:`momentum_as_time_constant_schedule`):\
+    \ momentum schedule.\n     For additional information, please refer to the `wiki\n\
+    \     <https://github.com/Microsoft/CNTK/wiki/BrainScript-SGD-Block#converting-learning-rate-and-momentum-parameters-from-other-toolkits>`_.\n\
+    \    unit_gain: when ``True``, momentum is interpreted as a unit-gain filter.\
+    \ Defaults \n     to the value returned by :func:`default_unit_gain_value`.\n\
+    \    variance_momentum (output of :func:`momentum_schedule` or :func:`momentum_as_time_constant_schedule`):\
+    \ variance momentum schedule. Defaults \n     to ``momentum_as_time_constant_schedule(720000)``.\n\
+    \    l1_regularization_weight (float, optional): the L1 regularization weight\
+    \ per sample,\n     defaults to 0.0\n    l2_regularization_weight (float, optional):\
+    \ the L2 regularization weight per sample,\n     defaults to 0.0\n    gaussian_noise_injection_std_dev\
+    \ (float, optional): the standard deviation\n     of the Gaussian noise added\
+    \ to parameters post update, defaults to 0.0\n    gradient_clipping_threshold_per_sample\
+    \ (float, optional): clipping threshold\n     per sample, defaults to infinity\n\
+    \    gradient_clipping_with_truncation (bool, default ``True``): use gradient\
+    \ clipping \n     with truncation\n\nReturns:\n    Instance of a :class:`~cntk.learners.Learner`\
+    \ that can be passed to the :class:`~cntk.train.trainer.Trainer`\n"
+  type: Method
+  uid: cntk.learners.fsadagrad
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.learning_rate_schedule
+  summary: "Create a learning rate schedule (using the same semantics as\n:func:`training_parameter_schedule`).\n\
+    \nArgs:\n    lr (float or list): see parameter ``schedule`` in\n     :func:`training_parameter_schedule`.\n\
+    \    unit (:class:`UnitType`): see parameter\n     ``unit`` in :func:`training_parameter_schedule`.\n\
+    \    epoch_size (int): see parameter ``epoch_size`` in\n     :func:`training_parameter_schedule`.\n\
+    \nReturns:\n    learning rate schedule\n\nSee also:\n    :func:`training_parameter_schedule`\n"
+  type: Method
+  uid: cntk.learners.learning_rate_schedule
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.momentum_as_time_constant_schedule
+  summary: "Create a momentum schedule in a minibatch-size agnostic way\n(using the\
+    \ same semantics as :func:`training_parameter_schedule`\nwith `unit=UnitType.sample`).\n\
+    \nArgs:\n    momentum (float or list): see parameter ``schedule`` in\n     :func:`training_parameter_schedule`.\n\
+    \    epoch_size (int): see parameter ``epoch_size`` in\n     :func:`training_parameter_schedule`.\n\
+    \nCNTK specifies momentum in a minibatch-size agnostic way as the time\nconstant\
+    \ (in samples) of a unit-gain 1st-order IIR filter. The value\nspecifies the number\
+    \ of samples after which a gradient has an effect of\n1/e=37%.\n\nIf you want\
+    \ to specify the momentum per sample (or per minibatch),\nuse :func:`momentum_schedule`.\n\
+    \nExamples:\n    >>> # Use a fixed momentum of 1100 for all samples\n    >>> m\
+    \ = momentum_as_time_constant_schedule(1100)\n\n    >>> # Use the time constant\
+    \ 1100 for the first 1000 samples,\n    >>> # then 1500 for the remaining ones\n\
+    \    >>> m = momentum_as_time_constant_schedule([1100, 1500], 1000)\n\nReturns:\n\
+    \    momentum as time constant schedule\n"
+  type: Method
+  uid: cntk.learners.momentum_as_time_constant_schedule
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.momentum_schedule
+  summary: "Create a per-minibatch momentum schedule (using the same semantics as\n\
+    :func:`training_parameter_schedule` with the `unit=UnitType.minibatch`).\n\nArgs:\n\
+    \    momentum (float or list): see parameter ``schedule`` in\n     :func:`training_parameter_schedule`.\n\
+    \    epoch_size (int): see parameter ``epoch_size`` in\n     :func:`training_parameter_schedule`.\n\
+    \nIf you want to provide momentum values in a minibatch-size\nagnostic way, use\
+    \ :func:`momentum_as_time_constant_schedule`.\n\nExamples:\n    >>> # Use a fixed\
+    \ momentum of 0.99 for all samples\n    >>> m = momentum_schedule(0.99)\n\n  \
+    \  >>> # Use the momentum value 0.99 for the first 1000 samples,\n    >>> # then\
+    \ 0.9 for the remaining ones\n    >>> m = momentum_schedule([0.99,0.9], 1000)\n\
+    \    >>> m[0], m[999], m[1000], m[1001]\n    (0.99, 0.99, 0.9, 0.9)\n\n    >>>\
+    \ # Use the momentum value 0.99 for the first 999 samples,\n    >>> # then 0.88\
+    \ for the next 888 samples, and 0.77 for the\n    >>> # the remaining ones\n \
+    \   >>> m = momentum_schedule([(999,0.99),(888,0.88),(0, 0.77)])\n    >>> m[0],\
+    \ m[998], m[999], m[999+888-1], m[999+888]\n    (0.99, 0.99, 0.88, 0.88, 0.77)\n\
+    \nReturns:\n    momentum schedule\n"
+  type: Method
+  uid: cntk.learners.momentum_schedule
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.momentum_sgd
+  summary: "Creates a Momentum SGD learner instance to learn the parameters.\n\nArgs:\n\
+    \    parameters (list of parameters): list of network parameters to tune.\n  \
+    \   These can be obtained by the root operator's ``parameters``.\n    lr (output\
+    \ of :func:`learning_rate_schedule`): learning rate schedule.\n    momentum (output\
+    \ of :func:`momentum_schedule` or :func:`momentum_as_time_constant_schedule`):\
+    \ momentum schedule.\n     For additional information, please refer to the `wiki\n\
+    \     <https://github.com/Microsoft/CNTK/wiki/BrainScript-SGD-Block#converting-learning-rate-and-momentum-parameters-from-other-toolkits>`_.\n\
+    \    unit_gain: when ``True``, momentum is interpreted as a unit-gain filter.\
+    \ Defaults \n     to the value returned by :func:`default_unit_gain_value`.\n\
+    \    l1_regularization_weight (float, optional): the L1 regularization weight\
+    \ per sample,\n     defaults to 0.0\n    l2_regularization_weight (float, optional):\
+    \ the L2 regularization weight per sample,\n     defaults to 0.0\n    gaussian_noise_injection_std_dev\
+    \ (float, optional): the standard deviation\n     of the Gaussian noise added\
+    \ to parameters post update, defaults to 0.0\n    gradient_clipping_threshold_per_sample\
+    \ (float, optional): clipping threshold\n     per sample, defaults to infinity\n\
+    \    gradient_clipping_with_truncation (bool, default ``True``): use gradient\
+    \ clipping\n     with truncation\n\nReturns:\n    Instance of a :class:`~cntk.learners.Learner`\
+    \ that can be passed to the\n    :class:`~cntk.train.trainer.Trainer`\n"
+  type: Method
+  uid: cntk.learners.momentum_sgd
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.nesterov
+  summary: "Creates a Nesterov SGD learner instance to learn the parameters. This\
+    \ was\noriginally proposed by Nesterov [1] in 1983 and then shown to work well\
+    \ in\na deep learning context by Sutskever, et al. [2].\n\nArgs:\n    parameters\
+    \ (list of parameters): list of network parameters to tune.\n     These can be\
+    \ obtained by the root operator's ``parameters``.\n    lr (output of :func:`learning_rate_schedule`):\
+    \ learning rate schedule.\n    momentum (output of :func:`momentum_schedule` or\
+    \ :func:`momentum_as_time_constant_schedule`): momentum schedule.\n     For additional\
+    \ information, please refer to the `wiki\n     <https://github.com/Microsoft/CNTK/wiki/BrainScript-SGD-Block#converting-learning-rate-and-momentum-parameters-from-other-toolkits>`_.\n\
+    \    unit_gain: when ``True``, momentum is interpreted as a unit-gain filter.\
+    \ Defaults\n     to the value returned by :func:`default_unit_gain_value`.\n \
+    \   l1_regularization_weight (float, optional): the L1 regularization weight per\
+    \ sample,\n     defaults to 0.0\n    l2_regularization_weight (float, optional):\
+    \ the L2 regularization weight per sample,\n     defaults to 0.0\n    gaussian_noise_injection_std_dev\
+    \ (float, optional): the standard deviation\n     of the Gaussian noise added\
+    \ to parameters post update, defaults to 0.0\n    gradient_clipping_threshold_per_sample\
+    \ (float, optional): clipping threshold\n     per sample, defaults to infinity\n\
+    \    gradient_clipping_with_truncation (bool, default ``True``): use gradient\
+    \ clipping\n     with truncation\n\nReturns:\n    Instance of a :class:`~cntk.learners.Learner`\
+    \ that can be passed to the\n    :class:`~cntk.train.trainer.Trainer`.\n\nSee\
+    \ also:\n    [1] Y. Nesterov. A Method of Solving a Convex Programming Problem\
+    \ with Convergence Rate O(1/ sqrt(k)). Soviet Mathematics Doklady, 1983.\n\n \
+    \   [2] I. Sutskever, J. Martens, G. Dahl, and G. Hinton. `On the\n    Importance\
+    \ of Initialization and Momentum in Deep Learning\n    <http://www.cs.toronto.edu/~fritz/absps/momentum.pdf>`_.\
+    \  Proceedings\n    of the 30th International Conference on Machine Learning,\
+    \ 2013.\n"
+  type: Method
+  uid: cntk.learners.nesterov
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.rmsprop
+  summary: "Creates an RMSProp learner instance to learn the parameters.\n\nArgs:\n\
+    \    parameters (list of parameters): list of network parameters to tune.\n  \
+    \   These can be obtained by the root operator's ``parameters``.\n    lr (output\
+    \ of :func:`learning_rate_schedule`): learning rate schedule.\n    gamma (float):\
+    \ Trade-off factor for current and previous gradients. Common value is 0.95\n\
+    \    inc (float): Increasing factor when trying to adjust current learning_rate\n\
+    \    dec (float): Decreasing factor when trying to adjust current learning_rate\n\
+    \    max (float): Maximum scale allowed for the initial learning_rate\n    min\
+    \ (float): Minimum scale allowed for the initial learning_rate\n    need_ave_multiplier\
+    \ (bool, default ``True``):\n    l1_regularization_weight (float, optional): the\
+    \ L1 regularization weight per sample,\n     defaults to 0.0\n    l2_regularization_weight\
+    \ (float, optional): the L2 regularization weight per sample,\n     defaults to\
+    \ 0.0\n    gaussian_noise_injection_std_dev (float, optional): the standard deviation\n\
+    \     of the Gaussian noise added to parameters post update, defaults to 0.0\n\
+    \    gradient_clipping_threshold_per_sample (float, optional): clipping threshold\n\
+    \     per sample, defaults to infinity\n    gradient_clipping_with_truncation\
+    \ (bool, default ``True``): use gradient clipping\n     with truncation\n\nReturns:\n\
+    \    Instance of a :class:`~cntk.learners.Learner` that can be passed to the :class:`~cntk.train.trainer.Trainer`\n"
+  type: Method
+  uid: cntk.learners.rmsprop
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.set_default_unit_gain_value
+  summary: 'Sets globally default unit-gain flag value.
+
+    '
+  type: Method
+  uid: cntk.learners.set_default_unit_gain_value
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.sgd
+  summary: "Creates an SGD learner instance to learn the parameters. See [1] for more\n\
+    information on how to set the parameters.\n\nArgs:\n    parameters (list of parameters):\
+    \ list of network parameters to tune.\n     These can be obtained by the '.parameters()'\
+    \ method of the root\n     operator.\n    lr (output of :func:`learning_rate_schedule`):\
+    \ learning rate schedule.\n    l1_regularization_weight (float, optional): the\
+    \ L1 regularization weight per sample,\n     defaults to 0.0\n    l2_regularization_weight\
+    \ (float, optional): the L2 regularization weight per sample,\n     defaults to\
+    \ 0.0\n    gaussian_noise_injection_std_dev (float, optional): the standard deviation\n\
+    \     of the Gaussian noise added to parameters post update, defaults to 0.0\n\
+    \    gradient_clipping_threshold_per_sample (float, optional): clipping threshold\n\
+    \     per sample, defaults to infinity\n    gradient_clipping_with_truncation\
+    \ (bool, default ``True``): use gradient clipping\n     with truncation\n\nReturns:\n\
+    \    Instance of a :class:`~cntk.learners.Learner` that can be passed to the :class:`~cntk.train.trainer.Trainer`\n\
+    \nSee also:\n    [1] L. Bottou. `Stochastic Gradient Descent Tricks\n    <https://www.microsoft.com/en-us/research/publication/stochastic-gradient-tricks>`_.\
+    \ Neural\n    Networks: Tricks of the Trade: Springer, 2012.\n"
+  type: Method
+  uid: cntk.learners.sgd
+- _type: function
+  module: cntk.learners
+  name: cntk.learners.training_parameter_schedule
+  summary: "Create a training parameter schedule containing either per-sample (default)\n\
+    or per-minibatch values.\n\nExamples:\n    >>> # Use a fixed value 0.01 for all\
+    \ samples\n    >>> s = training_parameter_schedule(0.01, UnitType.sample)\n  \
+    \  >>> s[0], s[1]\n    (0.01, 0.01)\n\n    >>> # Use 0.01 for the first 1000 samples,\
+    \ then 0.001 for the remaining ones\n    >>> s = training_parameter_schedule([0.01,\
+    \ 0.001], UnitType.sample, 1000)\n    >>> s[0], s[1], s[1000], s[1001]\n    (0.01,\
+    \ 0.01, 0.001, 0.001)\n\n    >>> # Use 0.1 for the first 12 epochs, then 0.01\
+    \ for the next 15,\n    >>> # followed by 0.001 for the remaining ones, with a\
+    \ 100 samples in an epoch\n    >>> s = training_parameter_schedule([(12, 0.1),\
+    \ (15, 0.01), (1, 0.001)], UnitType.sample, 100)\n    >>> s[0], s[1199], s[1200],\
+    \ s[2699], s[2700], s[5000]\n    (0.1, 0.1, 0.01, 0.01, 0.001, 0.001)\n\nArgs:\n\
+    \    schedule (float or list): if float, is the parameter schedule to be used\n\
+    \     for all samples. In case of list, the elements are used as the\n     values\
+    \ for ``epoch_size`` samples. If list contains pair, the second element is\n \
+    \    used as a value for (``epoch_size`` x first element) samples\n    unit (:class:`UnitType`):\
+    \ one of two\n      * ``sample``: the returned schedule contains per-sample values\n\
+    \      * ``minibatch``: the returned schedule contains per-minibatch values.\n\
+    \    epoch_size (optional, int): number of samples as a scheduling unit.\n   \
+    \  Parameters in the schedule change their values every ``epoch_size``\n     samples.\
+    \ If no ``epoch_size`` is provided, this parameter is substituted\n     by the\
+    \ size of the full data sweep, in which case the scheduling unit is\n     the\
+    \ entire data sweep (as indicated by the MinibatchSource) and parameters\n   \
+    \  change their values on the sweep-by-sweep basis specified by the\n     ``schedule``.\n\
+    \nReturns:\n    training parameter schedule\n\nSee also:\n    :func:`learning_rate_schedule`\n"
+  type: Method
+  uid: cntk.learners.training_parameter_schedule

@@ -1,0 +1,60 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.default_options.default_override_or
+  module: cntk.default_options
+  name: cntk.default_options
+  summary: 'default_options: ``with default_options():`` and ``with default_options_for():``
+    patterns
+
+    '
+  type: Namespace
+  uid: cntk.default_options
+- _type: class
+  children:
+  - cntk.default_options.default_options
+  - cntk.default_options.default_options_for
+  - cntk.default_options.get_default_override
+  - cntk.default_options.is_default_override
+  module: cntk.default_options
+  name: cntk.default_options.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.default_options.Global
+- _type: function
+  module: cntk.default_options
+  name: cntk.default_options.default_options
+  summary: ''
+  type: Method
+  uid: cntk.default_options.default_options
+- _type: function
+  module: cntk.default_options
+  name: cntk.default_options.default_options_for
+  summary: ''
+  type: Method
+  uid: cntk.default_options.default_options_for
+- _type: class
+  children: []
+  module: cntk.default_options
+  name: cntk.default_options.default_override_or
+  summary: ''
+  type: Class
+  uid: cntk.default_options.default_override_or
+- _type: function
+  module: cntk.default_options
+  name: cntk.default_options.get_default_override
+  summary: "Looks up an option default override.\nMeant to be used inside functions\
+    \ that use this facility.\n\nArgs:\n    function: the function that calls this.\n\
+    \      For example::\n\n        def Convolution(args, init=default_override_or(glorot_uniform()),\
+    \ activation=default_override_or(identity), pad=default_override_or(False)):\n\
+    \        init = _get_default_override(Convolution, init=init) # pass default under\
+    \ the same name\n\n"
+  type: Method
+  uid: cntk.default_options.get_default_override
+- _type: function
+  module: cntk.default_options
+  name: cntk.default_options.is_default_override
+  summary: ''
+  type: Method
+  uid: cntk.default_options.is_default_override

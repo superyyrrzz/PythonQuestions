@@ -1,0 +1,156 @@
+api_name: []
+items:
+- _type: module
+  children:
+  - cntk.train.training_session.CheckpointConfig
+  - cntk.train.training_session.CrossValidationConfig
+  - cntk.train.training_session.TestConfig
+  - cntk.train.training_session.TrainingSession
+  module: cntk.train.training_session
+  name: cntk.train.training_session
+  summary: 'A training session encapsulates a typical training loop and binds together
+    a minibatch source that is used for training, a :class:`~cntk.train.trainer.Trainer`
+    and an optional cross validation minibatch source. A training session takes care
+    of consistent checkpointing and progress printing with specified frequencies.
+
+    '
+  type: Namespace
+  uid: cntk.train.training_session
+- _type: class
+  children:
+  - cntk.train.training_session.minibatch_size_schedule
+  - cntk.train.training_session.training_session
+  module: cntk.train.training_session
+  name: cntk.train.training_session.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.train.training_session.Global
+- _type: class
+  children: []
+  module: cntk.train.training_session
+  name: cntk.train.training_session.CheckpointConfig
+  summary: "A checkpoint configuration for the training session.\n\nArgs:\n    filename\
+    \ (str): checkpoint file name.\n    frequency (int): checkpoint frequency in samples.\
+    \ If 0, no checkpointing takes place. \n      If ``sys.maxsize``, a single checkpoint\
+    \ is taken at the end of the training.\n    preserve_all (bool): saves all checkpoints,\
+    \ using ``filename`` as prefix and checkpoint index as a suffix.\n    restore\
+    \ (bool): flag, indicating whether to restore from available checkpoint before\
+    \ the start of the training\n"
+  type: Class
+  uid: cntk.train.training_session.CheckpointConfig
+- _type: class
+  children: []
+  module: cntk.train.training_session
+  name: cntk.train.training_session.CrossValidationConfig
+  summary: "A cross validation configuration for the training session.\n\nArgs:\n\
+    \    source (:class:`~cntk.io.MinibatchSource`): minibatch source used for cross\
+    \ validation\n    frequency (int): frequency in samples for cross validation\n\
+    \      If ``sys.maxsize``, a single cross validation is performed at the end of\
+    \ training.\n    schedule (:class:`~cntk.cntk_py.minibatch_size_schedule`): minibatch\
+    \ schedule for cross validation\n    callback (func (index, average_error, cv_num_samples,\
+    \ cv_num_minibatches)): Callback that will\n      be called with frequency which\
+    \ can implement custom cross validation logic,\n      returns False if training\
+    \ should be stopped.\n"
+  type: Class
+  uid: cntk.train.training_session.CrossValidationConfig
+- _type: class
+  children: []
+  module: cntk.train.training_session
+  name: cntk.train.training_session.TestConfig
+  summary: "A test configuration for the training session.\n\nArgs:\n    source (:class:`~cntk.io.MinibatchSource`):\
+    \ minibatch source used for testing\n    schedule (:class:`~cntk.cntk_py.minibatch_size_schedule`):\
+    \ minibatch schedule for testing\n"
+  type: Class
+  uid: cntk.train.training_session.TestConfig
+- _type: class
+  children:
+  - cntk.train.training_session.TrainingSession.on_cross_validation_end
+  - cntk.train.training_session.TrainingSession.train
+  module: cntk.train.training_session
+  name: cntk.train.training_session.TrainingSession
+  summary: "The instance of the class should be created by using :func:`~cntk.train.training_session.training_session`\
+    \ function.\n\nA training session trains a model using the specified ``trainer``\
+    \ and configs.\nDifferent aspects of training such as data sources, checkpointing,\
+    \ cross validation, progress printing\ncan be configured using the corresponding\
+    \ config classes.\n\nArgs:\n    trainer (:class:`~cntk.train.trainer.Trainer`):\
+    \ trainer\n    mb_source (:class:`~cntk.io.MinibatchSource`): minibatch source\
+    \ used for training\n    mb_size (:class:`~cntk.cntk_py.minibatch_size_schedule`\
+    \ or int): minibatch size schedule for training\n    var_to_stream (dict): mapping\
+    \ between input variables and input streams\n    max_samples (int): maximum number\
+    \ of samples used for training\n    progress_frequency (int): frequency in samples\
+    \ for aggregated progress printing\n    checkpoint_config (:class:`CheckpointConfig`):\
+    \ checkpoint configuration\n    cv_config (:class:`CrossValidationConfig`): cross\
+    \ validation configuration\n    test_config (:class:`TestConfig`): test configuration\n"
+  type: Class
+  uid: cntk.train.training_session.TrainingSession
+- _type: method
+  class: cntk.train.training_session.TrainingSession
+  module: cntk.train.training_session
+  name: cntk.train.training_session.TrainingSession.on_cross_validation_end
+  summary: "Callback that gets executed at the end of cross validation.\n\nArgs:\n\
+    \    index (int): index of the current callback.\n    average_error (float): average\
+    \ error for the cross validation\n    num_samples (int): number of samples in\
+    \ cross validation\n    num_minibatches (int): number of minibatch in cross validation\n\
+    \nReturns:\n    True if training should continue, False otherwise.\n"
+  type: Method
+  uid: cntk.train.training_session.TrainingSession.on_cross_validation_end
+- _type: method
+  class: cntk.train.training_session.TrainingSession
+  module: cntk.train.training_session
+  name: cntk.train.training_session.TrainingSession.train
+  summary: "Perform training on a specified device.\n\nArgs:\n    device (:class:`~cntk.device.DeviceDescriptor`):\
+    \ the device descriptor containing\n       the type and id of the device where\
+    \ training takes place.\n"
+  type: Method
+  uid: cntk.train.training_session.TrainingSession.train
+- _type: function
+  module: cntk.train.training_session
+  name: cntk.train.training_session.minibatch_size_schedule
+  summary: "Creates a minibatch size schedule.\n\nExamples:\n    >>> # Use a fixed\
+    \ value 32 for all minibatches\n    >>> s = minibatch_size_schedule(32)\n    >>>\
+    \ s[0], s[1]\n    (32, 32)\n\n    >>> # Use minibatches of size 32 for the first\
+    \ 1000 samples, then 64 for the remaining ones\n    >>> s = minibatch_size_schedule([32,\
+    \ 64], 1000)\n    >>> s[0], s[1], s[1000], s[1001]\n    (32, 32, 64, 64)\n\n \
+    \   >>> # Use 32 for the first 12 epochs, then 64 for the next 15,\n    >>> #\
+    \ followed by 128 for the remaining ones, with a 100 samples in an epoch\n   \
+    \ >>> s = minibatch_size_schedule([(12, 32), (15, 64), (1, 128)], 100)\n    >>>\
+    \ s[0], s[1199], s[1200], s[2699], s[2700], s[5000]\n    (32, 32, 64, 64, 128,\
+    \ 128)\n\nArgs:\n    schedule (int or list): if integer, this minibatch size will\
+    \ be used for the whole training.\n     In case of list of integers, the elements\
+    \ are used as the values for ``epoch_size`` samples. \n     If list contains pair,\
+    \ the second element is used as a value for (``epoch_size`` x first element) samples\n\
+    \    epoch_size (int): number of samples as a scheduling unit.\n\nReturns:\n \
+    \   training parameter schedule\n"
+  type: Method
+  uid: cntk.train.training_session.minibatch_size_schedule
+- _type: function
+  module: cntk.train.training_session
+  name: cntk.train.training_session.training_session
+  summary: "A factory function to create a training session object.\n\nArgs: \n  \
+    \  training_minibatch_source (:class:`~cntk.io.MinibatchSource`): !DEPRECATED!\
+    \ use mb_source instead\n    trainer (:class:`~cntk.train.trainer.Trainer`): trainer\n\
+    \    mb_size_schedule (:class:`~cntk.cntk_py.minibatch_size_schedule`): !DEPRECATED!\
+    \ use mb_size instead\n    progress_printer (list): !DEPRECATED! list of progress\
+    \ writers from :mod:`cntk.utils`\n    model_inputs_to_mb_source_mapping (dict):\
+    \ !DEPRECATED! use var_to_stream instead\n    checkpoint_filename (str): !DEPRECATED!\
+    \ checkpoint file name.\n    checkpoint_frequency (int): !DEPRECATED! checkpoint\
+    \ frequency in samples. If 0, no checkpointing takes place. \n      If ``sys.maxsize``,\
+    \ a single checkpoint is taken at the end of the training.\n    save_all_checkpoints\
+    \ (bool): !DEPRECATED! saves all checkpoints, using ``checkpoint_filename`` as\
+    \ prefix and checkpoint index as a suffix.\n    restore (bool): flag, indicating\
+    \ whether to restore from available checkpoint before the start of the training\n\
+    \    progress_frequency (int): frequency in samples for aggregated progress printing\n\
+    \    cv_source (:class:`~cntk.io.MinibatchSource`): !DEPRECATED! minibatch source\
+    \ used for cross validation\n    cv_frequency (int): !DEPRECATED! frequency in\
+    \ samples for cross validation\n    cv_mb_size_schedule (:class:`~cntk.cntk_py.minibatch_size_schedule`):\
+    \ !DEPRECATED! minibatch schedule for cross validation\n      If ``sys.maxsize``,\
+    \ a single cross validation is performed at the end of training.\n    max_training_samples\
+    \ (int): !DEPRECATED! use max_samples instead\n\n    mb_source (:class:`~cntk.io.MinibatchSource`):\
+    \ minibatch source used for training\n    mb_size (:class:`~cntk.cntk_py.minibatch_size_schedule`):\
+    \ minibatch schedule for training\n    var_to_stream (dict): mapping between input\
+    \ variables and input streams\n    max_samples (int): maximum number of samples\
+    \ used for training\n    checkpoint_config (:class:`~CheckpointConfig`): checkpoint\
+    \ configuration\n    cv_config (:class:`~CrossValidationConfig`): cross validation\
+    \ configuration\n\nReturns:\n    Instance of :class:`~TrainingSession`\n"
+  type: Method
+  uid: cntk.train.training_session.training_session

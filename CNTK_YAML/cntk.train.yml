@@ -1,0 +1,16 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.train
+  name: cntk.train
+  summary: ''
+  type: Namespace
+  uid: cntk.train
+- _type: class
+  children: []
+  module: cntk.train
+  name: cntk.train.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.train.Global

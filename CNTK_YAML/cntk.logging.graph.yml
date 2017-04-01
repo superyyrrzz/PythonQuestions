@@ -1,0 +1,90 @@
+api_name: []
+items:
+- _type: module
+  children: []
+  module: cntk.logging.graph
+  name: cntk.logging.graph
+  summary: ''
+  type: Namespace
+  uid: cntk.logging.graph
+- _type: class
+  children:
+  - cntk.logging.graph.depth_first_search
+  - cntk.logging.graph.find_all_with_name
+  - cntk.logging.graph.find_by_name
+  - cntk.logging.graph.get_node_outputs
+  - cntk.logging.graph.output_function_graph
+  - cntk.logging.graph.plot
+  module: cntk.logging.graph
+  name: cntk.logging.graph.Global
+  summary: Proxy object to hold module level functions
+  type: Class
+  uid: cntk.logging.graph.Global
+- _type: function
+  module: cntk.logging.graph
+  name: cntk.logging.graph.depth_first_search
+  summary: "Generic function that walks through the graph starting at ``root`` and\n\
+    uses function ``visitor`` on each node to check whether it should be\nreturned.\n\
+    \nArgs:\n    root (:class:`~cntk.ops.functions.Function` or :class:`~cntk.variables.Variable`):\
+    \ the root to start the journey from\n    visitor (Python function or lambda):\
+    \ function that takes a node as\n     argument and returns ``True`` if that node\
+    \ should be returned.\n    depth (int, default 0): how deep into the block hierarchy\
+    \ the DFS\n     algorithm should go into. Set to -1 for infinite depth.\nReturns:\n\
+    \    List of functions, for which ``visitor`` was ``True``\n"
+  type: Method
+  uid: cntk.logging.graph.depth_first_search
+- _type: function
+  module: cntk.logging.graph
+  name: cntk.logging.graph.find_all_with_name
+  summary: "Finds functions in the graph starting from ``node`` and doing a depth-first\n\
+    search.\n\nArgs:\n    node (:class:`~cntk.ops.functions.Function` or :class:`~cntk.variables.Variable`):\
+    \ the node to start the journey from\n    node_name (`str`): name for which we\
+    \ are search nodes\n    depth (int, default 0): how deep into the block hierarchy\
+    \ the DFS\n     algorithm should go into. Set to -1 for infinite depth.\n\nReturns:\n\
+    \    List of primitive (or block) functions having the specified name\n\nSee also:\n\
+    \    :func:`~cntk.ops.functions.Function.find_all_with_name` in class\n    :class:`~cntk.ops.functions.Function`.\n"
+  type: Method
+  uid: cntk.logging.graph.find_all_with_name
+- _type: function
+  module: cntk.logging.graph
+  name: cntk.logging.graph.find_by_name
+  summary: "Finds a function in the graph starting from ``node`` and doing a depth-first\n\
+    search. It assumes that the name occurs only once.\n\nArgs:\n    node (:class:`~cntk.ops.functions.Function`\
+    \ or :class:`~cntk.variables.Variable`): the node to start the journey from\n\
+    \    node_name (`str`): name for which we are search nodes\n    depth (int, default\
+    \ 0): how deep into the block hierarchy the DFS\n     algorithm should go into.\
+    \ Set to -1 for infinite depth.\n\nReturns:\n    Primitive (or block) function\
+    \ having the specified name\n\nSee also:\n    :func:`~cntk.ops.functions.Function.find_by_name`\
+    \ in class\n    :class:`~cntk.ops.functions.Function`.\n\n"
+  type: Method
+  uid: cntk.logging.graph.find_by_name
+- _type: function
+  module: cntk.logging.graph
+  name: cntk.logging.graph.get_node_outputs
+  summary: "Walks through every node of the graph starting at ``node``\nand returns\
+    \ a list of all node outputs.\n\nArgs:\n    node (graph node): the node to start\
+    \ the journey from\n\nReturns:\n    A list of all node outputs\n"
+  type: Method
+  uid: cntk.logging.graph.get_node_outputs
+- _type: function
+  module: cntk.logging.graph
+  name: cntk.logging.graph.output_function_graph
+  summary: ''
+  type: Method
+  uid: cntk.logging.graph.output_function_graph
+- _type: function
+  module: cntk.logging.graph
+  name: cntk.logging.graph.plot
+  summary: "Walks through every node of the graph starting at ``root``,\ncreates a\
+    \ network graph, and returns a network description. If ``filename`` is\nspecified,\
+    \ it outputs a DOT, PNG, PDF, or SVG file depending on the file name's suffix.\n\
+    \nRequirements:\n\n * for DOT output: `pydot_ng <https://pypi.python.org/pypi/pydot-ng>`_\n\
+    \ * for PNG, PDF, and SVG output: `pydot_ng <https://pypi.python.org/pypi/pydot-ng>`_\
+    \ \n   and `graphviz <http://graphviz.org>`_ (GraphViz executable has to be in\
+    \ the system's PATH).\n\nArgs:\n    node (graph node): the node to start the journey\
+    \ from\n    filename (`str`, default None): file with extension '.dot', 'png',\
+    \ 'pdf', or 'svg'\n     to denote what format should be written. If `None` then\
+    \ nothing\n     will be plotted, and the returned string can be used to debug\
+    \ the graph.\n\nReturns:\n    `str` describing the graph\n"
+  type: Method
+  uid: cntk.logging.graph.plot
