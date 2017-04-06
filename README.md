@@ -95,7 +95,7 @@ items:
     startLine: 12
 ```
 
-# Other missing fields
+# Other missing fields in items
 ## inheritance
 In .NET, it's a list tracing to `System.Object` like:
 ``` yaml
@@ -109,4 +109,22 @@ inheritance:
 - base1
 - base2
 ...
+```
+## langs
+``` yaml
+uid: uid 
+langs:
+- python
+```
+## name
+Before:
+``` yaml
+uid: uid 
+name: cntk.io.MinibatchData.num_samples
+```
+Expected:
+``` yaml
+uid: uid 
+fullName: cntk.io.MinibatchData.num_samples
+name: num_samples
 ```
