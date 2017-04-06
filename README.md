@@ -9,6 +9,8 @@ We've investigated the rst-to-md tool that ASP.NET team uses. It still has some 
 
 Another solution is to convert RST in comment directly to HTML. Some syntax that can't be converted directly can use DFM, like [cross reference](user-content-cross-reference), which will be discussed below.
 
+DFM(DocFX Flavored Markdown) Specification: http://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html
+
 # Split YAML
 ## Now
 Namespace/class/method are in the same YAML’s `items`. This will generate a super long page like http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.operations.html.
